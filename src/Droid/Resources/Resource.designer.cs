@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("branslekollen.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Branslekollen.Droid.Resource", IsApplication=true)]
 
-namespace branslekollen.Droid
+namespace Branslekollen.Droid
 {
 	
 	
@@ -41,11 +41,42 @@ namespace branslekollen.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040004
+			public const int my_accent = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int my_primary = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int my_primary_dark = 2130968579;
+			
+			// aapt resource value: 0x7f040001
+			public const int my_text_color = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int my_white = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int road = 2130837505;
 			
 			static Drawable()
 			{
@@ -60,8 +91,14 @@ namespace branslekollen.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f070002
+			public const int myButton = 2131165186;
+			
+			// aapt resource value: 0x7f070000
+			public const int textView1 = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int textView2 = 2131165185;
 			
 			static Id()
 			{
@@ -92,11 +129,14 @@ namespace branslekollen.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f050000
+			public const int app_name = 2131034112;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f050002
+			public const int get_started = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int welcome = 2131034113;
 			
 			static String()
 			{
@@ -104,6 +144,22 @@ namespace branslekollen.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int MyCustomTheme = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

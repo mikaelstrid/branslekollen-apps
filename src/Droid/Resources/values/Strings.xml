@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Bränslekollen</string>
+  <string name="welcome">Hej och välkommen till Bränslekollen!\n\nMed den här appen kan du enkelt hålla koll på hur mycket bränsle ditt fordon verkligen gör av med.\n\nTryck på knappen nedan för att komma igång med appen!</string>
+  <string name="get_started">Kom igång</string>
+</resources>
