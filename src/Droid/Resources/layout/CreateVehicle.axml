@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <TextView
+        android:text="@string/create_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:paddingTop="50dp"
+        android:gravity="center"
+        android:textSize="96px"
+        android:textColor="@color/my_text_color"
+        android:paddingBottom="50dp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/VehicleNameEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/vehicle_name"
+        android:layout_marginBottom="16dp" />
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        <RadioButton
+            android:id="@+id/radio_fuel_type_petrol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fuel_type_petrol"
+            android:textSize="18dp" />
+        <RadioButton
+            android:id="@+id/radio_fuel_type_diesel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fuel_type_diesel"
+            android:textSize="18dp" />
+    </RadioGroup>
+<!--<Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FuelTypeSpinner"
+        android:prompt="@string/fuel_type_prompt"
+        android:layout_marginBottom="16dp" />-->
+    <Button
+        android:id="@+id/GettingStartedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:background="@color/my_primary"
+        android:textColor="@color/my_white" />
+</LinearLayout>

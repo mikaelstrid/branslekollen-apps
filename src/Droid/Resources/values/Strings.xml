@@ -3,4 +3,10 @@
   <string name="app_name">Bränslekollen</string>
   <string name="welcome">Hej och välkommen till Bränslekollen!\n\nMed den här appen kan du enkelt hålla koll på hur mycket bränsle ditt fordon verkligen gör av med.\n\nTryck på knappen nedan för att komma igång med appen!</string>
   <string name="get_started">Kom igång</string>
+  <string name="create_vehicle">Lägg till fordon</string>
+  <string name="vehicle_name">Fordonsnamn</string>
+  <string name="fuel_type_prompt">Välj bränsletyp</string>
+  <string name="fuel_type_petrol">Bensin</string>
+  <string name="fuel_type_diesel">Diesel</string>
+  <string name="add">Lägg till</string>
 </resources>
