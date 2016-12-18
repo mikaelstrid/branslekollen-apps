@@ -1,9 +1,11 @@
+using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
+using Serilog;
 
 namespace Branslekollen.Droid
 {
@@ -42,10 +44,16 @@ namespace Branslekollen.Droid
 
                 if (string.IsNullOrWhiteSpace(vehicleName) || string.IsNullOrWhiteSpace(fuelType)) return;
 
-                await viewModel.CreateVehicle(vehicleName, fuelType);
-
-                var intent = new Intent(this, typeof(MainActivity));
-                StartActivity(intent);
+                try
+                {
+                    await viewModel.CreateVehicle(vehicleName, fuelType);
+                    var intent = new Intent(this, typeof(MainActivity));
+                    StartActivity(intent);
+                }
+                catch (Exception)
+                {
+                    Toast.MakeText(this, "Det gick inte att lägga till fordonet av någon anledning, försök igen... :(", ToastLength.Long).Show();
+                }
             };
         }
     }

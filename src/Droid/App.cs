@@ -2,9 +2,9 @@ using System;
 using Android.App;
 using Android.Runtime;
 using Autofac;
-using Branslekollen.Core;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
+using Serilog;
 
 namespace Branslekollen.Droid
 {
@@ -28,6 +28,13 @@ namespace Branslekollen.Droid
             builder.RegisterType<CreateVehicleViewModel>();
 
             App.Container = builder.Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.Trace()
+                .CreateLogger();
+
+            Log.Information("Application setup completed, starting application...");
 
             base.OnCreate();
         }
