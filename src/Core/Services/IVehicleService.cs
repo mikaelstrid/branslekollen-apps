@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Branslekollen.Core.ApiModels;
+using Branslekollen.Core.Persistence;
 using Flurl.Http;
 using Serilog;
 
@@ -17,28 +18,36 @@ namespace Branslekollen.Core.Services
         private const string VEHICLES_ENDPOINT = "/vehicles";
 
         private readonly IConfiguration _configuration;
+        private readonly ILocalStorage _localStorage;
 
-        public VehicleService(IConfiguration configuration)
+        public VehicleService(IConfiguration configuration, ILocalStorage localStorage)
         {
             _configuration = configuration;
+            _localStorage = localStorage;
         }
 
         public async Task<VehicleApiModel> Create(string name, string fuelType)
         {
             try
             {
-                Log.Verbose("VehicleService.Create: Sending request to API with {Name} and {FuelType}", name, fuelType);
+                var url = $"{_configuration.ApiBaseUrl}{VEHICLES_ENDPOINT}";
+
+                Log.Verbose("VehicleService.Create: Making POST request to {Url} with {@Parameters}", url, new { Name = name, FuelType = fuelType });
 
                 var apiModel = new VehicleApiModel { Name = name, Fuel = fuelType };
 
-                var cretedVehicle = await $"{_configuration.ApiBaseUrl}{VEHICLES_ENDPOINT}"
+                var cretedVehicle = await url
                     .PostJsonAsync(apiModel)
                     .ReceiveJson<VehicleApiModel>();
 
                 Log.Verbose("VehicleService.Create: Request sent successfully, received {@CreateVehicle}", cretedVehicle);
 
-                return cretedVehicle;
+                var vehicleIds = await _localStorage.GetVehicleIds();
+                vehicleIds.Add(cretedVehicle.Id);
+                _localStorage.SaveVehicleIds(vehicleIds);
+                Log.Verbose("VehicleService.Create: Vehicle ids {@VehicleIds} saved to local storage", vehicleIds);
 
+                return cretedVehicle;
             }
             catch (FlurlHttpTimeoutException e1)
             {

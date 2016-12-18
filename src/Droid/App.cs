@@ -3,9 +3,11 @@ using Android.App;
 using Android.Runtime;
 using Autofac;
 using Branslekollen.Core;
+using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
 using Serilog;
+using LocalStorage = Branslekollen.Droid.Persistence.LocalStorage;
 
 namespace Branslekollen.Droid
 {
@@ -25,8 +27,9 @@ namespace Branslekollen.Droid
             var builder = new ContainerBuilder();
 
             //builder.RegisterInstance(new DroidPlatform()).As<IPlatform>();
-            builder.RegisterInstance(new Configuration()).As<IConfiguration>();
-            builder.RegisterInstance(new VehicleService()).As<IVehicleService>();
+            builder.RegisterType<LocalStorage>().As<ILocalStorage>();
+            builder.RegisterType<Configuration>().As<IConfiguration>();
+            builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
             builder.RegisterType<CreateVehicleViewModel>();
 
             App.Container = builder.Build();

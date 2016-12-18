@@ -35,6 +35,7 @@
     <Compile Include="ApiModels\RefuelingApiModel.cs" />
     <Compile Include="ApiModels\VehicleApiModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Persistence\ILocalStorage.cs" />
     <Compile Include="Services\IVehicleService.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
