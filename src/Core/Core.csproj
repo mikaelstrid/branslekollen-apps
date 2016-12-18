@@ -32,8 +32,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApiModels\RefuelingApiModel.cs" />
+    <Compile Include="ApiModels\VehicleApiModel.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Services\IVehicleService.cs" />
     <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CreateVehicleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

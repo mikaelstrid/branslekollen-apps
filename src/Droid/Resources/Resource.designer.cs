@@ -26,6 +26,8 @@ namespace Branslekollen.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::Branslekollen.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Branslekollen.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -44,20 +46,20 @@ namespace Branslekollen.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040004
-			public const int my_accent = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int my_accent = 2131034116;
 			
-			// aapt resource value: 0x7f040002
-			public const int my_primary = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int my_primary = 2131034114;
 			
-			// aapt resource value: 0x7f040003
-			public const int my_primary_dark = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int my_primary_dark = 2131034115;
 			
-			// aapt resource value: 0x7f040001
-			public const int my_text_color = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int my_text_color = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int my_white = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int my_white = 2131034112;
 			
 			static Color()
 			{
@@ -91,23 +93,29 @@ namespace Branslekollen.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f070005
+			public const int CreateVehicleButton = 2131165189;
+			
 			// aapt resource value: 0x7f070004
-			public const int GettingStartedButton = 2131165188;
+			public const int FuelTypeDieselRadioButton = 2131165188;
+			
+			// aapt resource value: 0x7f070003
+			public const int FuelTypePetrolRadioButton = 2131165187;
+			
+			// aapt resource value: 0x7f070002
+			public const int FuelTypeRadioGroup = 2131165186;
+			
+			// aapt resource value: 0x7f070007
+			public const int GettingStartedButton = 2131165191;
 			
 			// aapt resource value: 0x7f070001
 			public const int VehicleNameEditText = 2131165185;
 			
-			// aapt resource value: 0x7f070003
-			public const int radio_fuel_type_diesel = 2131165187;
-			
-			// aapt resource value: 0x7f070002
-			public const int radio_fuel_type_petrol = 2131165186;
-			
 			// aapt resource value: 0x7f070000
 			public const int textView1 = 2131165184;
 			
-			// aapt resource value: 0x7f070005
-			public const int textView2 = 2131165189;
+			// aapt resource value: 0x7f070006
+			public const int textView2 = 2131165190;
 			
 			static Id()
 			{
@@ -141,32 +149,38 @@ namespace Branslekollen.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050008
-			public const int add = 2131034120;
+			// aapt resource value: 0x7f040001
+			public const int ApplicationName = 2130968577;
 			
-			// aapt resource value: 0x7f050000
-			public const int app_name = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f050003
-			public const int create_vehicle = 2131034115;
+			// aapt resource value: 0x7f04000a
+			public const int add = 2130968586;
 			
-			// aapt resource value: 0x7f050007
-			public const int fuel_type_diesel = 2131034119;
+			// aapt resource value: 0x7f040002
+			public const int app_name = 2130968578;
 			
-			// aapt resource value: 0x7f050006
-			public const int fuel_type_petrol = 2131034118;
+			// aapt resource value: 0x7f040005
+			public const int create_vehicle = 2130968581;
 			
-			// aapt resource value: 0x7f050005
-			public const int fuel_type_prompt = 2131034117;
+			// aapt resource value: 0x7f040009
+			public const int fuel_type_diesel = 2130968585;
 			
-			// aapt resource value: 0x7f050002
-			public const int get_started = 2131034114;
+			// aapt resource value: 0x7f040008
+			public const int fuel_type_petrol = 2130968584;
 			
-			// aapt resource value: 0x7f050004
-			public const int vehicle_name = 2131034116;
+			// aapt resource value: 0x7f040007
+			public const int fuel_type_prompt = 2130968583;
 			
-			// aapt resource value: 0x7f050001
-			public const int welcome = 2131034113;
+			// aapt resource value: 0x7f040004
+			public const int get_started = 2130968580;
+			
+			// aapt resource value: 0x7f040006
+			public const int vehicle_name = 2130968582;
+			
+			// aapt resource value: 0x7f040003
+			public const int welcome = 2130968579;
 			
 			static String()
 			{

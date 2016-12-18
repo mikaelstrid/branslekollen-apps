@@ -25,31 +25,26 @@
         android:hint="@string/vehicle_name"
         android:layout_marginBottom="16dp" />
     <RadioGroup
+        android:id="@+id/FuelTypeRadioGroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="16dp">
         <RadioButton
-            android:id="@+id/radio_fuel_type_petrol"
+            android:id="@+id/FuelTypePetrolRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fuel_type_petrol"
             android:textSize="18dp" />
         <RadioButton
-            android:id="@+id/radio_fuel_type_diesel"
+            android:id="@+id/FuelTypeDieselRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fuel_type_diesel"
             android:textSize="18dp" />
     </RadioGroup>
-<!--<Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/FuelTypeSpinner"
-        android:prompt="@string/fuel_type_prompt"
-        android:layout_marginBottom="16dp" />-->
     <Button
-        android:id="@+id/GettingStartedButton"
+        android:id="@+id/CreateVehicleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add"
