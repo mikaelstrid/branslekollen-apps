@@ -14,6 +14,15 @@ namespace Branslekollen.Core.Services
 
     public class VehicleService : IVehicleService
     {
+        private const string VEHICLES_ENDPOINT = "/vehicles";
+
+        private readonly IConfiguration _configuration;
+
+        public VehicleService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public async Task<VehicleApiModel> Create(string name, string fuelType)
         {
             try
@@ -22,7 +31,7 @@ namespace Branslekollen.Core.Services
 
                 var apiModel = new VehicleApiModel { Name = name, Fuel = fuelType };
 
-                var cretedVehicle = await "http://169.254.80.80:51058/api/vehicles"
+                var cretedVehicle = await $"{_configuration.ApiBaseUrl}{VEHICLES_ENDPOINT}"
                     .PostJsonAsync(apiModel)
                     .ReceiveJson<VehicleApiModel>();
 

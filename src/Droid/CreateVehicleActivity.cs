@@ -5,7 +5,6 @@ using Android.OS;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
-using Serilog;
 
 namespace Branslekollen.Droid
 {

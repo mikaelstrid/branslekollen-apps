@@ -2,6 +2,7 @@ using System;
 using Android.App;
 using Android.Runtime;
 using Autofac;
+using Branslekollen.Core;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
 using Serilog;
@@ -24,6 +25,7 @@ namespace Branslekollen.Droid
             var builder = new ContainerBuilder();
 
             //builder.RegisterInstance(new DroidPlatform()).As<IPlatform>();
+            builder.RegisterInstance(new Configuration()).As<IConfiguration>();
             builder.RegisterInstance(new VehicleService()).As<IVehicleService>();
             builder.RegisterType<CreateVehicleViewModel>();
 
