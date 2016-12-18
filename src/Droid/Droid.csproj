@@ -99,6 +99,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="CreateVehicleActivity.cs" />
+    <Compile Include="DashboardActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Persistence\LocalStorage.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -113,6 +114,7 @@
     <AndroidResource Include="Resources\layout\CreateVehicle.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Dashboard.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

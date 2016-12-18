@@ -1,4 +1,5 @@
 using System;
+using Branslekollen.Core.Models;
 
 namespace Branslekollen.Core.ApiModels
 {
@@ -13,5 +14,21 @@ namespace Branslekollen.Core.ApiModels
         public int OdometerInKm { get; set; }
         public int? DistanceTravelledInKm { get; set; }
         public bool FullTank { get; set; }
+
+        public Refueling ToDomainModel()
+        {
+            return new Refueling
+            {
+                Id = Id,
+                CreationTime = CreationTime,
+                Date = Date,
+                MissedRefuelings = MissedRefuelings,
+                NumberOfLiters = NumberOfLiters,
+                PricePerLiter = PricePerLiter,
+                OdometerInKm = OdometerInKm,
+                DistanceTravelledInKm = DistanceTravelledInKm,
+                FullTank = FullTank
+            };
+        }
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="@drawable/road"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <TextView
+        android:text="Dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:paddingTop="50dp"
+        android:gravity="center"
+        android:textSize="96px"
+        android:textColor="@color/my_text_color"
+        android:paddingBottom="50dp"
+        android:textStyle="bold" />
+</LinearLayout>
