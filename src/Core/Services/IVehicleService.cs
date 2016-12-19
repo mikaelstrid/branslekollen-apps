@@ -54,6 +54,7 @@ namespace Branslekollen.Core.Services
 
                         var receivedVehicles = await url
                             .SetQueryParam("ids", localVehicleIds)
+                            .WithTimeout(5)
                             .GetJsonAsync<List<VehicleApiModel>>();
 
                         Log.Verbose("VehicleService.GetAll: ...received {@Vehicles}", receivedVehicles);
@@ -98,6 +99,7 @@ namespace Branslekollen.Core.Services
                 var apiModel = new VehicleApiModel { Name = name, Fuel = fuelType };
 
                 var createdVehicle = await url
+                    .WithTimeout(5)
                     .PostJsonAsync(apiModel)
                     .ReceiveJson<VehicleApiModel>();
 
