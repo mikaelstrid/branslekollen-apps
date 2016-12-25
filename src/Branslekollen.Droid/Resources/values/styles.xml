@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="MyCustomTheme.Splash" parent ="android:Theme.Material.Light">
-    <item name="android:windowBackground">@drawable/splash_background</item>
-    <item name="android:windowNoTitle">true</item>
+  <style name="MyCustomTheme.Splash" parent ="android:Theme.Material.Light.NoActionBar">
+    <item name="android:windowBackground">@color/my_primary</item>
+    <item name="android:textColor">@color/my_white</item>
   </style>
   <style name="MyCustomTheme.NoConnection" parent ="android:Theme.Material.Light">
     <item name="android:windowBackground">@drawable/no_connection_background</item>
@@ -12,7 +12,7 @@
     <item name="android:colorPrimary">@color/my_primary</item>
     <item name="android:colorAccent">@color/my_accent</item>
   </style>
-  <style name="MyCustomTheme" parent="android:Theme.Material.Light">
+  <style name="MyCustomTheme" parent="android:Theme.Material.Light.DarkActionBar">
     <item name="android:colorPrimary">@color/my_primary</item>
     <item name="android:colorAccent">@color/my_accent</item>
     <!--<item name="android:textColorPrimary">@color/my_white</item>-->

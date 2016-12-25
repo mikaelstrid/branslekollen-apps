@@ -101,40 +101,21 @@
     <Compile Include="CreateVehicleActivity.cs" />
     <Compile Include="DashboardActivity.cs" />
     <Compile Include="NoConnectionActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Persistence\LocalStorage.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\CreateVehicle.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CreateVehicle.axml" />
     <AndroidResource Include="Resources\layout\Dashboard.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
-    <AndroidResource Include="Resources\values\strings.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\colors.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\styles.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\road.jpg" />
+    <AndroidResource Include="Resources\layout\Splash.axml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
@@ -142,17 +123,26 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash_background.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Resources\AboutResources.txt" />
     <AndroidResource Include="Resources\drawable\no_connection.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\no_connection_background.xml" />
+    <AndroidResource Include="Resources\drawable\road.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_cloud_download_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_cloud_download_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_cloud_download_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_cloud_download_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_cloud_download_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_cloud_download_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_cloud_download_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_cloud_download_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_cloud_download_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_cloud_download_white_48dp.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\ic_cloud_download_white_48dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

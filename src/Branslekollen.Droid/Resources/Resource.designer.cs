@@ -75,22 +75,19 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_cloud_download_black_24dp = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int no_connection = 2130837505;
+			public const int ic_cloud_download_white_48dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int no_connection_background = 2130837506;
+			public const int no_connection = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int road = 2130837507;
+			public const int no_connection_background = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int splash_background = 2130837508;
-			
-			// aapt resource value: 0x7f020005
-			public const int splash_logo = 2130837509;
+			public const int road = 2130837508;
 			
 			static Drawable()
 			{
@@ -123,6 +120,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f070001
 			public const int VehicleNameEditText = 2131165185;
 			
+			// aapt resource value: 0x7f070008
+			public const int imageViewGettingVehicles = 2131165192;
+			
 			// aapt resource value: 0x7f070000
 			public const int textView1 = 2131165184;
 			
@@ -151,6 +151,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f030002
 			public const int Main = 2130903042;
 			
+			// aapt resource value: 0x7f030003
+			public const int Splash = 2130903043;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -170,32 +173,35 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f04000a
-			public const int add = 2130968586;
+			// aapt resource value: 0x7f04000b
+			public const int add = 2130968587;
 			
 			// aapt resource value: 0x7f040002
 			public const int app_name = 2130968578;
 			
-			// aapt resource value: 0x7f040005
-			public const int create_vehicle = 2130968581;
+			// aapt resource value: 0x7f040006
+			public const int create_vehicle = 2130968582;
+			
+			// aapt resource value: 0x7f04000a
+			public const int fuel_type_diesel = 2130968586;
 			
 			// aapt resource value: 0x7f040009
-			public const int fuel_type_diesel = 2130968585;
+			public const int fuel_type_petrol = 2130968585;
 			
 			// aapt resource value: 0x7f040008
-			public const int fuel_type_petrol = 2130968584;
+			public const int fuel_type_prompt = 2130968584;
 			
-			// aapt resource value: 0x7f040007
-			public const int fuel_type_prompt = 2130968583;
-			
-			// aapt resource value: 0x7f040004
-			public const int get_started = 2130968580;
-			
-			// aapt resource value: 0x7f040006
-			public const int vehicle_name = 2130968582;
+			// aapt resource value: 0x7f040005
+			public const int get_started = 2130968581;
 			
 			// aapt resource value: 0x7f040003
-			public const int welcome = 2130968579;
+			public const int getting_your_vehicles = 2130968579;
+			
+			// aapt resource value: 0x7f040007
+			public const int vehicle_name = 2130968583;
+			
+			// aapt resource value: 0x7f040004
+			public const int welcome = 2130968580;
 			
 			static String()
 			{

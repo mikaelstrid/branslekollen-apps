@@ -20,6 +20,8 @@ namespace Branslekollen.Droid
         {
             base.OnResume();
 
+            SetContentView(Resource.Layout.Splash);
+
             SplashViewModel viewModel;
             using (var scope = App.Container.BeginLifetimeScope())
             {
