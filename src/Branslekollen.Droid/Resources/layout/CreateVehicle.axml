@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-    <TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <LinearLayout
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+    <!--<TextView
         android:text="@string/create_vehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,37 +22,51 @@
         android:textSize="96px"
         android:textColor="@color/my_text_color"
         android:paddingBottom="50dp"
-        android:textStyle="bold" />
-    <EditText
-        android:id="@+id/VehicleNameEditText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/vehicle_name"
-        android:layout_marginBottom="16dp" />
-    <RadioGroup
-        android:id="@+id/FuelTypeRadioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="16dp">
-        <RadioButton
-            android:id="@+id/FuelTypePetrolRadioButton"
-            android:layout_width="wrap_content"
+        android:textStyle="bold" />-->
+        <TextView
+            android:text="@string/vehicle_name"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fuel_type_petrol"
-            android:textSize="18dp" />
-        <RadioButton
-            android:id="@+id/FuelTypeDieselRadioButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/vehicleNameLabel"
+            android:layout_marginTop="24dp" />
+        <EditText
+            android:id="@+id/VehicleNameEditText"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fuel_type_diesel"
-            android:textSize="18dp" />
-    </RadioGroup>
-    <Button
-        android:id="@+id/CreateVehicleButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add"
-        android:background="@color/my_primary"
-        android:textColor="@color/my_white" />
-</LinearLayout>
+            android:hint="@string/vehicle_name_hint" />
+        <TextView
+            android:text="@string/fuel_type"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fuelTypeLabel"
+            android:layout_marginTop="24dp" />
+        <RadioGroup
+            android:id="@+id/FuelTypeRadioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+            <RadioButton
+                android:id="@+id/FuelTypePetrolRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fuel_type_petrol"
+                android:textSize="18dp" />
+            <RadioButton
+                android:id="@+id/FuelTypeDieselRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fuel_type_diesel"
+                android:textSize="18dp" />
+        </RadioGroup>
+    <!--<Button
+            android:id="@+id/CreateVehicleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:background="@color/my_primary"
+            android:textColor="@color/my_white" />-->
+    </LinearLayout>
+</RelativeLayout>

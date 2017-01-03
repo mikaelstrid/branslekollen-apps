@@ -3,7 +3,7 @@ using Android.OS;
 
 namespace Branslekollen.Droid
 {
-	[Activity (Theme = "@style/MyCustomTheme.NoConnection", NoHistory = true)]
+	[Activity (NoHistory = true)]
 	public class NoConnectionActivity : Activity
 	{
 	    protected override void OnCreate(Bundle bundle)

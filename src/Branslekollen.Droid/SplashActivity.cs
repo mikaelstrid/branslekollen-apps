@@ -8,7 +8,7 @@ using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-	[Activity (Theme = "@style/MyCustomTheme.Splash", MainLauncher = true, NoHistory = true)]
+	[Activity (NoHistory = true)]
 	public class SplashActivity : Activity
 	{
 	    protected override void OnCreate(Bundle bundle)

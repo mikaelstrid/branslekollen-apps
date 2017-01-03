@@ -6,8 +6,9 @@
   <string name="get_started">Kom igång</string>
   <string name="create_vehicle">Lägg till fordon</string>
   <string name="vehicle_name">Fordonsnamn</string>
-  <string name="fuel_type_prompt">Välj bränsletyp</string>
+  <string name="vehicle_name_hint">T.ex. Volvo V90</string>
+  <string name="fuel_type">Bränsletyp</string>
   <string name="fuel_type_petrol">Bensin</string>
   <string name="fuel_type_diesel">Diesel</string>
-  <string name="add">Lägg till</string>
+  <string name="save">Spara</string>
 </resources>

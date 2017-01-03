@@ -40,9 +40,11 @@
     <Compile Include="Services\IVehicleService.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AddRefuelingViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\CreateVehicleViewModel.cs" />
+    <Compile Include="ViewModels\VehicleDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

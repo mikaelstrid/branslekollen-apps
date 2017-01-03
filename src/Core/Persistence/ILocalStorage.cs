@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Core.Persistence
 {
@@ -7,5 +8,6 @@ namespace Branslekollen.Core.Persistence
     {
         Task<List<string>> GetVehicleIds();
         void SaveVehicleIds(List<string> vehicleIds);
+        Task<List<VehicleDescriptor>> GetVehicleDescriptors();
     }
 }

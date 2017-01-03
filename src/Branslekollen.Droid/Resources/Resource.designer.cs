@@ -81,13 +81,16 @@ namespace Branslekollen.Droid
 			public const int ic_cloud_download_white_48dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int no_connection = 2130837506;
+			public const int Icon = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int no_connection_background = 2130837507;
+			public const int no_connection = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int road = 2130837508;
+			public const int no_connection_background = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int road = 2130837509;
 			
 			static Drawable()
 			{
@@ -102,32 +105,41 @@ namespace Branslekollen.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070005
-			public const int CreateVehicleButton = 2131165189;
+			// aapt resource value: 0x7f080006
+			public const int FuelTypeDieselRadioButton = 2131230726;
 			
-			// aapt resource value: 0x7f070004
-			public const int FuelTypeDieselRadioButton = 2131165188;
+			// aapt resource value: 0x7f080005
+			public const int FuelTypePetrolRadioButton = 2131230725;
 			
-			// aapt resource value: 0x7f070003
-			public const int FuelTypePetrolRadioButton = 2131165187;
+			// aapt resource value: 0x7f080004
+			public const int FuelTypeRadioGroup = 2131230724;
 			
-			// aapt resource value: 0x7f070002
-			public const int FuelTypeRadioGroup = 2131165186;
+			// aapt resource value: 0x7f080009
+			public const int GettingStartedButton = 2131230729;
 			
-			// aapt resource value: 0x7f070007
-			public const int GettingStartedButton = 2131165191;
+			// aapt resource value: 0x7f080002
+			public const int VehicleNameEditText = 2131230722;
 			
-			// aapt resource value: 0x7f070001
-			public const int VehicleNameEditText = 2131165185;
+			// aapt resource value: 0x7f080003
+			public const int fuelTypeLabel = 2131230723;
 			
-			// aapt resource value: 0x7f070008
-			public const int imageViewGettingVehicles = 2131165192;
+			// aapt resource value: 0x7f08000a
+			public const int imageViewGettingVehicles = 2131230730;
 			
-			// aapt resource value: 0x7f070000
-			public const int textView1 = 2131165184;
+			// aapt resource value: 0x7f08000b
+			public const int menu_save = 2131230731;
 			
-			// aapt resource value: 0x7f070006
-			public const int textView2 = 2131165190;
+			// aapt resource value: 0x7f080007
+			public const int textView1 = 2131230727;
+			
+			// aapt resource value: 0x7f080008
+			public const int textView2 = 2131230728;
+			
+			// aapt resource value: 0x7f080000
+			public const int toolbar = 2131230720;
+			
+			// aapt resource value: 0x7f080001
+			public const int vehicleNameLabel = 2131230721;
 			
 			static Id()
 			{
@@ -143,16 +155,22 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int CreateVehicle = 2130903040;
+			public const int AddRefueling = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Dashboard = 2130903041;
+			public const int CreateVehicle = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Main = 2130903042;
+			public const int Dashboard = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Splash = 2130903043;
+			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Splash = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int toolbar = 2130903045;
 			
 			static Layout()
 			{
@@ -160,6 +178,22 @@ namespace Branslekollen.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f070000
+			public const int top_menus = 2131165184;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
@@ -173,23 +207,20 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f04000b
-			public const int add = 2130968587;
-			
 			// aapt resource value: 0x7f040002
 			public const int app_name = 2130968578;
 			
 			// aapt resource value: 0x7f040006
 			public const int create_vehicle = 2130968582;
 			
-			// aapt resource value: 0x7f04000a
-			public const int fuel_type_diesel = 2130968586;
-			
 			// aapt resource value: 0x7f040009
-			public const int fuel_type_petrol = 2130968585;
+			public const int fuel_type = 2130968585;
 			
-			// aapt resource value: 0x7f040008
-			public const int fuel_type_prompt = 2130968584;
+			// aapt resource value: 0x7f04000b
+			public const int fuel_type_diesel = 2130968587;
+			
+			// aapt resource value: 0x7f04000a
+			public const int fuel_type_petrol = 2130968586;
 			
 			// aapt resource value: 0x7f040005
 			public const int get_started = 2130968581;
@@ -197,8 +228,14 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040003
 			public const int getting_your_vehicles = 2130968579;
 			
+			// aapt resource value: 0x7f04000c
+			public const int save = 2130968588;
+			
 			// aapt resource value: 0x7f040007
 			public const int vehicle_name = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int vehicle_name_hint = 2130968584;
 			
 			// aapt resource value: 0x7f040004
 			public const int welcome = 2130968580;
@@ -217,7 +254,7 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f060003
-			public const int MyCustomTheme = 2131099651;
+			public const int BranslekollenTheme = 2131099651;
 			
 			// aapt resource value: 0x7f060002
 			public const int MyCustomTheme_NoActionBar = 2131099650;

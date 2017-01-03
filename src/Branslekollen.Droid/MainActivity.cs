@@ -8,7 +8,7 @@ using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-	[Activity (Label = "Branslekollen.Droid", Icon = "@drawable/icon", Theme = "@style/MyCustomTheme.NoActionBar")]
+	[Activity (Label = "Branslekollen.Main", Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 		protected override async void OnCreate (Bundle bundle)
