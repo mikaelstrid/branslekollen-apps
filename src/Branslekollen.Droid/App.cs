@@ -29,7 +29,11 @@ namespace Branslekollen.Droid
             //builder.RegisterInstance(new DroidPlatform()).As<IPlatform>();
             builder.RegisterType<LocalStorage>().As<ILocalStorage>();
             builder.RegisterType<Configuration>().As<IConfiguration>();
+#if DEBUG
+            builder.RegisterType<DummyVehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
+#else
             builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
+#endif
             builder.RegisterType<SplashViewModel>();
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<CreateVehicleViewModel>();

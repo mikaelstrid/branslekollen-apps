@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,32 @@ namespace Branslekollen.Core.Services
     {
         Task<List<Vehicle>> GetAll();
         Task<VehicleApiModel> Create(string name, string fuelType);
+    }
+
+    public class DummyVehicleService : IVehicleService
+    {
+        public Task<List<Vehicle>> GetAll()
+        {
+            Log.Verbose("DummyVehicleService.GetAll...");
+            Task.Delay(1000);
+            return Task.FromResult(new List<Vehicle>
+            {
+                new Vehicle("Volvo V90", "petrol")
+            });
+        }
+
+        public Task<VehicleApiModel> Create(string name, string fuelType)
+        {
+            Log.Verbose("DummyVehicleService.Create...");
+            Task.Delay(1000);
+            return Task.FromResult(new VehicleApiModel
+            {
+                Id = Guid.NewGuid().ToString(),
+                Fuel = "diesel",
+                Name = "Volvo V90",
+                Refuelings = new List<RefuelingApiModel>()
+            });
+        }
     }
 
     public class VehicleService : IVehicleService
