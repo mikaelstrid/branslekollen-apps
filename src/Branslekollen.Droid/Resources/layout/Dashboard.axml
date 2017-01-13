@@ -1,22 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
-    android:background="@drawable/road"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-    <TextView
-        android:text="Dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:paddingTop="50dp"
-        android:gravity="center"
-        android:textSize="96px"
-        android:textColor="@color/my_text_color"
-        android:paddingBottom="50dp"
-        android:textStyle="bold" />
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Toolbar
+            android:id="@+id/edit_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/bottom_navigation"
+                android:gravity="center_horizontal"
+                android:background="#ccc"
+                android:layout_marginLeft="0dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:minWidth="80dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="6dp">
+                    <ImageView
+                        android:src="@drawable/ic_cloud_download_black_24dp"
+                        android:id="@+id/imageButton1"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp" />
+                    <TextView
+                        android:text="Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView1"
+                        android:textSize="14sp"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
+        </Toolbar>
+    </LinearLayout>
+</RelativeLayout>

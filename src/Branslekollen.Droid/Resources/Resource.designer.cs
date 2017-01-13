@@ -114,26 +114,50 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080004
 			public const int FuelTypeRadioGroup = 2131230724;
 			
-			// aapt resource value: 0x7f080009
-			public const int GettingStartedButton = 2131230729;
+			// aapt resource value: 0x7f08000e
+			public const int GettingStartedButton = 2131230734;
 			
 			// aapt resource value: 0x7f080002
 			public const int VehicleNameEditText = 2131230722;
 			
+			// aapt resource value: 0x7f080009
+			public const int bottom_navigation = 2131230729;
+			
+			// aapt resource value: 0x7f080008
+			public const int edit_toolbar = 2131230728;
+			
 			// aapt resource value: 0x7f080003
 			public const int fuelTypeLabel = 2131230723;
 			
-			// aapt resource value: 0x7f08000a
-			public const int imageViewGettingVehicles = 2131230730;
-			
 			// aapt resource value: 0x7f08000b
-			public const int menu_save = 2131230731;
+			public const int imageButton1 = 2131230731;
+			
+			// aapt resource value: 0x7f08000f
+			public const int imageViewGettingVehicles = 2131230735;
+			
+			// aapt resource value: 0x7f08000a
+			public const int linearLayout1 = 2131230730;
 			
 			// aapt resource value: 0x7f080007
-			public const int textView1 = 2131230727;
+			public const int main_content = 2131230727;
 			
-			// aapt resource value: 0x7f080008
-			public const int textView2 = 2131230728;
+			// aapt resource value: 0x7f080011
+			public const int menu_copy = 2131230737;
+			
+			// aapt resource value: 0x7f080010
+			public const int menu_cut = 2131230736;
+			
+			// aapt resource value: 0x7f080012
+			public const int menu_paste = 2131230738;
+			
+			// aapt resource value: 0x7f080013
+			public const int menu_save = 2131230739;
+			
+			// aapt resource value: 0x7f08000c
+			public const int textView1 = 2131230732;
+			
+			// aapt resource value: 0x7f08000d
+			public const int textView2 = 2131230733;
 			
 			// aapt resource value: 0x7f080000
 			public const int toolbar = 2131230720;
@@ -186,7 +210,10 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f070000
-			public const int top_menus = 2131165184;
+			public const int bottom_navigation = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int top_menus = 2131165185;
 			
 			static Menu()
 			{
