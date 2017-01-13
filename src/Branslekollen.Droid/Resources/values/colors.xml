@@ -2,7 +2,7 @@
 <resources>
     <color name="my_white">#fff</color>
     <color name="my_text_color">#333</color>
-    <color name="my_primary">#ff8bc34a</color>
+    <color name="my_primary">#ff28d295</color>
     <color name="my_primary_dark">#ff689f38</color>
     <color name="my_accent">#fff57c00</color>
 </resources>

@@ -75,22 +75,34 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int ic_cloud_download_black_24dp = 2130837504;
+			public const int ic_account_circle_white_24dp = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ic_cloud_download_white_48dp = 2130837505;
+			public const int ic_add_circle_white_24dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int Icon = 2130837506;
+			public const int ic_cloud_download_black_24dp = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int no_connection = 2130837507;
+			public const int ic_cloud_download_white_48dp = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int no_connection_background = 2130837508;
+			public const int ic_equalizer_white_24dp = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int road = 2130837509;
+			public const int ic_history_white_24dp = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Icon = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int no_connection = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int no_connection_background = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int road = 2130837513;
 			
 			static Drawable()
 			{
@@ -105,65 +117,53 @@ namespace Branslekollen.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080006
-			public const int FuelTypeDieselRadioButton = 2131230726;
-			
-			// aapt resource value: 0x7f080005
-			public const int FuelTypePetrolRadioButton = 2131230725;
-			
-			// aapt resource value: 0x7f080004
-			public const int FuelTypeRadioGroup = 2131230724;
-			
-			// aapt resource value: 0x7f08000e
-			public const int GettingStartedButton = 2131230734;
-			
-			// aapt resource value: 0x7f080002
-			public const int VehicleNameEditText = 2131230722;
+			// aapt resource value: 0x7f08000a
+			public const int FuelTypeDieselRadioButton = 2131230730;
 			
 			// aapt resource value: 0x7f080009
-			public const int bottom_navigation = 2131230729;
+			public const int FuelTypePetrolRadioButton = 2131230729;
 			
 			// aapt resource value: 0x7f080008
-			public const int edit_toolbar = 2131230728;
-			
-			// aapt resource value: 0x7f080003
-			public const int fuelTypeLabel = 2131230723;
-			
-			// aapt resource value: 0x7f08000b
-			public const int imageButton1 = 2131230731;
-			
-			// aapt resource value: 0x7f08000f
-			public const int imageViewGettingVehicles = 2131230735;
-			
-			// aapt resource value: 0x7f08000a
-			public const int linearLayout1 = 2131230730;
-			
-			// aapt resource value: 0x7f080007
-			public const int main_content = 2131230727;
-			
-			// aapt resource value: 0x7f080011
-			public const int menu_copy = 2131230737;
-			
-			// aapt resource value: 0x7f080010
-			public const int menu_cut = 2131230736;
-			
-			// aapt resource value: 0x7f080012
-			public const int menu_paste = 2131230738;
-			
-			// aapt resource value: 0x7f080013
-			public const int menu_save = 2131230739;
-			
-			// aapt resource value: 0x7f08000c
-			public const int textView1 = 2131230732;
+			public const int FuelTypeRadioGroup = 2131230728;
 			
 			// aapt resource value: 0x7f08000d
-			public const int textView2 = 2131230733;
+			public const int GettingStartedButton = 2131230733;
+			
+			// aapt resource value: 0x7f080006
+			public const int VehicleNameEditText = 2131230726;
+			
+			// aapt resource value: 0x7f080001
+			public const int bottom_navigation = 2131230721;
+			
+			// aapt resource value: 0x7f080007
+			public const int fuelTypeLabel = 2131230727;
+			
+			// aapt resource value: 0x7f080003
+			public const int imageButton1 = 2131230723;
+			
+			// aapt resource value: 0x7f08000e
+			public const int imageViewGettingVehicles = 2131230734;
+			
+			// aapt resource value: 0x7f080002
+			public const int linearLayout1 = 2131230722;
+			
+			// aapt resource value: 0x7f08000b
+			public const int main_content = 2131230731;
+			
+			// aapt resource value: 0x7f08000f
+			public const int menu_save = 2131230735;
+			
+			// aapt resource value: 0x7f080004
+			public const int textView1 = 2131230724;
+			
+			// aapt resource value: 0x7f08000c
+			public const int textView2 = 2131230732;
 			
 			// aapt resource value: 0x7f080000
 			public const int toolbar = 2131230720;
 			
-			// aapt resource value: 0x7f080001
-			public const int vehicleNameLabel = 2131230721;
+			// aapt resource value: 0x7f080005
+			public const int vehicleNameLabel = 2131230725;
 			
 			static Id()
 			{
@@ -182,19 +182,22 @@ namespace Branslekollen.Droid
 			public const int AddRefueling = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int CreateVehicle = 2130903041;
+			public const int BottomNavigation = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Dashboard = 2130903042;
+			public const int CreateVehicle = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int Dashboard = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Splash = 2130903044;
+			public const int Main = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int toolbar = 2130903045;
+			public const int Splash = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int toolbar = 2130903046;
 			
 			static Layout()
 			{
@@ -210,10 +213,7 @@ namespace Branslekollen.Droid
 		{
 			
 			// aapt resource value: 0x7f070000
-			public const int bottom_navigation = 2131165184;
-			
-			// aapt resource value: 0x7f070001
-			public const int top_menus = 2131165185;
+			public const int top_menus = 2131165184;
 			
 			static Menu()
 			{
@@ -237,35 +237,50 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040002
 			public const int app_name = 2130968578;
 			
-			// aapt resource value: 0x7f040006
-			public const int create_vehicle = 2130968582;
-			
-			// aapt resource value: 0x7f040009
-			public const int fuel_type = 2130968585;
-			
 			// aapt resource value: 0x7f04000b
-			public const int fuel_type_diesel = 2130968587;
-			
-			// aapt resource value: 0x7f04000a
-			public const int fuel_type_petrol = 2130968586;
-			
-			// aapt resource value: 0x7f040005
-			public const int get_started = 2130968581;
+			public const int create_vehicle = 2130968587;
 			
 			// aapt resource value: 0x7f040003
-			public const int getting_your_vehicles = 2130968579;
+			public const int dashboard = 2130968579;
 			
-			// aapt resource value: 0x7f04000c
-			public const int save = 2130968588;
+			// aapt resource value: 0x7f04000e
+			public const int fuel_type = 2130968590;
 			
-			// aapt resource value: 0x7f040007
-			public const int vehicle_name = 2130968583;
+			// aapt resource value: 0x7f040010
+			public const int fuel_type_diesel = 2130968592;
+			
+			// aapt resource value: 0x7f04000f
+			public const int fuel_type_petrol = 2130968591;
+			
+			// aapt resource value: 0x7f04000a
+			public const int get_started = 2130968586;
 			
 			// aapt resource value: 0x7f040008
-			public const int vehicle_name_hint = 2130968584;
+			public const int getting_your_vehicles = 2130968584;
+			
+			// aapt resource value: 0x7f040006
+			public const int history = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int profile = 2130968583;
+			
+			// aapt resource value: 0x7f040005
+			public const int refuel = 2130968581;
+			
+			// aapt resource value: 0x7f040011
+			public const int save = 2130968593;
 			
 			// aapt resource value: 0x7f040004
-			public const int welcome = 2130968580;
+			public const int statistics = 2130968580;
+			
+			// aapt resource value: 0x7f04000c
+			public const int vehicle_name = 2130968588;
+			
+			// aapt resource value: 0x7f04000d
+			public const int vehicle_name_hint = 2130968589;
+			
+			// aapt resource value: 0x7f040009
+			public const int welcome = 2130968585;
 			
 			static String()
 			{
