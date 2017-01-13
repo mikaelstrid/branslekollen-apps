@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/bottom_navigation_statistics"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
@@ -38,13 +38,14 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/bottom_navigation_refuel"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
         android:paddingBottom="10dp"
-        android:paddingTop="6dp"
-        android:layout_weight="1">
+        android:paddingTop="8dp"
+        android:layout_weight="1"
+        android:alpha="0.6">
         <ImageView
             android:src="@drawable/ic_add_circle_white_24dp"
             android:id="@+id/imageButton1"
@@ -57,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView1"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:gravity="center_horizontal"
             android:textColor="@color/my_white" />
     </LinearLayout>
@@ -65,7 +66,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/bottom_navigation_history"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
@@ -93,7 +94,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/bottom_navigation_profile"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"

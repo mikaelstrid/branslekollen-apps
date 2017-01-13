@@ -10,6 +10,9 @@ namespace Branslekollen.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Dashboard);
+
+            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.bottom_navigation_fragment);
+            bottomNavigationFragment.SetActiveItem(Resource.Id.bottom_navigation_history);
         }
     }
 }
