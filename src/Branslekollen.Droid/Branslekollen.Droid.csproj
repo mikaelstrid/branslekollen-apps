@@ -101,7 +101,7 @@
     <Compile Include="AddRefuelingActivity.cs" />
     <Compile Include="BottomNavigationFragment.cs" />
     <Compile Include="CreateVehicleActivity.cs" />
-    <Compile Include="DashboardActivity.cs" />
+    <Compile Include="RefuelingsActivity.cs" />
     <Compile Include="NoConnectionActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -115,7 +115,7 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\CreateVehicle.axml" />
-    <AndroidResource Include="Resources\layout\Dashboard.axml">
+    <AndroidResource Include="Resources\layout\Refuelings.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -176,6 +176,14 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_account_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_account_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_account_circle_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_local_gas_station_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_local_gas_station_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_local_gas_station_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_local_gas_station_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_local_gas_station_white_24dp.png" />
+    <AndroidResource Include="Resources\menu\top_menus_refuelings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

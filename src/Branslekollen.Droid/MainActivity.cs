@@ -24,7 +24,7 @@ namespace Branslekollen.Droid
 
 		    if ((await viewModel.GetVehicles()).Any())
 		    {
-                var intent = new Intent(this, typeof(DashboardActivity));
+                var intent = new Intent(this, typeof(RefuelingsActivity));
                 StartActivity(intent);
             }
 

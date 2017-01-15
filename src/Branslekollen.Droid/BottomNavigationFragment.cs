@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -17,8 +18,14 @@ namespace Branslekollen.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-            return inflater.Inflate(Resource.Layout.BottomNavigation, container, false);
+            var view = inflater.Inflate(Resource.Layout.BottomNavigation, container, false);
+            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_statistics).Click +=
+                (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
+            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_refuelings).Click +=
+                (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
+            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_profile).Click +=
+                (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
+            return view;
         }
 
         public void SetActiveItem(int activeItemId)

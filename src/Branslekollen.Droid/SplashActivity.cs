@@ -35,7 +35,7 @@ namespace Branslekollen.Droid
                     var vehicles = await viewModel.GetVehicles();
 
                     if (vehicles.Any())
-                        StartActivity(new Intent(this, typeof(DashboardActivity)));
+                        StartActivity(new Intent(this, typeof(RefuelingsActivity)));
                     else
                         StartActivity(new Intent(this, typeof(CreateVehicleActivity)));
                 }

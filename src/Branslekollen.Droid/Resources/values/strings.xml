@@ -3,7 +3,7 @@
   <string name="app_name">Bränslekollen</string>
   <string name="dashboard">Dashboard</string>
   <string name="statistics">Statistik</string>
-  <string name="refuel">Tanka!</string>
+  <string name="refuelings">Tankningar</string>
   <string name="history">Historik</string>
   <string name="profile">Profil</string>
   <string name="getting_your_vehicles">Hämtar dina fordon</string>
@@ -15,5 +15,6 @@
   <string name="fuel_type">Bränsletyp</string>
   <string name="fuel_type_petrol">Bensin</string>
   <string name="fuel_type_diesel">Diesel</string>
+  <string name="add">Lägg till</string>
   <string name="save">Spara</string>
 </resources>

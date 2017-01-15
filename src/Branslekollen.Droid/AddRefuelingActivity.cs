@@ -8,7 +8,7 @@ using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Ny tankning", MainLauncher = true)]
+    [Activity(Label = "Ny tankning")]
     public class AddRefuelingActivity : Activity
     {
         protected override async void OnCreate(Bundle savedInstanceState)

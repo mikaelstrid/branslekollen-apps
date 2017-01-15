@@ -69,7 +69,7 @@ namespace Branslekollen.Droid
             try
             {
                 await _viewModel.CreateVehicle(vehicleName, fuelType);
-                var intent = new Intent(this, typeof(DashboardActivity));
+                var intent = new Intent(this, typeof(RefuelingsActivity));
                 StartActivity(intent);
             }
             catch (Exception)
