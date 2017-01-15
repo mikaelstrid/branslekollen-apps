@@ -35,6 +35,8 @@ namespace Branslekollen.Droid
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            ActionBar.SetHomeButtonEnabled(true);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -45,9 +47,14 @@ namespace Branslekollen.Droid
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                Finish();
+            }
             if (item.ItemId == Resource.Id.menu_save)
             {
                 OnMenuSave();
+                Finish();
             }
             return base.OnOptionsItemSelected(item);
         }
