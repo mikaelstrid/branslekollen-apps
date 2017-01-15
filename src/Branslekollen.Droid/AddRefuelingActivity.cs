@@ -2,19 +2,19 @@ using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Ny tankning")]
+    [Activity(Label = "Lägg till tankning")]
     public class AddRefuelingActivity : Activity
     {
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.CreateVehicle);
 
             AddRefuelingViewModel viewModel;
 
@@ -30,9 +30,30 @@ namespace Branslekollen.Droid
 
             SetContentView(Resource.Layout.AddRefueling);
 
+            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.bottom_navigation_fragment);
+            bottomNavigationFragment.SetActiveItem(Resource.Id.bottom_navigation_refuelings);
+
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
-            //ActionBar.Title = "My Toolbar 2";
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menu_save, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.menu_save)
+            {
+                OnMenuSave();
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
+        private void OnMenuSave()
+        {
         }
     }
 }

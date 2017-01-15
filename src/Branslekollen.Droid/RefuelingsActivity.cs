@@ -23,7 +23,7 @@ namespace Branslekollen.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menus_refuelings, menu);
+            MenuInflater.Inflate(Resource.Menu.top_menu_add, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 

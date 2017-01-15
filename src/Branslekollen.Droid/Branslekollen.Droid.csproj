@@ -153,7 +153,7 @@
     <AndroidResource Include="Resources\drawable\ic_cloud_download_white_48dp.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\toolbar.xml" />
-    <AndroidResource Include="Resources\menu\top_menus.xml">
+    <AndroidResource Include="Resources\menu\top_menu_save.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-xhdpi\ic_equalizer_white_24dp.png" />
@@ -181,7 +181,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_local_gas_station_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_local_gas_station_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_local_gas_station_white_24dp.png" />
-    <AndroidResource Include="Resources\menu\top_menus_refuelings.xml">
+    <AndroidResource Include="Resources\menu\top_menu_add.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
