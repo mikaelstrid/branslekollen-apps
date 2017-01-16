@@ -132,6 +132,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080010
 			public const int GettingStartedButton = 2131230736;
 			
+			// aapt resource value: 0x7f080011
+			public const int RefuelingsList = 2131230737;
+			
 			// aapt resource value: 0x7f08000a
 			public const int VehicleNameEditText = 2131230730;
 			
@@ -156,14 +159,14 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080005
 			public const int imageButton1 = 2131230725;
 			
-			// aapt resource value: 0x7f080011
-			public const int imageViewGettingVehicles = 2131230737;
+			// aapt resource value: 0x7f080012
+			public const int imageViewGettingVehicles = 2131230738;
 			
 			// aapt resource value: 0x7f080001
 			public const int main_content = 2131230721;
 			
-			// aapt resource value: 0x7f080013
-			public const int menu_save = 2131230739;
+			// aapt resource value: 0x7f080014
+			public const int menu_save = 2131230740;
 			
 			// aapt resource value: 0x7f080006
 			public const int textView1 = 2131230726;
@@ -174,8 +177,8 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080000
 			public const int toolbar = 2131230720;
 			
-			// aapt resource value: 0x7f080012
-			public const int top_menu_add = 2131230738;
+			// aapt resource value: 0x7f080013
+			public const int top_menu_add = 2131230739;
 			
 			// aapt resource value: 0x7f080009
 			public const int vehicleNameLabel = 2131230729;

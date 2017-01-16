@@ -23,11 +23,6 @@ namespace Branslekollen.Droid
                 viewModel = App.Container.Resolve<AddRefuelingViewModel>();
             }
 
-            var vehicles = await viewModel.GetLocalVehicleDescriptors();
-
-            if (!vehicles.Any())
-                StartActivity(new Intent(this, typeof(CreateVehicleActivity)));
-
             SetContentView(Resource.Layout.AddRefueling);
 
             var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.bottom_navigation_fragment);

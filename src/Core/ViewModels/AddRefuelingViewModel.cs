@@ -20,10 +20,5 @@ namespace Branslekollen.Core.ViewModels
         //{
         //    return await _vehicleService.Create(name, fuelType);
         //}
-
-        public async Task<List<VehicleDescriptor>> GetLocalVehicleDescriptors()
-        {
-            return await _localStorage.GetVehicleDescriptors();
-        }
     }
 }

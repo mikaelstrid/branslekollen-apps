@@ -16,6 +16,7 @@ namespace Branslekollen.Core.Services
     {
         Task<List<Vehicle>> GetAll();
         Task<VehicleApiModel> Create(string name, string fuelType);
+        Task<Vehicle> GetById(string vehicleId);
     }
 
     public class DummyVehicleService : IVehicleService
@@ -26,7 +27,21 @@ namespace Branslekollen.Core.Services
             Task.Delay(1000);
             return Task.FromResult(new List<Vehicle>
             {
-                new Vehicle("Volvo V90", "petrol")
+                new Vehicle("Volvo V90", "petrol") { Refuelings = new List<Refueling>
+                {
+                    new Refueling
+                    {
+                        CreationTime = DateTime.Parse("2017-01-15 21:39"),
+                        Date = DateTime.Parse("2017-01-14"),
+                        DistanceTravelledInKm = 400,
+                        FullTank = true,
+                        Id = Guid.NewGuid().ToString(),
+                        MissedRefuelings = false,
+                        NumberOfLiters = 20,
+                        OdometerInKm = 1756,
+                        PricePerLiter = 13.37
+                    }
+                }}
             });
         }
 
@@ -41,6 +56,11 @@ namespace Branslekollen.Core.Services
                 Name = "Volvo V90",
                 Refuelings = new List<RefuelingApiModel>()
             });
+        }
+
+        public async Task<Vehicle> GetById(string vehicleId)
+        {
+            return (await GetAll()).First();
         }
     }
 
@@ -155,6 +175,11 @@ namespace Branslekollen.Core.Services
                 Log.Warning("VehicleService.Create: " + errorMessage);
                 throw new IOException("Error when calling API", e2);
             }
+        }
+
+        public async Task<Vehicle> GetById(string vehicleId)
+        {
+            return (await GetAll()).FirstOrDefault(v => v.Id == vehicleId);
         }
     }
 }
