@@ -34,7 +34,7 @@ namespace Branslekollen.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menu_save, menu);
+            MenuInflater.Inflate(Resource.Menu.TopMenuSave, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -44,7 +44,7 @@ namespace Branslekollen.Droid
             {
                 Finish();
             }
-            if (item.ItemId == Resource.Id.menu_save)
+            if (item.ItemId == Resource.Id.MenuItemSave)
             {
                 OnMenuSave();
                 Finish();
