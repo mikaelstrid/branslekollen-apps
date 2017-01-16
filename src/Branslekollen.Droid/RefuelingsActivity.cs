@@ -31,10 +31,10 @@ namespace Branslekollen.Droid
             
             SetContentView(Resource.Layout.Refuelings);
 
-            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.bottom_navigation_fragment);
-            bottomNavigationFragment.SetActiveItem(Resource.Id.bottom_navigation_refuelings);
+            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.BottomNavigationFragment);
+            bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
 
             UpdateData(vehicles.First().Id);

@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:id="@+id/Toolbar"
+        layout="@layout/Toolbar" />
     <LinearLayout
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/Toolbar"
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

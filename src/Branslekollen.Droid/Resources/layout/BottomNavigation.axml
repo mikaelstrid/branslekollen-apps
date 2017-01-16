@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/bottom_navigation_statistics"
+        android:id="@+id/BottomNavigationMenuItemStatistics"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
@@ -20,7 +20,6 @@
         android:alpha="0.6">
         <ImageView
             android:src="@drawable/ic_equalizer_white_24dp"
-            android:id="@+id/imageButton1"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:layout_width="match_parent"
@@ -29,7 +28,6 @@
             android:text="@string/statistics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
             android:textSize="12sp"
             android:gravity="center_horizontal"
             android:textColor="@color/my_white" />
@@ -38,7 +36,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/bottom_navigation_refuelings"
+        android:id="@+id/BottomNavigationMenuItemRefuelings"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
@@ -48,7 +46,6 @@
         android:alpha="0.6">
         <ImageView
             android:src="@drawable/ic_local_gas_station_white_24dp"
-            android:id="@+id/imageButton1"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:layout_width="match_parent"
@@ -57,7 +54,6 @@
             android:text="@string/refuelings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
             android:textSize="12sp"
             android:gravity="center_horizontal"
             android:textColor="@color/my_white" />
@@ -66,7 +62,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/bottom_navigation_profile"
+        android:id="@+id/BottomNavigationMenuItemProfile"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:minWidth="80dp"
@@ -76,7 +72,6 @@
         android:alpha="0.6">
         <ImageView
             android:src="@drawable/ic_account_circle_white_24dp"
-            android:id="@+id/imageButton1"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:layout_width="match_parent"
@@ -85,7 +80,6 @@
             android:text="@string/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
             android:textSize="12sp"
             android:gravity="center_horizontal"
             android:textColor="@color/my_white" />

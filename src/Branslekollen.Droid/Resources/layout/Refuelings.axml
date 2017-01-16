@@ -3,21 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:id="@+id/Toolbar"
+        layout="@layout/Toolbar" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/main_content"
-        android:layout_below="@+id/toolbar">
-        <ListView android:id="@+id/RefuelingsList"
-          android:layout_width="fill_parent"
-          android:layout_height="0dp"
-          android:layout_weight="1" />
+        android:layout_below="@+id/Toolbar">
+        <ListView
+            android:id="@+id/RefuelingsList"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
         <fragment
             class="pixel.branslekollen.droid.BottomNavigationFragment"
-            android:id="@+id/bottom_navigation_fragment"
+            android:id="@+id/BottomNavigationFragment"
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
     </LinearLayout>

@@ -19,11 +19,11 @@ namespace Branslekollen.Droid
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = inflater.Inflate(Resource.Layout.BottomNavigation, container, false);
-            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_statistics).Click +=
+            view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemStatistics).Click +=
                 (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
-            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_refuelings).Click +=
+            view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemRefuelings).Click +=
                 (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
-            view.FindViewById<LinearLayout>(Resource.Id.bottom_navigation_profile).Click +=
+            view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemProfile).Click +=
                 (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
             return view;
         }

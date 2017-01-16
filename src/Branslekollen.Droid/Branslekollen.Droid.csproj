@@ -152,7 +152,7 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\ic_cloud_download_white_48dp.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\layout\toolbar.xml" />
+    <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\menu\top_menu_save.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

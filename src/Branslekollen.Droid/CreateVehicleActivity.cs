@@ -26,7 +26,7 @@ namespace Branslekollen.Droid
                 _viewModel = App.Container.Resolve<CreateVehicleViewModel>();
             }
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
         }
 
