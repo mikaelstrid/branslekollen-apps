@@ -17,6 +17,7 @@ namespace Branslekollen.Core.Services
         Task<List<Vehicle>> GetAll();
         Task<VehicleApiModel> Create(string name, string fuelType);
         Task<Vehicle> GetById(string vehicleId);
+        void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank);
     }
 
     public class DummyVehicleService : IVehicleService
@@ -61,6 +62,11 @@ namespace Branslekollen.Core.Services
         public async Task<Vehicle> GetById(string vehicleId)
         {
             return (await GetAll()).First();
+        }
+
+        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        {
+            
         }
     }
 
@@ -180,6 +186,11 @@ namespace Branslekollen.Core.Services
         public async Task<Vehicle> GetById(string vehicleId)
         {
             return (await GetAll()).FirstOrDefault(v => v.Id == vehicleId);
+        }
+
+        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        {
+            throw new NotImplementedException();
         }
     }
 }

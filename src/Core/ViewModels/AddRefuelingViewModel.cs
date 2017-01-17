@@ -1,24 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Branslekollen.Core.Persistence;
+﻿using System;
 using Branslekollen.Core.Services;
 
 namespace Branslekollen.Core.ViewModels
 {
     public class AddRefuelingViewModel
     {
-        private readonly ILocalStorage _localStorage;
         private readonly IVehicleService _vehicleService;
 
-        public AddRefuelingViewModel(ILocalStorage localStorage, IVehicleService vehicleService)
+        public AddRefuelingViewModel(IVehicleService vehicleService)
         {
-            _localStorage = localStorage;
             _vehicleService = vehicleService;
         }
-        
-        //public async Task<VehicleApiModel> AddRefueling(string vehicleId, DateTime date, decimal )
-        //{
-        //    return await _vehicleService.Create(name, fuelType);
-        //}
+
+        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        {
+            _vehicleService.AddRefueling("vehicleId", date, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+        }
     }
 }

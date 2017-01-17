@@ -1,5 +1,8 @@
+using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Autofac;
@@ -10,15 +13,15 @@ namespace Branslekollen.Droid
     [Activity(Label = "Lägg till tankning")]
     public class AddRefuelingActivity : Activity
     {
-        protected override async void OnCreate(Bundle savedInstanceState)
+        private AddRefuelingViewModel _viewModel;
+
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            AddRefuelingViewModel viewModel;
-
             using (var scope = App.Container.BeginLifetimeScope())
             {
-                viewModel = App.Container.Resolve<AddRefuelingViewModel>();
+                _viewModel = App.Container.Resolve<AddRefuelingViewModel>();
             }
 
             SetContentView(Resource.Layout.AddRefueling);
@@ -30,6 +33,28 @@ namespace Branslekollen.Droid
             SetActionBar(toolbar);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
+
+            FindViewById<EditText>(Resource.Id.PricePerLiterEditText).TextChanged += OnTextChanged;
+            FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).TextChanged += OnTextChanged;
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            double pricePerLiter;
+            if (!double.TryParse(FindViewById<EditText>(Resource.Id.PricePerLiterEditText).Text, out pricePerLiter))
+            {
+                FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = "";
+                return;
+            }
+
+            double volumeInLiters;
+            if (!double.TryParse(FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).Text, out volumeInLiters))
+            {
+                FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = "";
+                return;
+            }
+
+            FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = $"{pricePerLiter*volumeInLiters:N2}";
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -46,14 +71,54 @@ namespace Branslekollen.Droid
             }
             if (item.ItemId == Resource.Id.MenuItemSave)
             {
-                OnMenuSave();
-                Finish();
+                if (OnMenuSave()) 
+                    Finish();
             }
             return base.OnOptionsItemSelected(item);
         }
 
-        private void OnMenuSave()
+        private bool OnMenuSave()
         {
+            DateTime date;
+            if (!DateTime.TryParse(FindViewById<EditText>(Resource.Id.DateEditText).Text, out date))
+            {
+                Toast.MakeText(this, "Du behöver fylla i ett korrekt datum", ToastLength.Long).Show();
+                return false;
+            }
+            
+            double pricePerLiter;
+            if (!double.TryParse(FindViewById<EditText>(Resource.Id.PricePerLiterEditText).Text, out pricePerLiter))
+            {
+                Toast.MakeText(this, "Du behöver fylla i ett korrekt pris per liter", ToastLength.Long).Show();
+                return false;
+            }
+
+            double volumeInLiters;
+            if (!double.TryParse(FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).Text, out volumeInLiters))
+            {
+                Toast.MakeText(this, "Du behöver fylla i en korrekt volym i liter", ToastLength.Long).Show();
+                return false;
+            }
+
+            int odometerInKm;
+            if (!int.TryParse(FindViewById<EditText>(Resource.Id.OdometerInKmEditText).Text, out odometerInKm))
+            {
+                Toast.MakeText(this, "Du behöver fylla i en korrekt mätarställning", ToastLength.Long).Show();
+                return false;
+            }
+
+            var fullTank = FindViewById<Switch>(Resource.Id.FullTankSwitch).Checked;
+            
+            try
+            {
+                _viewModel.AddRefueling("vehicleId", date, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                return true;
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(this, "Det gick inte att lägga till tankningen av någon anledning, försök igen... :(", ToastLength.Long).Show();
+                return false;
+            }
         }
     }
 }
