@@ -37,7 +37,7 @@ namespace Branslekollen.Droid
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
 
-            UpdateData(vehicles.First().Id);
+            _viewModel.SetActiveVehicle(vehicles.First().Id);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -53,6 +53,12 @@ namespace Branslekollen.Droid
                 OnTopMenuAdd();
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            UpdateData(_viewModel.ActiveVehicleId);
         }
 
         private void OnTopMenuAdd()

@@ -17,16 +17,16 @@ namespace Branslekollen.Core.Services
         Task<List<Vehicle>> GetAll();
         Task<VehicleApiModel> Create(string name, string fuelType);
         Task<Vehicle> GetById(string vehicleId);
-        void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank);
+        void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
     }
 
     public class DummyVehicleService : IVehicleService
     {
-        public Task<List<Vehicle>> GetAll()
+        private readonly List<Vehicle> _vehicles;
+
+        public DummyVehicleService()
         {
-            Log.Verbose("DummyVehicleService.GetAll...");
-            Task.Delay(1000);
-            return Task.FromResult(new List<Vehicle>
+            _vehicles = new List<Vehicle>
             {
                 new Vehicle("Volvo V90", "petrol") { Refuelings = new List<Refueling>
                 {
@@ -43,7 +43,14 @@ namespace Branslekollen.Core.Services
                         PricePerLiter = 13.37
                     }
                 }}
-            });
+            };
+        }
+
+        public Task<List<Vehicle>> GetAll()
+        {
+            Log.Verbose("DummyVehicleService.GetAll...");
+            Task.Delay(1000);
+            return Task.FromResult(_vehicles);
         }
 
         public Task<VehicleApiModel> Create(string name, string fuelType)
@@ -64,9 +71,17 @@ namespace Branslekollen.Core.Services
             return (await GetAll()).First();
         }
 
-        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
-            
+            _vehicles.First().Refuelings.Add(new Refueling
+            {
+                Id = Guid.NewGuid().ToString(),
+                Date = date,
+                PricePerLiter = pricePerLiter,
+                NumberOfLiters = numberOfLiters,
+                OdometerInKm = odometerInKm,
+                FullTank = fullTank
+            });
         }
     }
 
@@ -188,7 +203,7 @@ namespace Branslekollen.Core.Services
             return (await GetAll()).FirstOrDefault(v => v.Id == vehicleId);
         }
 
-        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
             throw new NotImplementedException();
         }

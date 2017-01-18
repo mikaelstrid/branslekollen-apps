@@ -11,6 +11,8 @@ namespace Branslekollen.Core.ViewModels
         private readonly ILocalStorage _localStorage;
         private readonly IVehicleService _vehicleService;
 
+        public string ActiveVehicleId { get; private set; }
+
         public RefuelingsViewModel(ILocalStorage localStorage, IVehicleService vehicleService)
         {
             _localStorage = localStorage;
@@ -25,6 +27,11 @@ namespace Branslekollen.Core.ViewModels
         public async Task<Vehicle> GetVehicle(string vehicleId)
         {
             return await _vehicleService.GetById(vehicleId);
+        }
+
+        public void SetActiveVehicle(string vehicleId)
+        {
+            ActiveVehicleId = vehicleId;
         }
     }
 }
