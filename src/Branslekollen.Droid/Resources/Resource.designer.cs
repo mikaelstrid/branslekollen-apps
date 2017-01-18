@@ -58,6 +58,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f050001
 			public const int my_text_color = 2131034113;
 			
+			// aapt resource value: 0x7f050005
+			public const int my_validation_error = 2131034117;
+			
 			// aapt resource value: 0x7f050000
 			public const int my_white = 2131034112;
 			

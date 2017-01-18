@@ -101,6 +101,7 @@
     <Compile Include="AddRefuelingActivity.cs" />
     <Compile Include="BottomNavigationFragment.cs" />
     <Compile Include="CreateVehicleActivity.cs" />
+    <Compile Include="Extensions\EditTextExtensions.cs" />
     <Compile Include="RefuelingsActivity.cs" />
     <Compile Include="NoConnectionActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -120,7 +121,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\layout\Splash.axml" />
-    <AndroidResource Include="Resources\layout\AddRefueling.axml" />
+    <AndroidResource Include="Resources\layout\AddRefueling.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\BottomNavigation.axml">
       <SubType>Designer</SubType>
     </AndroidResource>

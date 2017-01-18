@@ -1,12 +1,12 @@
 using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
+using Branslekollen.Droid.Extensions;
 
 namespace Branslekollen.Droid
 {
@@ -34,27 +34,10 @@ namespace Branslekollen.Droid
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
 
-            FindViewById<EditText>(Resource.Id.PricePerLiterEditText).TextChanged += OnTextChanged;
-            FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).TextChanged += OnTextChanged;
-        }
-
-        private void OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
-        {
-            double pricePerLiter;
-            if (!double.TryParse(FindViewById<EditText>(Resource.Id.PricePerLiterEditText).Text, out pricePerLiter))
-            {
-                FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = "";
-                return;
-            }
-
-            double volumeInLiters;
-            if (!double.TryParse(FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).Text, out volumeInLiters))
-            {
-                FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = "";
-                return;
-            }
-
-            FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text = $"{pricePerLiter*volumeInLiters:N2}";
+            FindViewById<EditText>(Resource.Id.DateEditText).TextChanged += Date_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.PricePerLiterEditText).TextChanged += PricePerLiter_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).TextChanged += VolumeInLiters_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.OdometerInKmEditText).TextChanged += OdometerInKm_OnTextChanged;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -71,39 +54,154 @@ namespace Branslekollen.Droid
             }
             if (item.ItemId == Resource.Id.MenuItemSave)
             {
-                if (OnMenuSave()) 
+                if (OnMenuSave())
                     Finish();
             }
             return base.OnOptionsItemSelected(item);
         }
 
+
+        // === DATE ===
+        private void Date_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            var editText = sender as EditText;
+            if (IsDateValid())
+                editText.ClearError();
+            else
+                editText.ShowError("Du behöver fylla i ett korrekt datum");
+        }
+
+        private bool IsDateValid(bool allowEmpty = true)
+        {
+            var editText = FindViewById<EditText>(Resource.Id.DateEditText);
+            if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
+            DateTime val;
+            return DateTime.TryParse(editText.Text, out val);
+        }
+
+        private DateTime GetDate()
+        {
+            var editText = FindViewById<EditText>(Resource.Id.DateEditText);
+            return DateTime.Parse(editText.Text);
+        }
+        
+
+        // === PRICE PER LITER ===
+        private void PricePerLiter_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            var editText = sender as EditText;
+            if (IsPricePerLiterValid())
+            {
+                editText.ClearError();
+                UpdateTotalPrice();
+            }
+            else
+                editText.ShowError("Du behöver fylla i ett korrekt pris per liter");
+        }
+
+        private bool IsPricePerLiterValid(bool allowEmpty = true)
+        {
+            var editText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
+            double val;
+            return double.TryParse(editText.Text, out val);
+        }
+
+        private double GetPricePerLiter()
+        {
+            var editText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            return double.Parse(editText.Text);
+        }
+
+
+        // === VOLUME IN LITERS ===
+        private void VolumeInLiters_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            var editText = sender as EditText;
+            if (IsVolumeInLitersValid())
+            {
+                editText.ClearError();
+                UpdateTotalPrice();
+            }
+            else
+                editText.ShowError("Du behöver fylla i en korrekt volym i liter");
+        }
+
+        private bool IsVolumeInLitersValid(bool allowEmpty = true)
+        {
+            var editText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            double val;
+            if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
+            return double.TryParse(editText.Text, out val);
+        }
+
+        private double GetVolumeInLiters()
+        {
+            var editText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            return double.Parse(editText.Text);
+        }
+
+
+        // === ODOMETER IN KM ===
+        private void OdometerInKm_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        {
+            var editText = sender as EditText;
+            if (IsOdometerInKmValid())
+                editText.ClearError();
+            else
+                editText.ShowError("Du behöver fylla i en korrekt mätarställning");
+        }
+
+        private bool IsOdometerInKmValid(bool allowEmpty = true)
+        {
+            var editText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
+            int val;
+            return int.TryParse(editText.Text, out val);
+        }
+
+        private int GetOdometerInKm()
+        {
+            var editText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            return int.Parse(editText.Text);
+        }
+
+
+        private void UpdateTotalPrice()
+        {
+            FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text =
+                IsPricePerLiterValid(false) && IsVolumeInLitersValid(false)
+                    ? $"{GetPricePerLiter()*GetVolumeInLiters():N2}"
+                    : "";
+        }
+
         private bool OnMenuSave()
         {
-            DateTime date;
-            if (!DateTime.TryParse(FindViewById<EditText>(Resource.Id.DateEditText).Text, out date))
+            var dateEditText = FindViewById<EditText>(Resource.Id.DateEditText);
+            if (!IsDateValid(false))
             {
-                Toast.MakeText(this, "Du behöver fylla i ett korrekt datum", ToastLength.Long).Show();
+                dateEditText.ShowError("Du behöver fylla i ett korrekt datum");
                 return false;
             }
             
-            double pricePerLiter;
-            if (!double.TryParse(FindViewById<EditText>(Resource.Id.PricePerLiterEditText).Text, out pricePerLiter))
+            var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            if (!IsPricePerLiterValid(false))
             {
-                Toast.MakeText(this, "Du behöver fylla i ett korrekt pris per liter", ToastLength.Long).Show();
+                pricePerLiterEditText.ShowError("Du behöver fylla i ett korrekt pris per liter");
                 return false;
             }
 
-            double volumeInLiters;
-            if (!double.TryParse(FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).Text, out volumeInLiters))
+            var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            if (!IsVolumeInLitersValid(false))
             {
-                Toast.MakeText(this, "Du behöver fylla i en korrekt volym i liter", ToastLength.Long).Show();
+                volumeInLitersEditText.ShowError("Du behöver fylla i en korrekt volym i liter");
                 return false;
             }
 
-            int odometerInKm;
-            if (!int.TryParse(FindViewById<EditText>(Resource.Id.OdometerInKmEditText).Text, out odometerInKm))
+            var odometerInKmEditText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            if (!IsOdometerInKmValid(false))
             {
-                Toast.MakeText(this, "Du behöver fylla i en korrekt mätarställning", ToastLength.Long).Show();
+                odometerInKmEditText.ShowError("Du behöver fylla i en korrekt mätarställning");
                 return false;
             }
 
@@ -111,7 +209,13 @@ namespace Branslekollen.Droid
             
             try
             {
-                _viewModel.AddRefueling("vehicleId", date, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                _viewModel.AddRefueling(
+                    "vehicleId", 
+                    GetDate(), 
+                    GetPricePerLiter(), 
+                    GetVolumeInLiters(), 
+                    GetOdometerInKm(), 
+                    fullTank);
                 return true;
             }
             catch (Exception)
