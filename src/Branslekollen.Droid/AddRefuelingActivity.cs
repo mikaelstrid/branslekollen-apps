@@ -1,5 +1,6 @@
 using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Views;
@@ -68,7 +69,7 @@ namespace Branslekollen.Droid
             if (IsDateValid())
                 editText.ClearError();
             else
-                editText.ShowError("Du behöver fylla i ett korrekt datum");
+                editText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
         }
 
         private bool IsDateValid(bool allowEmpty = true)
@@ -96,7 +97,7 @@ namespace Branslekollen.Droid
                 UpdateTotalPrice();
             }
             else
-                editText.ShowError("Du behöver fylla i ett korrekt pris per liter");
+                editText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
         }
 
         private bool IsPricePerLiterValid(bool allowEmpty = true)
@@ -124,7 +125,7 @@ namespace Branslekollen.Droid
                 UpdateTotalPrice();
             }
             else
-                editText.ShowError("Du behöver fylla i en korrekt volym i liter");
+                editText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
         }
 
         private bool IsVolumeInLitersValid(bool allowEmpty = true)
@@ -149,7 +150,7 @@ namespace Branslekollen.Droid
             if (IsOdometerInKmValid())
                 editText.ClearError();
             else
-                editText.ShowError("Du behöver fylla i en korrekt mätarställning");
+                editText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
         }
 
         private bool IsOdometerInKmValid(bool allowEmpty = true)
@@ -180,28 +181,28 @@ namespace Branslekollen.Droid
             var dateEditText = FindViewById<EditText>(Resource.Id.DateEditText);
             if (!IsDateValid(false))
             {
-                dateEditText.ShowError("Du behöver fylla i ett korrekt datum");
+                dateEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
                 return false;
             }
             
             var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
             if (!IsPricePerLiterValid(false))
             {
-                pricePerLiterEditText.ShowError("Du behöver fylla i ett korrekt pris per liter");
+                pricePerLiterEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
                 return false;
             }
 
             var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
             if (!IsVolumeInLitersValid(false))
             {
-                volumeInLitersEditText.ShowError("Du behöver fylla i en korrekt volym i liter");
+                volumeInLitersEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
                 return false;
             }
 
             var odometerInKmEditText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
             if (!IsOdometerInKmValid(false))
             {
-                odometerInKmEditText.ShowError("Du behöver fylla i en korrekt mätarställning");
+                odometerInKmEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
                 return false;
             }
 
@@ -220,7 +221,7 @@ namespace Branslekollen.Droid
             }
             catch (Exception)
             {
-                Toast.MakeText(this, "Det gick inte att lägga till tankningen av någon anledning, försök igen... :(", ToastLength.Long).Show();
+                Toast.MakeText(this, Application.Context.Resources.GetString(Resource.String.error_adding_refueling), ToastLength.Long).Show();
                 return false;
             }
         }

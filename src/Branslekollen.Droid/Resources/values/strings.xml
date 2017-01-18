@@ -23,4 +23,9 @@
   <string name="total_price">Totalt pris (kr)</string>
   <string name="odometer_in_km">Mätarställning (km)</string>
   <string name="did_you_refill_completely">Tankade du fullt?</string>
+  <string name="validation_error_date">Du behöver fylla i ett korrekt datum</string>
+  <string name="validation_error_price">Du behöver fylla i ett korrekt pris</string>
+  <string name="validation_error_volume">Du behöver fylla i en korrekt volym</string>
+  <string name="validation_error_odometer">Du behöver fylla i en korrekt mätarställning</string>
+  <string name="error_adding_refueling">Det gick inte att lägga till tankningen, försök igen. Sorry. :("</string>
 </resources>

@@ -288,6 +288,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040018
 			public const int did_you_refill_completely = 2130968600;
 			
+			// aapt resource value: 0x7f04001d
+			public const int error_adding_refueling = 2130968605;
+			
 			// aapt resource value: 0x7f04000e
 			public const int fuel_type = 2130968590;
 			
@@ -326,6 +329,18 @@ namespace Branslekollen.Droid
 			
 			// aapt resource value: 0x7f040016
 			public const int total_price = 2130968598;
+			
+			// aapt resource value: 0x7f040019
+			public const int validation_error_date = 2130968601;
+			
+			// aapt resource value: 0x7f04001c
+			public const int validation_error_odometer = 2130968604;
+			
+			// aapt resource value: 0x7f04001a
+			public const int validation_error_price = 2130968602;
+			
+			// aapt resource value: 0x7f04001b
+			public const int validation_error_volume = 2130968603;
 			
 			// aapt resource value: 0x7f04000c
 			public const int vehicle_name = 2130968588;
