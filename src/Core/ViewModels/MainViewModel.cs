@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Branslekollen.Core.Models;
+using Branslekollen.Core.Domain.Models;
 using Branslekollen.Core.Services;
 
 namespace Branslekollen.Core.ViewModels

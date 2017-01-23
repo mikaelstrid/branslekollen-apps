@@ -7,7 +7,6 @@ using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
 using Serilog;
-using LocalStorage = Branslekollen.Droid.Persistence.LocalStorage;
 
 namespace Branslekollen.Droid
 {

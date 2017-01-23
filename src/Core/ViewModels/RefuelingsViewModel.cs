@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Branslekollen.Core.Models;
+using Branslekollen.Core.Domain.Models;
 using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
 
@@ -11,7 +11,7 @@ namespace Branslekollen.Core.ViewModels
         private readonly ILocalStorage _localStorage;
         private readonly IVehicleService _vehicleService;
 
-        public string ActiveVehicleId { get; private set; }
+        public string ActiveVehicleId { get; set; }
 
         public RefuelingsViewModel(ILocalStorage localStorage, IVehicleService vehicleService)
         {
@@ -24,14 +24,10 @@ namespace Branslekollen.Core.ViewModels
             return await _localStorage.GetVehicleDescriptors();
         }
 
-        public async Task<Vehicle> GetVehicle(string vehicleId)
+        public async Task<List<Refueling>> GetRefuelings()
         {
-            return await _vehicleService.GetById(vehicleId);
-        }
-
-        public void SetActiveVehicle(string vehicleId)
-        {
-            ActiveVehicleId = vehicleId;
+            var vehicle = await _vehicleService.GetById(ActiveVehicleId);
+            return vehicle != null ? vehicle.Refuelings : new List<Refueling>();
         }
     }
 }

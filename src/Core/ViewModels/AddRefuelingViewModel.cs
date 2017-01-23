@@ -7,14 +7,16 @@ namespace Branslekollen.Core.ViewModels
     {
         private readonly IVehicleService _vehicleService;
 
+        public string ActiveVehicleId { get; set; }
+
         public AddRefuelingViewModel(IVehicleService vehicleService)
         {
             _vehicleService = vehicleService;
         }
 
-        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public void AddRefueling(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
-            _vehicleService.AddRefueling("vehicleId", date, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+            _vehicleService.AddRefueling(ActiveVehicleId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
         }
     }
 }

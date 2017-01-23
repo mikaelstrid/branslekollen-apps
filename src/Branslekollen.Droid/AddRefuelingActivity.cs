@@ -8,6 +8,7 @@ using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
 using Branslekollen.Droid.Extensions;
+using Serilog;
 
 namespace Branslekollen.Droid
 {
@@ -16,6 +17,7 @@ namespace Branslekollen.Droid
     {
         private AddRefuelingViewModel _viewModel;
 
+        // === LIFECYCLE METHODS ===
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -24,6 +26,9 @@ namespace Branslekollen.Droid
             {
                 _viewModel = App.Container.Resolve<AddRefuelingViewModel>();
             }
+
+            _viewModel.ActiveVehicleId = Intent.GetStringExtra("VehicleId");
+            Log.Verbose("AddRefuelingViewModel.OnCreate: Setting ActiveVehicleId to {ActiveVehicleId}", _viewModel.ActiveVehicleId);
 
             SetContentView(Resource.Layout.AddRefueling);
 
@@ -41,6 +46,9 @@ namespace Branslekollen.Droid
             FindViewById<EditText>(Resource.Id.OdometerInKmEditText).TextChanged += OdometerInKm_OnTextChanged;
         }
 
+        
+        
+        // === MENU METHODS ===
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.TopMenuSave, menu);
@@ -61,6 +69,58 @@ namespace Branslekollen.Droid
             return base.OnOptionsItemSelected(item);
         }
 
+        private bool OnMenuSave()
+        {
+            var dateEditText = FindViewById<EditText>(Resource.Id.DateEditText);
+            if (!IsDateValid(false))
+            {
+                dateEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
+                return false;
+            }
+
+            var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            if (!IsPricePerLiterValid(false))
+            {
+                pricePerLiterEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
+                return false;
+            }
+
+            var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            if (!IsVolumeInLitersValid(false))
+            {
+                volumeInLitersEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
+                return false;
+            }
+
+            var odometerInKmEditText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            if (!IsOdometerInKmValid(false))
+            {
+                odometerInKmEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
+                return false;
+            }
+
+            var fullTank = FindViewById<Switch>(Resource.Id.FullTankSwitch).Checked;
+
+            try
+            {
+                _viewModel.AddRefueling(
+                    GetDate(),
+                    GetPricePerLiter(),
+                    GetVolumeInLiters(),
+                    GetOdometerInKm(),
+                    fullTank);
+                return true;
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(this, Application.Context.Resources.GetString(Resource.String.error_adding_refueling), ToastLength.Long).Show();
+                return false;
+            }
+        }
+
+
+
+        // === EVENT HANDLERS ===
 
         // === DATE ===
         private void Date_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
@@ -176,54 +236,5 @@ namespace Branslekollen.Droid
                     : "";
         }
 
-        private bool OnMenuSave()
-        {
-            var dateEditText = FindViewById<EditText>(Resource.Id.DateEditText);
-            if (!IsDateValid(false))
-            {
-                dateEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
-                return false;
-            }
-            
-            var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
-            if (!IsPricePerLiterValid(false))
-            {
-                pricePerLiterEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
-                return false;
-            }
-
-            var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
-            if (!IsVolumeInLitersValid(false))
-            {
-                volumeInLitersEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
-                return false;
-            }
-
-            var odometerInKmEditText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
-            if (!IsOdometerInKmValid(false))
-            {
-                odometerInKmEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
-                return false;
-            }
-
-            var fullTank = FindViewById<Switch>(Resource.Id.FullTankSwitch).Checked;
-            
-            try
-            {
-                _viewModel.AddRefueling(
-                    "vehicleId", 
-                    GetDate(), 
-                    GetPricePerLiter(), 
-                    GetVolumeInLiters(), 
-                    GetOdometerInKm(), 
-                    fullTank);
-                return true;
-            }
-            catch (Exception)
-            {
-                Toast.MakeText(this, Application.Context.Resources.GetString(Resource.String.error_adding_refueling), ToastLength.Long).Show();
-                return false;
-            }
-        }
     }
 }

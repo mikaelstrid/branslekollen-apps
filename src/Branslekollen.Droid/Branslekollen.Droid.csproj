@@ -130,6 +130,10 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj">
+      <Project>{c5ae44a2-d8f7-4d85-9cc5-0f7cde56225d}</Project>
+      <Name>Core.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{2ff8b279-87f7-45cd-96d3-998f9e8c04c2}</Project>
       <Name>Core</Name>

@@ -1,5 +1,6 @@
-﻿using System.Threading.Tasks;
-using Branslekollen.Core.ApiModels;
+﻿using System;
+using System.Threading.Tasks;
+using Branslekollen.Core.Domain.Models;
 using Branslekollen.Core.Services;
 
 namespace Branslekollen.Core.ViewModels
@@ -13,9 +14,10 @@ namespace Branslekollen.Core.ViewModels
             _vehicleService = vehicleService;
         }
 
-        public async Task<VehicleApiModel> CreateVehicle(string name, string fuelType)
+        public async Task<Vehicle> CreateVehicle(string name, string fuelType)
         {
-            return await _vehicleService.Create(name, fuelType);
+            var parsedFuelType = (FuelType) Enum.Parse(typeof(FuelType), fuelType, true);
+            return await _vehicleService.Create(name, parsedFuelType);
         }
     }
 }

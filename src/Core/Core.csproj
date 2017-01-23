@@ -34,9 +34,9 @@
   <ItemGroup>
     <Compile Include="ApiModels\RefuelingApiModel.cs" />
     <Compile Include="ApiModels\VehicleApiModel.cs" />
-    <Compile Include="Models\Refueling.cs" />
-    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Persistence\DummyLocalStorage.cs" />
     <Compile Include="Persistence\ILocalStorage.cs" />
+    <Compile Include="Services\DummyVehicleService.cs" />
     <Compile Include="Services\IVehicleService.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj">
+      <Project>{c5ae44a2-d8f7-4d85-9cc5-0f7cde56225d}</Project>
+      <Name>Core.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>

@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Android.App;
 using Android.Content;
@@ -15,6 +14,7 @@ namespace Branslekollen.Droid
     {
         private RefuelingsViewModel _viewModel;
 
+        // === LIFECYCLE METHODS ===
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,9 +37,25 @@ namespace Branslekollen.Droid
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
 
-            _viewModel.SetActiveVehicle(vehicles.First().Id);
+            _viewModel.ActiveVehicleId = vehicles.First().Id;
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            UpdateData();
+        }
+
+        private async void UpdateData()
+        {
+            var items = (await _viewModel.GetRefuelings()).Select(r => $"{r.RefuelingDate:yy-MM-dd}: {r.NumberOfLiters:N2}l").ToList();
+            var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
+            refuelingsListView.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+        }
+
+
+
+        // === MENU METHODS ===
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.TopMenuAdd, menu);
@@ -55,25 +71,11 @@ namespace Branslekollen.Droid
             return base.OnOptionsItemSelected(item);
         }
 
-        protected override void OnResume()
-        {
-            base.OnResume();
-            UpdateData(_viewModel.ActiveVehicleId);
-        }
-
         private void OnTopMenuAdd()
         {
             var intent = new Intent(this, typeof(AddRefuelingActivity));
+            intent.PutExtra("VehicleId", _viewModel.ActiveVehicleId);
             StartActivity(intent);
-        }
-
-        private async void UpdateData(string vehicleId)
-        {
-            var vehicle = await _viewModel.GetVehicle(vehicleId);
-            var items = vehicle.Refuelings.Select(r => $"{r.Date:yy-MM-dd}: {r.NumberOfLiters:N2}l").ToList();
-
-            var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
-            refuelingsListView.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
         }
     }
 }
