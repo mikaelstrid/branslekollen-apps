@@ -61,12 +61,5 @@
                 android:text="@string/fuel_type_diesel"
                 android:textSize="18dp" />
         </RadioGroup>
-    <!--<Button
-            android:id="@+id/CreateVehicleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add"
-            android:background="@color/my_primary"
-            android:textColor="@color/my_white" />-->
     </LinearLayout>
 </RelativeLayout>

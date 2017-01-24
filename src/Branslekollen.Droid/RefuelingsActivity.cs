@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core.ViewModels;
+using Serilog;
 
 namespace Branslekollen.Droid
 {
@@ -15,20 +16,12 @@ namespace Branslekollen.Droid
         private RefuelingsViewModel _viewModel;
 
         // === LIFECYCLE METHODS ===
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             
-            using (var scope = App.Container.BeginLifetimeScope())
-            {
-                _viewModel = App.Container.Resolve<RefuelingsViewModel>();
-            }
+            _viewModel = App.Container.Resolve<RefuelingsViewModel>();
 
-            var vehicles = await _viewModel.GetLocalVehicleDescriptors();
-
-            if (!vehicles.Any())
-                StartActivity(new Intent(this, typeof(CreateVehicleActivity)));
-            
             SetContentView(Resource.Layout.Refuelings);
 
             var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.BottomNavigationFragment);
@@ -36,14 +29,32 @@ namespace Branslekollen.Droid
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
-
-            _viewModel.ActiveVehicleId = vehicles.First().Id;
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             base.OnResume();
-            UpdateData();
+
+            if (!string.IsNullOrWhiteSpace(_viewModel.ActiveVehicleId))
+            {
+                Log.Verbose("RefuelingsActivity.OnResume: Using ActiveVehicleId {ActiveVehicledId}", _viewModel.ActiveVehicleId);
+                UpdateData();
+            }
+            else
+            {
+                var vehicles = await _viewModel.GetLocalVehicleDescriptors();
+                if (!vehicles.Any())
+                {
+                    Log.Verbose("RefuelingsActivity.OnResume: No vehicle descriptors found, redirecting to CreateVehicleActivity");
+                    StartActivity(new Intent(this, typeof(CreateVehicleActivity)));
+                }
+                else
+                {
+                    _viewModel.ActiveVehicleId = vehicles.First().Id;
+                    Log.Verbose("RefuelingsActivity.OnResume: Received descriptors from local storage, using activeVehicleId {ActiveVehicledId}", _viewModel.ActiveVehicleId);
+                    UpdateData();
+                }
+            }
         }
 
         private async void UpdateData()

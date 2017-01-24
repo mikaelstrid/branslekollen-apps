@@ -6,9 +6,10 @@ namespace Branslekollen.Core.Persistence
 {
     public interface ILocalStorage
     {
-        Task<List<string>> GetVehicleIds();
-        void SaveVehicleIds(List<string> vehicleIds);
+        //Task<List<string>> GetVehicleIds();
+        //void SaveVehicleDescriporsIds(List<VehicleDescriptor> vehicleIds);
         Task<List<VehicleDescriptor>> GetVehicleDescriptors();
+        Task AddVehicleDescriptor(VehicleDescriptor vehicleDescriptor);
     }
 }
 

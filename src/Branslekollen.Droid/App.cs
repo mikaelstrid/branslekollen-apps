@@ -28,7 +28,7 @@ namespace Branslekollen.Droid
             //builder.RegisterInstance(new DroidPlatform()).As<IPlatform>();
             builder.RegisterType<Configuration>().As<IConfiguration>();
 #if DEBUG
-            builder.RegisterType<DummyLocalStorage>().As<ILocalStorage>();
+            builder.RegisterType<DummyLocalStorage>().As<ILocalStorage>().InstancePerLifetimeScope();
             builder.RegisterType<DummyVehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
 #else
             builder.RegisterType<LocalStorage>().As<ILocalStorage>();
