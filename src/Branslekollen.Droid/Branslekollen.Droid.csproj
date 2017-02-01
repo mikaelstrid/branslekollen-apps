@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="AddRefuelingActivity.cs" />
+    <Compile Include="RefuelingActivity.cs" />
     <Compile Include="BottomNavigationFragment.cs" />
     <Compile Include="CreateVehicleActivity.cs" />
     <Compile Include="Extensions\EditTextExtensions.cs" />
@@ -122,7 +122,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\layout\Splash.axml" />
-    <AndroidResource Include="Resources\layout\AddRefueling.axml">
+    <AndroidResource Include="Resources\layout\Refueling.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\BottomNavigation.axml">

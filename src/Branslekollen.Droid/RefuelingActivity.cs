@@ -12,8 +12,8 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Lägg till tankning")]
-    public class AddRefuelingActivity : Activity
+    [Activity]
+    public class RefuelingActivity : Activity
     {
         private AddRefuelingViewModel _viewModel;
 
@@ -30,7 +30,7 @@ namespace Branslekollen.Droid
             _viewModel.ActiveVehicleId = Intent.GetStringExtra("VehicleId");
             Log.Verbose("AddRefuelingViewModel.OnCreate: Setting ActiveVehicleId to {ActiveVehicleId}", _viewModel.ActiveVehicleId);
 
-            SetContentView(Resource.Layout.AddRefueling);
+            SetContentView(Resource.Layout.Refueling);
 
             var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.BottomNavigationFragment);
             bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
@@ -40,10 +40,10 @@ namespace Branslekollen.Droid
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
 
-            FindViewById<EditText>(Resource.Id.DateEditText).TextChanged += Date_OnTextChanged;
-            FindViewById<EditText>(Resource.Id.PricePerLiterEditText).TextChanged += PricePerLiter_OnTextChanged;
-            FindViewById<EditText>(Resource.Id.VolumeInLitersEditText).TextChanged += VolumeInLiters_OnTextChanged;
-            FindViewById<EditText>(Resource.Id.OdometerInKmEditText).TextChanged += OdometerInKm_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingDateEditText).TextChanged += Date_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).TextChanged += PricePerLiter_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).TextChanged += VolumeInLiters_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).TextChanged += OdometerInKm_OnTextChanged;
         }
 
         
@@ -71,35 +71,35 @@ namespace Branslekollen.Droid
 
         private bool OnMenuSave()
         {
-            var dateEditText = FindViewById<EditText>(Resource.Id.DateEditText);
+            var dateEditText = FindViewById<EditText>(Resource.Id.RefuelingDateEditText);
             if (!IsDateValid(false))
             {
                 dateEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
                 return false;
             }
 
-            var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.RefuelingPriceEditText);
             if (!IsPricePerLiterValid(false))
             {
                 pricePerLiterEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
                 return false;
             }
 
-            var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText);
             if (!IsVolumeInLitersValid(false))
             {
                 volumeInLitersEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
                 return false;
             }
 
-            var odometerInKmEditText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            var odometerInKmEditText = FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText);
             if (!IsOdometerInKmValid(false))
             {
                 odometerInKmEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
                 return false;
             }
 
-            var fullTank = FindViewById<Switch>(Resource.Id.FullTankSwitch).Checked;
+            var fullTank = FindViewById<Switch>(Resource.Id.RefuelingFullTankSwitch).Checked;
 
             try
             {
@@ -134,7 +134,7 @@ namespace Branslekollen.Droid
 
         private bool IsDateValid(bool allowEmpty = true)
         {
-            var editText = FindViewById<EditText>(Resource.Id.DateEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingDateEditText);
             if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
             DateTime val;
             return DateTime.TryParse(editText.Text, out val);
@@ -142,7 +142,7 @@ namespace Branslekollen.Droid
 
         private DateTime GetDate()
         {
-            var editText = FindViewById<EditText>(Resource.Id.DateEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingDateEditText);
             return DateTime.Parse(editText.Text);
         }
         
@@ -162,7 +162,7 @@ namespace Branslekollen.Droid
 
         private bool IsPricePerLiterValid(bool allowEmpty = true)
         {
-            var editText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingPriceEditText);
             if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
             double val;
             return double.TryParse(editText.Text, out val);
@@ -170,7 +170,7 @@ namespace Branslekollen.Droid
 
         private double GetPricePerLiter()
         {
-            var editText = FindViewById<EditText>(Resource.Id.PricePerLiterEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingPriceEditText);
             return double.Parse(editText.Text);
         }
 
@@ -190,7 +190,7 @@ namespace Branslekollen.Droid
 
         private bool IsVolumeInLitersValid(bool allowEmpty = true)
         {
-            var editText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText);
             double val;
             if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
             return double.TryParse(editText.Text, out val);
@@ -198,7 +198,7 @@ namespace Branslekollen.Droid
 
         private double GetVolumeInLiters()
         {
-            var editText = FindViewById<EditText>(Resource.Id.VolumeInLitersEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText);
             return double.Parse(editText.Text);
         }
 
@@ -215,7 +215,7 @@ namespace Branslekollen.Droid
 
         private bool IsOdometerInKmValid(bool allowEmpty = true)
         {
-            var editText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText);
             if (allowEmpty && string.IsNullOrWhiteSpace(editText.Text)) return true;
             int val;
             return int.TryParse(editText.Text, out val);
@@ -223,14 +223,14 @@ namespace Branslekollen.Droid
 
         private int GetOdometerInKm()
         {
-            var editText = FindViewById<EditText>(Resource.Id.OdometerInKmEditText);
+            var editText = FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText);
             return int.Parse(editText.Text);
         }
 
 
         private void UpdateTotalPrice()
         {
-            FindViewById<EditText>(Resource.Id.TotalPriceEditText).Text =
+            FindViewById<EditText>(Resource.Id.RefuelingTotalPriceEditText).Text =
                 IsPricePerLiterValid(false) && IsVolumeInLitersValid(false)
                     ? $"{GetPricePerLiter()*GetVolumeInLiters():N2}"
                     : "";

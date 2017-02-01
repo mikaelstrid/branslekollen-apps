@@ -84,7 +84,7 @@ namespace Branslekollen.Droid
 
         private void OnTopMenuAdd()
         {
-            var intent = new Intent(this, typeof(AddRefuelingActivity));
+            var intent = new Intent(this, typeof(RefuelingActivity));
             intent.PutExtra("VehicleId", _viewModel.ActiveVehicleId);
             StartActivity(intent);
         }

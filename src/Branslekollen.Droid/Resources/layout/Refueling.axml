@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp" />
             <EditText
-                android:id="@+id/DateEditText"
+                android:id="@+id/RefuelingDateEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date" />
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp" />
             <EditText
-                android:id="@+id/PricePerLiterEditText"
+                android:id="@+id/RefuelingPriceEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp" />
             <EditText
-                android:id="@+id/VolumeInLitersEditText"
+                android:id="@+id/RefuelingVolumeEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp" />
             <EditText
-                android:id="@+id/TotalPriceEditText"
+                android:id="@+id/RefuelingTotalPriceEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp" />
             <EditText
-                android:id="@+id/OdometerInKmEditText"
+                android:id="@+id/RefuelingOdometerEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -82,7 +82,7 @@
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/FullTankSwitch"
+                android:id="@+id/RefuelingFullTankSwitch"
                 android:checked="true"
                 android:layout_marginTop="6dp" />
         </LinearLayout>
