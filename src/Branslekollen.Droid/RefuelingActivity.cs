@@ -1,6 +1,5 @@
 using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Views;
@@ -15,24 +14,34 @@ namespace Branslekollen.Droid
     [Activity]
     public class RefuelingActivity : Activity
     {
-        private AddRefuelingViewModel _viewModel;
+        private RefuelingViewModelBase _viewModel;
 
         // === LIFECYCLE METHODS ===
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            var vehicleId = Intent.GetStringExtra("VehicleId");
+            var refuelingId = Intent.GetStringExtra("RefuelingId");
+
+            Log.Verbose("AddRefuelingViewModel.OnCreate: Using VehicleId to {VehicleId}", vehicleId);
             using (var scope = App.Container.BeginLifetimeScope())
             {
-                _viewModel = App.Container.Resolve<AddRefuelingViewModel>();
+                if (string.IsNullOrWhiteSpace(refuelingId))
+                {
+                    Log.Verbose("AddRefuelingViewModel.OnCreate: Received no refueling id, creating AddRefuelingViewModel");
+                    _viewModel = App.Container.Resolve<AddRefuelingViewModel>(new NamedParameter("vehicleId", vehicleId));
+                }
+                else
+                {
+                    Log.Verbose("AddRefuelingViewModel.OnCreate: Received refueling id {refuelingId}, creating EditRefuelingViewModel", refuelingId);
+                    _viewModel = App.Container.Resolve<EditRefuelingViewModel>(new NamedParameter("vehicleId", vehicleId), new NamedParameter("refuelingId", refuelingId));
+                }
             }
-
-            _viewModel.ActiveVehicleId = Intent.GetStringExtra("VehicleId");
-            Log.Verbose("AddRefuelingViewModel.OnCreate: Setting ActiveVehicleId to {ActiveVehicleId}", _viewModel.ActiveVehicleId);
 
             SetContentView(Resource.Layout.Refueling);
 
-            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.BottomNavigationFragment);
+            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.RefuelingBottomNavigationFragment);
             bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
@@ -40,10 +49,19 @@ namespace Branslekollen.Droid
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
 
+            FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Text = _viewModel.Date;
             FindViewById<EditText>(Resource.Id.RefuelingDateEditText).TextChanged += Date_OnTextChanged;
+
+            FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).Text = _viewModel.Price;
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).TextChanged += PricePerLiter_OnTextChanged;
+
+            FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).Text = _viewModel.Volume;
             FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).TextChanged += VolumeInLiters_OnTextChanged;
+
+            FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).Text = _viewModel.Odometer;
             FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).TextChanged += OdometerInKm_OnTextChanged;
+
+            UpdateTotalPrice();
         }
 
         
@@ -103,7 +121,7 @@ namespace Branslekollen.Droid
 
             try
             {
-                _viewModel.AddRefueling(
+                _viewModel.HandleSave(
                     GetDate(),
                     GetPricePerLiter(),
                     GetVolumeInLiters(),

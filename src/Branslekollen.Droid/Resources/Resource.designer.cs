@@ -123,8 +123,8 @@ namespace Branslekollen.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080014
-			public const int BottomNavigationFragment = 2131230740;
+			// aapt resource value: 0x7f080019
+			public const int BottomNavigationFragment = 2131230745;
 			
 			// aapt resource value: 0x7f080003
 			public const int BottomNavigationMenuItemProfile = 2131230723;
@@ -150,11 +150,14 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f08000d
 			public const int GettingStartedButton = 2131230733;
 			
-			// aapt resource value: 0x7f08001a
-			public const int MenuItemAdd = 2131230746;
-			
 			// aapt resource value: 0x7f08001b
-			public const int MenuItemSave = 2131230747;
+			public const int MenuItemAdd = 2131230747;
+			
+			// aapt resource value: 0x7f08001c
+			public const int MenuItemSave = 2131230748;
+			
+			// aapt resource value: 0x7f080014
+			public const int RefuelingBottomNavigationFragment = 2131230740;
 			
 			// aapt resource value: 0x7f08000e
 			public const int RefuelingDateEditText = 2131230734;
@@ -195,8 +198,8 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080007
 			public const int fuelTypeLabel = 2131230727;
 			
-			// aapt resource value: 0x7f080019
-			public const int imageViewGettingVehicles = 2131230745;
+			// aapt resource value: 0x7f08001a
+			public const int imageViewGettingVehicles = 2131230746;
 			
 			// aapt resource value: 0x7f08000b
 			public const int textView1 = 2131230731;

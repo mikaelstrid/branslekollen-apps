@@ -29,6 +29,9 @@ namespace Branslekollen.Droid
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
+
+            var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
+            refuelingsListView.ItemClick += OnListItemClick;
         }
 
         protected override async void OnResume()
@@ -64,6 +67,17 @@ namespace Branslekollen.Droid
             refuelingsListView.Adapter = new RefuelingsAdapter(this, items.ToArray());
         }
 
+        private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Log.Verbose("RefuelingsActivity.OnListItemClick: Position {Position} clicked", e.Position);
+
+            var adapter = (RefuelingsAdapter) ((ListView) sender).Adapter;
+
+            var intent = new Intent(this, typeof(RefuelingActivity));
+            intent.PutExtra("VehicleId", _viewModel.ActiveVehicleId);
+            intent.PutExtra("RefuelingId", adapter[e.Position].Id);
+            StartActivity(intent);
+        }
 
 
         // === MENU METHODS ===

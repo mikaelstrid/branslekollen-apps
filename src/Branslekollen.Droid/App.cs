@@ -38,7 +38,11 @@ namespace Branslekollen.Droid
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<CreateVehicleViewModel>();
             builder.RegisterType<RefuelingsViewModel>();
-            builder.RegisterType<AddRefuelingViewModel>();
+            builder.RegisterType<AddRefuelingViewModel>()
+                .WithParameter(new TypedParameter(typeof(string), "vehicleId"));
+            builder.RegisterType<EditRefuelingViewModel>()
+                .WithParameter(new TypedParameter(typeof(string), "vehicleId"))
+                .WithParameter(new TypedParameter(typeof(string), "refuelingId"));
 
             App.Container = builder.Build();
 
