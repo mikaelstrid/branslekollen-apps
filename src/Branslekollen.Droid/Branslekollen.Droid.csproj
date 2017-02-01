@@ -128,6 +128,9 @@
     <AndroidResource Include="Resources\layout\BottomNavigation.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\RefuelingRowLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Domain\Core.Domain.csproj">

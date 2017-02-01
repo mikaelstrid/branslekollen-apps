@@ -10,13 +10,14 @@ namespace Branslekollen.Core.Persistence
 
         public DummyLocalStorage()
         {
-            //_vehicleDescriptors.Add(
-            //    new VehicleDescriptor
-            //    {
-            //        Id = "01D16512-9B17-4956-A9AC-266C264234A9",
-            //        Name = "Volvo V90"
-            //    }
-            //);
+            //return;
+            _vehicleDescriptors.Add(
+                new VehicleDescriptor
+                {
+                    Id = "01D16512-9B17-4956-A9AC-266C264234A9",
+                    Name = "Volvo V90"
+                }
+            );
         }
 
         //public Task<List<string>> GetVehicleIds()

@@ -138,6 +138,9 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080001
 			public const int DateEditText = 2131230721;
 			
+			// aapt resource value: 0x7f080015
+			public const int DateTextView = 2131230741;
+			
 			// aapt resource value: 0x7f080011
 			public const int FuelTypeDieselRadioButton = 2131230737;
 			
@@ -153,11 +156,11 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080014
 			public const int GettingStartedButton = 2131230740;
 			
-			// aapt resource value: 0x7f080017
-			public const int MenuItemAdd = 2131230743;
+			// aapt resource value: 0x7f08001a
+			public const int MenuItemAdd = 2131230746;
 			
-			// aapt resource value: 0x7f080018
-			public const int MenuItemSave = 2131230744;
+			// aapt resource value: 0x7f08001b
+			public const int MenuItemSave = 2131230747;
 			
 			// aapt resource value: 0x7f080005
 			public const int OdometerInKmEditText = 2131230725;
@@ -165,8 +168,8 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080002
 			public const int PricePerLiterEditText = 2131230722;
 			
-			// aapt resource value: 0x7f080015
-			public const int RefuelingsList = 2131230741;
+			// aapt resource value: 0x7f080018
+			public const int RefuelingsList = 2131230744;
 			
 			// aapt resource value: 0x7f080000
 			public const int Toolbar = 2131230720;
@@ -174,11 +177,17 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f080004
 			public const int TotalPriceEditText = 2131230724;
 			
+			// aapt resource value: 0x7f080017
+			public const int TotalPriceTextView = 2131230743;
+			
 			// aapt resource value: 0x7f08000d
 			public const int VehicleNameEditText = 2131230733;
 			
 			// aapt resource value: 0x7f080003
 			public const int VolumeInLitersEditText = 2131230723;
+			
+			// aapt resource value: 0x7f080016
+			public const int VolumeTextView = 2131230742;
 			
 			// aapt resource value: 0x7f080008
 			public const int bottom_navigation = 2131230728;
@@ -186,8 +195,8 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f08000e
 			public const int fuelTypeLabel = 2131230734;
 			
-			// aapt resource value: 0x7f080016
-			public const int imageViewGettingVehicles = 2131230742;
+			// aapt resource value: 0x7f080019
+			public const int imageViewGettingVehicles = 2131230745;
 			
 			// aapt resource value: 0x7f080012
 			public const int textView1 = 2131230738;
@@ -224,13 +233,16 @@ namespace Branslekollen.Droid
 			public const int Main = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Refuelings = 2130903044;
+			public const int RefuelingRowLayout = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int Splash = 2130903045;
+			public const int Refuelings = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Toolbar = 2130903046;
+			public const int Splash = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int Toolbar = 2130903047;
 			
 			static Layout()
 			{
@@ -310,10 +322,10 @@ namespace Branslekollen.Droid
 			public const int history = 2130968582;
 			
 			// aapt resource value: 0x7f040017
-			public const int odometer_in_km = 2130968599;
+			public const int odometer = 2130968599;
 			
 			// aapt resource value: 0x7f040014
-			public const int price_per_liter = 2130968596;
+			public const int price = 2130968596;
 			
 			// aapt resource value: 0x7f040007
 			public const int profile = 2130968583;
@@ -352,7 +364,7 @@ namespace Branslekollen.Droid
 			public const int vehicle_name_hint = 2130968589;
 			
 			// aapt resource value: 0x7f040015
-			public const int volume_in_liters = 2130968597;
+			public const int volume = 2130968597;
 			
 			// aapt resource value: 0x7f040009
 			public const int welcome = 2130968585;

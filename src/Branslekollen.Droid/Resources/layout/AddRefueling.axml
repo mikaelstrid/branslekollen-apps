@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="date" />
             <TextView
-                android:text="@string/price_per_liter"
+                android:text="@string/price"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
             <TextView
-                android:text="@string/volume_in_liters"
+                android:text="@string/volume"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:inputType="numberDecimal"
                 android:enabled="false" />
             <TextView
-                android:text="@string/odometer_in_km"
+                android:text="@string/odometer"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

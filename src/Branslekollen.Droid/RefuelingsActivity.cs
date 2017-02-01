@@ -59,9 +59,9 @@ namespace Branslekollen.Droid
 
         private async void UpdateData()
         {
-            var items = (await _viewModel.GetRefuelings()).Select(r => $"{r.RefuelingDate:yy-MM-dd}: {r.NumberOfLiters:N2}l").ToList();
+            var items = await _viewModel.GetRefuelings();
             var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
-            refuelingsListView.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+            refuelingsListView.Adapter = new RefuelingsAdapter(this, items.ToArray());
         }
 
 

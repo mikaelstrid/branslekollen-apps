@@ -18,10 +18,10 @@
   <string name="add">Lägg till</string>
   <string name="save">Spara</string>
   <string name="date">Datum</string>
-  <string name="price_per_liter">Pris per liter (kr/l)</string>
-  <string name="volume_in_liters">Volym (l)</string>
-  <string name="total_price">Totalt pris (kr)</string>
-  <string name="odometer_in_km">Mätarställning (km)</string>
+  <string name="price">Pris</string>
+  <string name="volume">Volym</string>
+  <string name="total_price">Totalt pris</string>
+  <string name="odometer">Mätarställning</string>
   <string name="did_you_refill_completely">Tankade du fullt?</string>
   <string name="validation_error_vehicle_name">Du behöver fylla i ett namn på fordonet</string>
   <string name="validation_error_date">Du behöver fylla i ett korrekt datum</string>

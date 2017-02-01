@@ -13,7 +13,7 @@ namespace Branslekollen.Core.Services
 
         public DummyVehicleService()
         {
-            return;
+            //return;
             _vehicles.Add(
                 new Vehicle("01D16512-9B17-4956-A9AC-266C264234A9", "Volvo V90", FuelType.Petrol)
                 {
@@ -29,6 +29,17 @@ namespace Branslekollen.Core.Services
                             NumberOfLiters = 20,
                             OdometerInKm = 1756,
                             PricePerLiter = 13.37
+                        },
+                        new Refueling
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            CreationTimeUtc = DateTime.Parse("2017-02-23 06:54"),
+                            RefuelingDate = DateTime.Parse("2017-02-22"),
+                            FullTank = true,
+                            MissedRefuelings = false,
+                            NumberOfLiters = 19.6,
+                            OdometerInKm = 2540,
+                            PricePerLiter = 14.01
                         }
                     }
                 });
