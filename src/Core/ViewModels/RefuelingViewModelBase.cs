@@ -12,6 +12,7 @@ namespace Branslekollen.Core.ViewModels
         public string Price { get; set; } = "";
         public string Volume { get; set; } = "";
         public string Odometer { get; set; } = "";
+        public bool FullTank { get; set; } = true;
 
         protected RefuelingViewModelBase(IVehicleService vehicleService, string vehicleId)
         {

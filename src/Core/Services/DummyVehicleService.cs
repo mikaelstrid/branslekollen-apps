@@ -68,7 +68,7 @@ namespace Branslekollen.Core.Services
 
         public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
-            _vehicles.First(v => v.Id == vehicleid).Refuelings.Add(new Refueling
+            _vehicles.Single(v => v.Id == vehicleid).Refuelings.Add(new Refueling
             {
                 Id = Guid.NewGuid().ToString(),
                 CreationTimeUtc = DateTime.UtcNow,
@@ -78,6 +78,16 @@ namespace Branslekollen.Core.Services
                 OdometerInKm = odometerInKm,
                 FullTank = fullTank
             });
+        }
+
+        public void UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        {
+            var refueling = _vehicles.Single(v => v.Id == vehicleId).Refuelings.Single(r => r.Id == refuelingId);
+            refueling.RefuelingDate = refuelDate;
+            refueling.PricePerLiter = pricePerLiter;
+            refueling.NumberOfLiters = volumeInLiters;
+            refueling.OdometerInKm = odometerInKm;
+            refueling.FullTank = fullTank;
         }
     }
 }

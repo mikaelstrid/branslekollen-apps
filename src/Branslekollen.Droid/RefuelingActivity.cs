@@ -61,6 +61,8 @@ namespace Branslekollen.Droid
             FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).Text = _viewModel.Odometer;
             FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).TextChanged += OdometerInKm_OnTextChanged;
 
+            FindViewById<Switch>(Resource.Id.RefuelingFullTankSwitch).Checked = _viewModel.FullTank;
+
             UpdateTotalPrice();
         }
 

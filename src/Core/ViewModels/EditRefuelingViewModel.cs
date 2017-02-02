@@ -22,10 +22,12 @@ namespace Branslekollen.Core.ViewModels
             Price = refueling.PricePerLiter.ToString(CultureInfo.InvariantCulture);
             Volume = refueling.NumberOfLiters.ToString(CultureInfo.InvariantCulture);
             Odometer = refueling.OdometerInKm.ToString(CultureInfo.InvariantCulture);
+            FullTank = refueling.FullTank;
         }
 
         public override void HandleSave(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
+            VehicleService.UpdateRefueling(VehicleId, _refuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
         }
     }
 }
