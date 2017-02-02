@@ -72,6 +72,7 @@ namespace Branslekollen.Droid
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.TopMenuSave, menu);
+            menu.FindItem(Resource.Id.MenuItemDelete).SetVisible(_viewModel.RefuelingId != null);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -85,6 +86,20 @@ namespace Branslekollen.Droid
             {
                 if (OnMenuSave())
                     Finish();
+            }
+            if (item.ItemId == Resource.Id.MenuItemDelete)
+            {
+                var alertBuilder = new AlertDialog.Builder(this);
+                alertBuilder.SetTitle("Ta bort tankning?");
+                alertBuilder.SetMessage("Är du säker på att du vill ta bort tankningen?");
+                alertBuilder.SetPositiveButton("Ta bort", (senderAlert, args) => 
+                { 
+                    _viewModel.HandleDelete();
+                    Finish();
+                });
+                alertBuilder.SetNegativeButton("Avbryt", (senderAlert, args) => { });
+                var dialog = alertBuilder.Create();
+                dialog.Show();
             }
             return base.OnOptionsItemSelected(item);
         }

@@ -84,19 +84,19 @@ namespace Branslekollen.Droid
 			public const int ic_add_circle_white_24dp = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int ic_cloud_download_black_24dp = 2130837506;
+			public const int ic_add_white_24dp = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int ic_cloud_download_white_48dp = 2130837507;
+			public const int ic_delete_white_24dp = 2130837507;
 			
 			// aapt resource value: 0x7f020004
 			public const int ic_equalizer_white_24dp = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int ic_history_white_24dp = 2130837509;
+			public const int ic_local_gas_station_white_24dp = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int ic_local_gas_station_white_24dp = 2130837510;
+			public const int ic_save_white_24dp = 2130837510;
 			
 			// aapt resource value: 0x7f020007
 			public const int Icon = 2130837511;
@@ -154,7 +154,10 @@ namespace Branslekollen.Droid
 			public const int MenuItemAdd = 2131230747;
 			
 			// aapt resource value: 0x7f08001c
-			public const int MenuItemSave = 2131230748;
+			public const int MenuItemDelete = 2131230748;
+			
+			// aapt resource value: 0x7f08001d
+			public const int MenuItemSave = 2131230749;
 			
 			// aapt resource value: 0x7f080014
 			public const int RefuelingBottomNavigationFragment = 2131230740;
@@ -297,14 +300,17 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040003
 			public const int dashboard = 2130968579;
 			
+			// aapt resource value: 0x7f040014
+			public const int date = 2130968596;
+			
 			// aapt resource value: 0x7f040013
-			public const int date = 2130968595;
+			public const int delete = 2130968595;
 			
-			// aapt resource value: 0x7f040018
-			public const int did_you_refill_completely = 2130968600;
+			// aapt resource value: 0x7f040019
+			public const int did_you_refill_completely = 2130968601;
 			
-			// aapt resource value: 0x7f04001e
-			public const int error_adding_refueling = 2130968606;
+			// aapt resource value: 0x7f04001f
+			public const int error_adding_refueling = 2130968607;
 			
 			// aapt resource value: 0x7f04000e
 			public const int fuel_type = 2130968590;
@@ -324,11 +330,11 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040006
 			public const int history = 2130968582;
 			
-			// aapt resource value: 0x7f040017
-			public const int odometer = 2130968599;
+			// aapt resource value: 0x7f040018
+			public const int odometer = 2130968600;
 			
-			// aapt resource value: 0x7f040014
-			public const int price = 2130968596;
+			// aapt resource value: 0x7f040015
+			public const int price = 2130968597;
 			
 			// aapt resource value: 0x7f040007
 			public const int profile = 2130968583;
@@ -342,23 +348,23 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040004
 			public const int statistics = 2130968580;
 			
-			// aapt resource value: 0x7f040016
-			public const int total_price = 2130968598;
-			
-			// aapt resource value: 0x7f04001a
-			public const int validation_error_date = 2130968602;
-			
-			// aapt resource value: 0x7f04001d
-			public const int validation_error_odometer = 2130968605;
+			// aapt resource value: 0x7f040017
+			public const int total_price = 2130968599;
 			
 			// aapt resource value: 0x7f04001b
-			public const int validation_error_price = 2130968603;
+			public const int validation_error_date = 2130968603;
 			
-			// aapt resource value: 0x7f040019
-			public const int validation_error_vehicle_name = 2130968601;
+			// aapt resource value: 0x7f04001e
+			public const int validation_error_odometer = 2130968606;
 			
 			// aapt resource value: 0x7f04001c
-			public const int validation_error_volume = 2130968604;
+			public const int validation_error_price = 2130968604;
+			
+			// aapt resource value: 0x7f04001a
+			public const int validation_error_vehicle_name = 2130968602;
+			
+			// aapt resource value: 0x7f04001d
+			public const int validation_error_volume = 2130968605;
 			
 			// aapt resource value: 0x7f04000c
 			public const int vehicle_name = 2130968588;
@@ -366,8 +372,8 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f04000d
 			public const int vehicle_name_hint = 2130968589;
 			
-			// aapt resource value: 0x7f040015
-			public const int volume = 2130968597;
+			// aapt resource value: 0x7f040016
+			public const int volume = 2130968598;
 			
 			// aapt resource value: 0x7f040009
 			public const int welcome = 2130968585;

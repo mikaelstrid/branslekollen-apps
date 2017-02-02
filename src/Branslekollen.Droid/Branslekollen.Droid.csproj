@@ -148,20 +148,9 @@
     <AndroidResource Include="Resources\drawable\no_connection.png" />
     <AndroidResource Include="Resources\drawable\no_connection_background.xml" />
     <AndroidResource Include="Resources\drawable\road.jpg" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_cloud_download_black_24dp.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_cloud_download_white_48dp.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_cloud_download_black_24dp.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_cloud_download_white_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_cloud_download_black_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_cloud_download_white_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_cloud_download_black_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_cloud_download_white_48dp.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_cloud_download_black_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_cloud_download_white_48dp.png" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\drawable\ic_cloud_download_white_48dp.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\menu\TopMenuSave.xml">
@@ -177,11 +166,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_add_circle_white_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_history_white_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_history_white_24dp.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_history_white_24dp.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_history_white_24dp.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_history_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_account_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_account_circle_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_account_circle_white_24dp.png" />
@@ -195,6 +179,21 @@
     <AndroidResource Include="Resources\menu\TopMenuAdd.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_save_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_save_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_save_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_save_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_save_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_delete_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_delete_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_delete_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_delete_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_delete_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_white_24dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

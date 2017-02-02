@@ -89,5 +89,10 @@ namespace Branslekollen.Core.Services
             refueling.OdometerInKm = odometerInKm;
             refueling.FullTank = fullTank;
         }
+
+        public void DeleteRefueling(string vehicleId, string refuelingId)
+        {
+            _vehicles.Single(v => v.Id == vehicleId).Refuelings.RemoveAll(r => r.Id == refuelingId);
+        }
     }
 }

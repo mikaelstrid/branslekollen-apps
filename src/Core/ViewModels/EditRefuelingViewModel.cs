@@ -7,12 +7,8 @@ namespace Branslekollen.Core.ViewModels
 {
     public class EditRefuelingViewModel : RefuelingViewModelBase
     {
-        private readonly string _refuelingId;
-
-        public EditRefuelingViewModel(IVehicleService vehicleService, string vehicleId, string refuelingId) : base(vehicleService, vehicleId)
+        public EditRefuelingViewModel(IVehicleService vehicleService, string vehicleId, string refuelingId) : base(vehicleService, vehicleId, refuelingId)
         {
-            _refuelingId = refuelingId;
-
             var refueling = VehicleService.GetById(VehicleId)
                 .Result
                 .Refuelings
@@ -27,7 +23,12 @@ namespace Branslekollen.Core.ViewModels
 
         public override void HandleSave(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
-            VehicleService.UpdateRefueling(VehicleId, _refuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+            VehicleService.UpdateRefueling(VehicleId, RefuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+        }
+
+        public override void HandleDelete()
+        {
+            VehicleService.DeleteRefueling(VehicleId, RefuelingId);
         }
     }
 }

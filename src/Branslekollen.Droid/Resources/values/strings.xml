@@ -17,6 +17,7 @@
   <string name="fuel_type_diesel">Diesel</string>
   <string name="add">Lägg till</string>
   <string name="save">Spara</string>
+  <string name="delete">Ta bort</string>
   <string name="date">Datum</string>
   <string name="price">Pris</string>
   <string name="volume">Volym</string>
