@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="DatePickerFragment.cs" />
     <Compile Include="RefuelingActivity.cs" />
     <Compile Include="BottomNavigationFragment.cs" />
     <Compile Include="CreateVehicleActivity.cs" />

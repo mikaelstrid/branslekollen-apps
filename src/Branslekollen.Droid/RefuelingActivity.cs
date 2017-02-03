@@ -50,7 +50,11 @@ namespace Branslekollen.Droid
             ActionBar.SetHomeButtonEnabled(true);
 
             FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Text = _viewModel.Date;
-            FindViewById<EditText>(Resource.Id.RefuelingDateEditText).TextChanged += Date_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Click += (sender, args) =>
+            {
+                var frag = DatePickerFragment.NewInstance(Date_OnSelectedDateChanged);
+                frag.Show(FragmentManager, DatePickerFragment.TAG);
+            };
 
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).Text = _viewModel.Price;
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).TextChanged += PricePerLiter_OnTextChanged;
@@ -158,13 +162,9 @@ namespace Branslekollen.Droid
         // === EVENT HANDLERS ===
 
         // === DATE ===
-        private void Date_OnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        private void Date_OnSelectedDateChanged(DateTime selectedDate)
         {
-            var editText = sender as EditText;
-            if (IsDateValid())
-                editText.ClearError();
-            else
-                editText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
+            FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Text = selectedDate.ToString("d");
         }
 
         private bool IsDateValid(bool allowEmpty = true)
