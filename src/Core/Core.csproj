@@ -41,6 +41,7 @@
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EditRefuelingViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\RefuelingsViewModel.cs" />
     <Compile Include="ViewModels\AddRefuelingViewModel.cs" />
     <Compile Include="ViewModels\RefuelingViewModelBase.cs" />

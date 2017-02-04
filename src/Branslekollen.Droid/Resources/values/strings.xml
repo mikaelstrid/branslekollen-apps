@@ -30,4 +30,5 @@
   <string name="validation_error_volume">Du behöver fylla i en korrekt volym</string>
   <string name="validation_error_odometer">Du behöver fylla i en korrekt mätarställning</string>
   <string name="error_adding_refueling">Det gick inte att lägga till tankningen, försök igen. Sorry. :("</string>
+  <string name="not_enough_refuelings_to_calculate_average">Du måste tanka åtminstone två gånger för att vi ska kunna beräkna ett genomsnitt</string>
 </resources>

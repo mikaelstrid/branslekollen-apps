@@ -3,6 +3,7 @@ using Android.App;
 using Android.Runtime;
 using Autofac;
 using Branslekollen.Core;
+using Branslekollen.Core.Domain.Business;
 using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
@@ -34,6 +35,8 @@ namespace Branslekollen.Droid
             builder.RegisterType<LocalStorage>().As<ILocalStorage>();
             builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
 #endif
+            builder.RegisterType<RandomConsumptionCalculator>().As<IConsumptionCalculator>();
+
             builder.RegisterType<SplashViewModel>();
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<CreateVehicleViewModel>();
@@ -43,6 +46,7 @@ namespace Branslekollen.Droid
             builder.RegisterType<EditRefuelingViewModel>()
                 .WithParameter(new TypedParameter(typeof(string), "vehicleId"))
                 .WithParameter(new TypedParameter(typeof(string), "refuelingId"));
+            builder.RegisterType<StatisticsViewModel>();
 
             App.Container = builder.Build();
 

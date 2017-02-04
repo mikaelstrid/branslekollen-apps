@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -20,7 +21,7 @@ namespace Branslekollen.Droid
         {
             var view = inflater.Inflate(Resource.Layout.BottomNavigation, container, false);
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemStatistics).Click +=
-                (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
+                (sender, args) => StartActivity(new Intent(Context, typeof(StatisticsActivity)));
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemRefuelings).Click +=
                 (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemProfile).Click +=
@@ -31,16 +32,10 @@ namespace Branslekollen.Droid
         public void SetActiveItem(int activeItemId)
         {
             var activeItem = View.FindViewById<LinearLayout>(activeItemId);
-            activeItem.SetPadding(activeItem.PaddingLeft, ConvertDpToPixels(6), activeItem.PaddingRight, activeItem.PaddingBottom);
+            activeItem.SetPadding(activeItem.PaddingLeft, Utilities.ConvertDpToPixels(Resources, 6), activeItem.PaddingRight, activeItem.PaddingBottom);
             activeItem.Alpha = 1;
             var textView = activeItem.GetChildAt(1) as TextView;
             textView?.SetTextSize(ComplexUnitType.Sp, 14);
-        }
-
-
-        private int ConvertDpToPixels(int dpValue)
-        {
-            return (int) (dpValue * Resources.DisplayMetrics.Density);
         }
     }
 }
