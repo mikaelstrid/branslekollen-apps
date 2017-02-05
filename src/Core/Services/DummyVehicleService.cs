@@ -17,31 +17,31 @@ namespace Branslekollen.Core.Services
             _vehicles.Add(
                 new Vehicle("01D16512-9B17-4956-A9AC-266C264234A9", "Volvo V90", FuelType.Petrol)
                 {
-                    //Refuelings = new List<Refueling>
-                    //{
-                    //    new Refueling
-                    //    {
-                    //        Id = Guid.NewGuid().ToString(),
-                    //        CreationTimeUtc = DateTime.Parse("2017-01-15 21:39"),
-                    //        RefuelingDate = DateTime.Parse("2017-01-14"),
-                    //        FullTank = true,
-                    //        MissedRefuelings = false,
-                    //        NumberOfLiters = 20,
-                    //        OdometerInKm = 1756,
-                    //        PricePerLiter = 13.37
-                    //    },
-                    //    new Refueling
-                    //    {
-                    //        Id = Guid.NewGuid().ToString(),
-                    //        CreationTimeUtc = DateTime.Parse("2017-02-23 06:54"),
-                    //        RefuelingDate = DateTime.Parse("2017-02-22"),
-                    //        FullTank = true,
-                    //        MissedRefuelings = false,
-                    //        NumberOfLiters = 19.6,
-                    //        OdometerInKm = 2540,
-                    //        PricePerLiter = 14.01
-                    //    }
-                    //}
+                    Refuelings = new List<Refueling>
+                    {
+                        new Refueling
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            CreationTimeUtc = DateTime.Parse("2017-01-15 21:39"),
+                            RefuelingDate = DateTime.Parse("2017-01-14"),
+                            FullTank = true,
+                            MissedRefuelings = false,
+                            NumberOfLiters = 20,
+                            OdometerInKm = 1000,
+                            PricePerLiter = 13.37
+                        },
+                        new Refueling
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            CreationTimeUtc = DateTime.Parse("2017-02-23 06:54"),
+                            RefuelingDate = DateTime.Parse("2017-02-22"),
+                            FullTank = true,
+                            MissedRefuelings = false,
+                            NumberOfLiters = 25,
+                            OdometerInKm = 1500,
+                            PricePerLiter = 14.01
+                        }
+                    }
                 });
         }
 
@@ -68,7 +68,8 @@ namespace Branslekollen.Core.Services
 
         public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
-            _vehicles.Single(v => v.Id == vehicleid).Refuelings.Add(new Refueling
+            var vehicle = _vehicles.Single(v => v.Id == vehicleid);
+            vehicle.Refuelings.Add(new Refueling
             {
                 Id = Guid.NewGuid().ToString(),
                 CreationTimeUtc = DateTime.UtcNow,
@@ -78,21 +79,26 @@ namespace Branslekollen.Core.Services
                 OdometerInKm = odometerInKm,
                 FullTank = fullTank
             });
+            vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
         }
 
         public void UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
-            var refueling = _vehicles.Single(v => v.Id == vehicleId).Refuelings.Single(r => r.Id == refuelingId);
+            var vehicle = _vehicles.Single(v => v.Id == vehicleId);
+            var refueling = vehicle.Refuelings.Single(r => r.Id == refuelingId);
             refueling.RefuelingDate = refuelDate;
             refueling.PricePerLiter = pricePerLiter;
             refueling.NumberOfLiters = volumeInLiters;
             refueling.OdometerInKm = odometerInKm;
             refueling.FullTank = fullTank;
+            vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
         }
 
         public void DeleteRefueling(string vehicleId, string refuelingId)
         {
-            _vehicles.Single(v => v.Id == vehicleId).Refuelings.RemoveAll(r => r.Id == refuelingId);
+            var vehicle = _vehicles.Single(v => v.Id == vehicleId);
+            vehicle.Refuelings.RemoveAll(r => r.Id == refuelingId);
+            vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
         }
     }
 }

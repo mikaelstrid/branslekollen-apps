@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Branslekollen.Core.Domain.Business;
 using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
+using Serilog;
 
 namespace Branslekollen.Core.ViewModels
 {
@@ -27,12 +28,14 @@ namespace Branslekollen.Core.ViewModels
             return await _localStorage.GetVehicleDescriptors();
         }
 
-        public async Task<decimal?> GetAverageConsumption()
+        public async Task<double?> GetAverageConsumptionAsLiterPerKm()
         {
             var vehicle = await _vehicleService.GetById(ActiveVehicleId);
             if (vehicle == null) return null;
 
-            return _consumptionCalculator.CalculateAverageConsumption(vehicle, DateTime.MinValue, DateTime.MaxValue);
+            var averageConsumption = _consumptionCalculator.CalculateAverageConsumptionAsLiterPerKm(vehicle, DateTime.Parse("1900-01-01"), DateTime.Parse("2100-01-01"));
+            Log.Verbose("StatisticsViewModel.GetAverageConsumptionAsLiterPerKm: Average consumption = {AverageConsumption}", averageConsumption);
+            return averageConsumption;
         }
     }
 }

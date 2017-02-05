@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Branslekollen.Core.Domain.Models;
+using Serilog;
 
 namespace Branslekollen.Core.Domain.Business
 {
@@ -13,10 +14,13 @@ namespace Branslekollen.Core.Domain.Business
             _random = new Random();
         }
 
-        public double? CalculateAverageConsumption(Vehicle vehicle, DateTime startDate, DateTime endDate)
+        public double? CalculateAverageConsumptionAsLiterPerKm(Vehicle vehicle, DateTime startDate, DateTime endDate)
         {
             if (vehicle?.Refuelings == null || !vehicle.Refuelings.Any()) return null;
-            return _random.Next(30, 80) / 100;
+            var next = _random.Next(30, 80);
+            var average = next / 1000.0;
+            Log.Verbose("RandomConsumptionCalculator.CalculateAverageConsumptionAsLiterPerKm: Next {Next} => Average {Average}", next, average);
+            return average;
         }
     }
 }

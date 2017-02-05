@@ -35,7 +35,7 @@ namespace Branslekollen.Droid
             builder.RegisterType<LocalStorage>().As<ILocalStorage>();
             builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
 #endif
-            builder.RegisterType<RandomConsumptionCalculator>().As<IConsumptionCalculator>();
+            builder.RegisterType<ConsumptionCalculator>().As<IConsumptionCalculator>();
 
             builder.RegisterType<SplashViewModel>();
             builder.RegisterType<MainViewModel>();

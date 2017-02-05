@@ -58,12 +58,12 @@ namespace Branslekollen.Droid
 
         private async void UpdateData()
         {
-            var averageConsumption = await _viewModel.GetAverageConsumption();
+            var averageConsumptionAsLiterPerKm = await _viewModel.GetAverageConsumptionAsLiterPerKm();
             var averageConsumptionTextView = FindViewById<TextView>(Resource.Id.StatisticsAverageConsumptionTextView);
-            if (averageConsumption.HasValue)
+            if (averageConsumptionAsLiterPerKm.HasValue)
             {
                 averageConsumptionTextView.TextSize = 56;
-                averageConsumptionTextView.Text = $"{averageConsumption:N2} l/mil";
+                averageConsumptionTextView.Text = $"{averageConsumptionAsLiterPerKm*10:N2} l/mil";
             }
             else
             {

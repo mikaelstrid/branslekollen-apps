@@ -5,6 +5,6 @@ namespace Branslekollen.Core.Domain.Business
 {
     public interface IConsumptionCalculator
     {
-        double? CalculateAverageConsumption(Vehicle vehicle, DateTime startDate, DateTime endDate);
+        double? CalculateAverageConsumptionAsLiterPerKm(Vehicle vehicle, DateTime startDate, DateTime endDate);
     }
 }

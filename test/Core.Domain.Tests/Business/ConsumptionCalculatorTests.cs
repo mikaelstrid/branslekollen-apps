@@ -2,15 +2,18 @@
 using Branslekollen.Core.Domain.Business;
 using Branslekollen.Core.Domain.Models;
 using Xunit;
+using FluentAssertions;
 
 namespace API.Tests.Business
 {
     // http://stackoverflow.com/questions/41350323/unit-testing-a-net-standard-1-6-library
     public class ConsumptionCalculatorTests
     {
-        private Refueling _refueling1;
-        private Refueling _refueling2;
-        private Refueling _refueling3;
+        private const double EPSILON = 0.00001;
+
+        private readonly Refueling _refueling1;
+        private readonly Refueling _refueling2;
+        private readonly Refueling _refueling3;
         private readonly Vehicle _vehicle;
         private readonly ConsumptionCalculator _sut;
 
@@ -50,7 +53,7 @@ namespace API.Tests.Business
             // ARRANGE
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-30"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-30"));
 
             // ASSERT
             Assert.False(result.HasValue);
@@ -63,7 +66,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling1);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-12-10"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-12-10"));
 
             // ASSERT
             Assert.False(result.HasValue);
@@ -77,7 +80,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling2);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-30"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-30"));
 
             // ASSERT
             result.Should().BeApproximately(0.0543175487465181, EPSILON);
@@ -92,7 +95,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-12-10"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-12-10"));
 
             // ASSERT
             result.Should().BeApproximately(0.052591, EPSILON);
@@ -107,7 +110,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-15"), DateTime.Parse("2016-12-10"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-15"), DateTime.Parse("2016-12-10"));
 
             // ASSERT
             result.Should().BeApproximately(0.052591, EPSILON);
@@ -122,7 +125,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-27"), DateTime.Parse("2016-12-10"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-27"), DateTime.Parse("2016-12-10"));
 
             // ASSERT
             result.Should().BeApproximately(0.0508647, EPSILON);
@@ -137,7 +140,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-12-05"), DateTime.Parse("2016-12-10"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-12-05"), DateTime.Parse("2016-12-10"));
 
             // ASSERT
             result.Should().NotHaveValue();
@@ -152,7 +155,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-10-05"), DateTime.Parse("2016-10-31"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-10-05"), DateTime.Parse("2016-10-31"));
 
             // ASSERT
             result.Should().NotHaveValue();
@@ -167,7 +170,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-15"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-01"), DateTime.Parse("2016-11-15"));
 
             // ASSERT
             result.Should().NotHaveValue();
@@ -182,7 +185,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-15"), DateTime.Parse("2016-11-25"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-15"), DateTime.Parse("2016-11-25"));
 
             // ASSERT
             result.Should().BeApproximately(0.054317549, EPSILON);
@@ -197,7 +200,7 @@ namespace API.Tests.Business
             _vehicle.Refuelings.Add(_refueling3);
 
             // ACT
-            var result = _sut.CalculateAverageConsumption(_vehicle, DateTime.Parse("2016-11-20"), DateTime.Parse("2016-11-20"));
+            var result = _sut.CalculateAverageConsumptionAsLiterPerKm(_vehicle, DateTime.Parse("2016-11-20"), DateTime.Parse("2016-11-20"));
 
             // ASSERT
             result.Should().BeApproximately(0.054317549, EPSILON);

@@ -8,7 +8,8 @@
     "Core.Domain": {
       "target": "project"
     },
-    "xunit": "2.1.0"
+    "xunit": "2.1.0",
+    "FluentAssertions": "4.19.0"
   },
   "description": "Unit tests",
   "frameworks": {
