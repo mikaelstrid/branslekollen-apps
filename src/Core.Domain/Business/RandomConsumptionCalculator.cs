@@ -13,10 +13,10 @@ namespace Branslekollen.Core.Domain.Business
             _random = new Random();
         }
 
-        public decimal? CalculateAverageConsumption(Vehicle vehicle, DateTime startDate, DateTime endDate)
+        public double? CalculateAverageConsumption(Vehicle vehicle, DateTime startDate, DateTime endDate)
         {
             if (vehicle?.Refuelings == null || !vehicle.Refuelings.Any()) return null;
-            return _random.Next(30, 80) / 100m;
+            return _random.Next(30, 80) / 100;
         }
     }
 }

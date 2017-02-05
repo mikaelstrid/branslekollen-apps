@@ -39,6 +39,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ConsumptionCalculator.cs" />
     <Compile Include="Business\IConsumptionCalculator.cs" />
     <Compile Include="Business\RandomConsumptionCalculator.cs" />
     <Compile Include="Models\Enumerations.cs" />

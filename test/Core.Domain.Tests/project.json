@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    },
+    "Core.Domain": {
+      "target": "project"
+    },
+    "xunit": "2.1.0"
+  },
+  "description": "Unit tests",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dotnet"
+    }
+  },
+  "testRunner": "xunit"
+}
