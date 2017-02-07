@@ -84,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/RefuelingFullTankSwitch"
                 android:checked="true"
+                android:enabled="false"
                 android:layout_marginTop="6dp" />
         </LinearLayout>
         <fragment
