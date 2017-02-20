@@ -38,9 +38,6 @@ namespace Branslekollen.Droid
 #endif
             builder.RegisterType<ConsumptionCalculator>().As<IConsumptionCalculator>();
 
-            builder.RegisterType<SplashViewModel>();
-            builder.RegisterType<MainViewModel>();
-            builder.RegisterType<CreateVehicleViewModel>();
             builder.RegisterType<RefuelingsViewModel>()
                 .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"));
             builder.RegisterType<RefuelingViewModel>()

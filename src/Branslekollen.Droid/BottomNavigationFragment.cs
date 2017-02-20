@@ -25,7 +25,7 @@ namespace Branslekollen.Droid
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemRefuelings).Click +=
                 (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemProfile).Click +=
-                (sender, args) => StartActivity(new Intent(Context, typeof(CreateVehicleActivity)));
+                (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
             return view;
         }
 

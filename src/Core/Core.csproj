@@ -46,8 +46,6 @@
     <Compile Include="ViewModels\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\RefuelingsViewModel.cs" />
     <Compile Include="ViewModels\RefuelingViewModel.cs" />
-    <Compile Include="ViewModels\SplashViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\CreateVehicleViewModel.cs" />
     <Compile Include="ViewModels\VehicleDescriptor.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
