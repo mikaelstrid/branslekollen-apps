@@ -2,7 +2,6 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using Autofac;
-using Branslekollen.Core;
 using Branslekollen.Core.ViewModels;
 using Serilog;
 
@@ -12,21 +11,14 @@ namespace Branslekollen.Droid
     public class StatisticsActivity : Activity
     {
         private StatisticsViewModel _viewModel;
-        private string _vehicleId = "";
 
         // === LIFECYCLE METHODS ===
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            if (savedInstanceState != null)
-            {
-                Log.Verbose("StatisticsActivity.OnCreate: Bundle/savedInstanceState not null, restoring state...");
-                _vehicleId = savedInstanceState.GetString(Constants.VehicleIdName) ?? "";
-                Log.Verbose("StatisticsActivity.OnCreate: ...restored vehicle id '{VehicleId}'", _vehicleId);
-            }
-
-            _viewModel = App.Container.Resolve<StatisticsViewModel>(new NamedParameter("vehicleId", _vehicleId));
+            _viewModel = App.Container.Resolve<StatisticsViewModel>(
+                new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
 
             SetContentView(Resource.Layout.Statistics);
 
@@ -36,7 +28,7 @@ namespace Branslekollen.Droid
 
         protected override void OnSaveInstanceState(Bundle outState)
         {
-            outState.PutString(Constants.VehicleIdName, _vehicleId ?? "");
+            _viewModel.OnSaveInstanceState(new AndroidSavedState(outState));
             base.OnSaveInstanceState(outState);
         }
 
@@ -60,7 +52,7 @@ namespace Branslekollen.Droid
 
         private async void UpdateData()
         {
-            Log.Verbose("StatisticsActivity.UpdateData: Updating data with vehicle id {VehicleId}", _vehicleId);
+            Log.Verbose("StatisticsActivity.UpdateData: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
             var averageConsumptionAsLiterPerKm = await _viewModel.GetAverageConsumptionAsLiterPerKm();
             var averageConsumptionTextView = FindViewById<TextView>(Resource.Id.StatisticsAverageConsumptionTextView);
             if (averageConsumptionAsLiterPerKm.HasValue)

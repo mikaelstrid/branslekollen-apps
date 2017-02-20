@@ -44,7 +44,7 @@ namespace Branslekollen.Droid
                 .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"))
                 .WithParameter(new TypedParameter(typeof(string), "refuelingId"));
             builder.RegisterType<StatisticsViewModel>()
-                .WithParameter(new TypedParameter(typeof(string), "vehicleId"));
+                .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"));
 
             App.Container = builder.Build();
 

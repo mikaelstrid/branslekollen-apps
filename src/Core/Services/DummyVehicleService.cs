@@ -13,7 +13,7 @@ namespace Branslekollen.Core.Services
 
         public DummyVehicleService()
         {
-            return;
+            //return;
             _vehicles.Add(
                 new Vehicle("01D16512-9B17-4956-A9AC-266C264234A9", "Volvo V90", FuelType.Petrol)
                 {
