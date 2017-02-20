@@ -13,7 +13,7 @@ namespace Branslekollen.Core.Services
 
         public DummyVehicleService()
         {
-            //return;
+            return;
             _vehicles.Add(
                 new Vehicle("01D16512-9B17-4956-A9AC-266C264234A9", "Volvo V90", FuelType.Petrol)
                 {
@@ -52,11 +52,10 @@ namespace Branslekollen.Core.Services
             return Task.FromResult(_vehicles);
         }
 
-        public Task<Vehicle> Create(string name, FuelType fuelType)
+        public Task<Vehicle> Create(string name = "", FuelType fuelType = FuelType.Unknown)
         {
             Log.Verbose("DummyVehicleService.Create...");
-            Task.Delay(1000);
-            var vehicle = new Vehicle("0604C0A6-5D8E-4E7C-A5E2-1F3565F3BF67", name, fuelType);
+            var vehicle = new Vehicle(Guid.NewGuid().ToString(), name, fuelType);
             _vehicles.Add(vehicle);
             return Task.FromResult(vehicle);
         }
@@ -99,6 +98,20 @@ namespace Branslekollen.Core.Services
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             vehicle.Refuelings.RemoveAll(r => r.Id == refuelingId);
             vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
+        }
+
+        public Task<Vehicle> GetLastUsedOrCreateNew()
+        {
+            if (_vehicles.Any())
+            {
+                Log.Verbose("DummyVehicleService.GetLastUsedOrCreateNew: Using first vehicle with id {VehicleId}", _vehicles.First().Id);
+                return Task.FromResult(_vehicles.First());
+            }
+            else
+            {
+                Log.Verbose("DummyVehicleService.GetLastUsedOrCreateNew: No vehicles found, creating new vehicle");
+                return Create();
+            }
         }
     }
 }

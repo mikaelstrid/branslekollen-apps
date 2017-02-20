@@ -1,54 +1,64 @@
 using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Autofac;
+using Branslekollen.Core;
 using Branslekollen.Core.ViewModels;
 using Branslekollen.Droid.Extensions;
-using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity]
+    [Activity(Label = "Tankning", MainLauncher = true)]
     public class RefuelingActivity : Activity
     {
-        private RefuelingViewModelBase _viewModel;
+        private RefuelingViewModel _viewModel;
 
         // === LIFECYCLE METHODS ===
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            var vehicleId = Intent.GetStringExtra("VehicleId");
-            var refuelingId = Intent.GetStringExtra("RefuelingId");
-
-            Log.Verbose("AddRefuelingViewModel.OnCreate: Using VehicleId to {VehicleId}", vehicleId);
             using (var scope = App.Container.BeginLifetimeScope())
             {
-                if (string.IsNullOrWhiteSpace(refuelingId))
-                {
-                    Log.Verbose("AddRefuelingViewModel.OnCreate: Received no refueling id, creating AddRefuelingViewModel");
-                    _viewModel = App.Container.Resolve<AddRefuelingViewModel>(new NamedParameter("vehicleId", vehicleId));
-                }
-                else
-                {
-                    Log.Verbose("AddRefuelingViewModel.OnCreate: Received refueling id {refuelingId}, creating EditRefuelingViewModel", refuelingId);
-                    _viewModel = App.Container.Resolve<EditRefuelingViewModel>(new NamedParameter("vehicleId", vehicleId), new NamedParameter("refuelingId", refuelingId));
-                }
+                _viewModel = App.Container.Resolve<RefuelingViewModel>(
+                    new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)),
+                    new NamedParameter("refuelingId", Intent.GetStringExtra(Constants.RefuelingIdName) ?? ""));
             }
 
             SetContentView(Resource.Layout.Refueling);
+            InitializeBottomNavigation();
+            InitializeTopToolbar();
+            InitializeFormFields();
+            UpdateTotalPrice();
+        }
 
-            var bottomNavigationFragment = FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.RefuelingBottomNavigationFragment);
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            _viewModel.OnSaveInstanceState(new AndroidSavedState(outState));
+            base.OnSaveInstanceState(outState);
+        }
+
+        private void InitializeBottomNavigation()
+        {
+            var bottomNavigationFragment =
+                FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.RefuelingBottomNavigationFragment);
             bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
+        }
 
+        private void InitializeTopToolbar()
+        {
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
+        }
 
+        private void InitializeFormFields()
+        {
             FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Text = _viewModel.Date;
             FindViewById<EditText>(Resource.Id.RefuelingDateEditText).Click += (sender, args) =>
             {
@@ -58,6 +68,7 @@ namespace Branslekollen.Droid
 
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).Text = _viewModel.Price;
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).TextChanged += PricePerLiter_OnTextChanged;
+            FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).RequestFocus();
 
             FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).Text = _viewModel.Volume;
             FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).TextChanged += VolumeInLiters_OnTextChanged;
@@ -66,12 +77,10 @@ namespace Branslekollen.Droid
             FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText).TextChanged += OdometerInKm_OnTextChanged;
 
             FindViewById<Switch>(Resource.Id.RefuelingFullTankSwitch).Checked = _viewModel.FullTank;
-
-            UpdateTotalPrice();
         }
 
-        
-        
+
+
         // === MENU METHODS ===
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -84,12 +93,12 @@ namespace Branslekollen.Droid
         {
             if (item.ItemId == Android.Resource.Id.Home)
             {
-                Finish();
+                GoToRefuelings();
             }
             if (item.ItemId == Resource.Id.MenuItemSave)
             {
                 if (OnMenuSave())
-                    Finish();
+                    GoToRefuelings();
             }
             if (item.ItemId == Resource.Id.MenuItemDelete)
             {
@@ -99,7 +108,7 @@ namespace Branslekollen.Droid
                 alertBuilder.SetPositiveButton("Ta bort", (senderAlert, args) => 
                 { 
                     _viewModel.HandleDelete();
-                    Finish();
+                    GoToRefuelings();
                 });
                 alertBuilder.SetNegativeButton("Avbryt", (senderAlert, args) => { });
                 var dialog = alertBuilder.Create();
@@ -157,6 +166,11 @@ namespace Branslekollen.Droid
             }
         }
 
+        private void GoToRefuelings()
+        {
+            var intent = new Intent(this, typeof(RefuelingsActivity));
+            StartActivity(intent);
+        }
 
 
         // === EVENT HANDLERS ===

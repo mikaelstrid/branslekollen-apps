@@ -28,6 +28,7 @@ namespace Branslekollen.Droid
 
             //builder.RegisterInstance(new DroidPlatform()).As<IPlatform>();
             builder.RegisterType<Configuration>().As<IConfiguration>();
+            builder.RegisterType<ApplicationState>().As<IApplicationState>().InstancePerLifetimeScope();
 #if DEBUG
             builder.RegisterType<DummyLocalStorage>().As<ILocalStorage>().InstancePerLifetimeScope();
             builder.RegisterType<DummyVehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
@@ -40,13 +41,13 @@ namespace Branslekollen.Droid
             builder.RegisterType<SplashViewModel>();
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<CreateVehicleViewModel>();
-            builder.RegisterType<RefuelingsViewModel>();
-            builder.RegisterType<AddRefuelingViewModel>()
-                .WithParameter(new TypedParameter(typeof(string), "vehicleId"));
-            builder.RegisterType<EditRefuelingViewModel>()
-                .WithParameter(new TypedParameter(typeof(string), "vehicleId"))
+            builder.RegisterType<RefuelingsViewModel>()
+                .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"));
+            builder.RegisterType<RefuelingViewModel>()
+                .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"))
                 .WithParameter(new TypedParameter(typeof(string), "refuelingId"));
-            builder.RegisterType<StatisticsViewModel>();
+            builder.RegisterType<StatisticsViewModel>()
+                .WithParameter(new TypedParameter(typeof(string), "vehicleId"));
 
             App.Container = builder.Build();
 

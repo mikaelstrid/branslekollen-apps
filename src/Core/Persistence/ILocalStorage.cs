@@ -8,8 +8,8 @@ namespace Branslekollen.Core.Persistence
     {
         //Task<List<string>> GetVehicleIds();
         //void SaveVehicleDescriporsIds(List<VehicleDescriptor> vehicleIds);
-        Task<List<VehicleDescriptor>> GetVehicleDescriptors();
-        Task AddVehicleDescriptor(VehicleDescriptor vehicleDescriptor);
+        //Task<List<VehicleDescriptor>> GetVehicleDescriptors();
+        //Task AddVehicleDescriptor(VehicleDescriptor vehicleDescriptor);
     }
 }
 
