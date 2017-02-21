@@ -8,6 +8,7 @@ namespace Branslekollen.Core.ViewModels
         protected readonly IApplicationState ApplicationState;
         protected readonly IVehicleService VehicleService;
 
+        public bool FreshApplicationStart { get; private set; }
         public string ActiveVehicleId => ApplicationState.ActiveVehicleId;
 
         protected ViewModelBase(IApplicationState applicationState, IVehicleService vehicleService, ISavedState savedState)
@@ -28,7 +29,14 @@ namespace Branslekollen.Core.ViewModels
 
                 // Fresh start of the application, get the last used vehicle (or create a new one)
                 Log.Verbose("ViewModelBase.Ctor: No active vehicle id, getting last used vehicle or creating a new.");
-                applicationState.ActiveVehicleId = VehicleService.GetLastUsedOrCreateNew().Result.Id;
+                var vehicle = VehicleService.GetLastUsed().Result;
+                if (vehicle == null)
+                {
+                    vehicle = VehicleService.Create().Result;
+                    FreshApplicationStart = true;
+                }
+
+                applicationState.ActiveVehicleId = vehicle.Id;
             }
         }
 

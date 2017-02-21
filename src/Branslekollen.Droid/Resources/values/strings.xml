@@ -7,7 +7,7 @@
   <string name="history">Historik</string>
   <string name="profile">Profil</string>
   <string name="getting_your_vehicles">Hämtar dina fordon</string>
-  <string name="welcome">Hej och välkommen till Bränslekollen!\n\nMed den här appen kan du enkelt hålla koll på hur mycket bränsle ditt fordon verkligen gör av med.\n\nTryck på knappen nedan för att komma igång med appen!</string>
+  <string name="welcome">Hej och välkommen till Bränslekollen!\n\nMed den här appen kan du enkelt hålla koll på hur mycket bränsle ditt fordon verkligen gör av med.\n\nTryck på knappen nedan för att lägga till din första tankning!</string>
   <string name="get_started">Kom igång</string>
   <string name="create_vehicle">Lägg till fordon</string>
   <string name="vehicle_name">Fordonsnamn</string>

@@ -7,7 +7,7 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Statistik")]
+    [Activity(Label = "Statistik", NoHistory = true)]
     public class StatisticsActivity : Activity
     {
         private StatisticsViewModel _viewModel;

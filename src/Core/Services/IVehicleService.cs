@@ -17,7 +17,7 @@ namespace Branslekollen.Core.Services
         void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
         void UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank);
         void DeleteRefueling(string vehicleId, string refuelingId);
-        Task<Vehicle> GetLastUsedOrCreateNew();
+        Task<Vehicle> GetLastUsed();
     }
 
     //public class VehicleService : IVehicleService

@@ -1,53 +1,26 @@
-﻿//using System.Linq;
-//using System.Threading.Tasks;
-//using Android.App;
-//using Android.Content;
-//using Android.OS;
-//using Autofac;
-//using Branslekollen.Core.ViewModels;
+﻿using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Widget;
 
-//namespace Branslekollen.Droid
-//{
-//	[Activity (NoHistory = true)]
-//	public class SplashActivity : Activity
-//	{
-//	    protected override void OnCreate(Bundle bundle)
-//	    {
-//            base.OnCreate(bundle);
-//        }
+namespace Branslekollen.Droid
+{
+    [Activity(NoHistory = true)]
+    public class SplashActivity : Activity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            SetContentView(Resource.Layout.Splash);
 
-//        protected override void OnResume()
-//        {
-//            base.OnResume();
-
-//            SetContentView(Resource.Layout.Splash);
-
-//            SplashViewModel viewModel;
-//            using (var scope = App.Container.BeginLifetimeScope())
-//            {
-//                viewModel = App.Container.Resolve<SplashViewModel>();
-//            }
-
-//            var startupWork = new Task(async () => 
-//            {
-//                try
-//                {
-//                    var vehicles = await viewModel.GetVehicles();
-
-//                    if (vehicles.Any())
-//                        StartActivity(new Intent(this, typeof(RefuelingsActivity)));
-//                    else
-//                        StartActivity(new Intent(this, typeof(CreateVehicleActivity)));
-//                }
-//                catch
-//                {
-//                    StartActivity(new Intent(this, typeof(NoConnectionActivity)));
-//                }
-//            });
-
-//            startupWork.Start();
-//        }
-//	}
-//}
+            var gettingStartedButton = FindViewById<Button>(Resource.Id.GettingStartedButton);
+            gettingStartedButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(RefuelingActivity));
+                StartActivity(intent);
+            };
+        }
+    }
+}
 
 

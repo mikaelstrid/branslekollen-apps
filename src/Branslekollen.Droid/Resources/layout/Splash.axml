@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <LinearLayout
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="@drawable/road"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <TextView
+        android:text="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
-        <TextView
-            android:text="Bränslekollen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="32dp" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:id="@+id/imageViewGettingVehicles" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="16dp"
-            android:text="@string/getting_your_vehicles" />
-    </LinearLayout>
+        android:id="@+id/textView1"
+        android:paddingTop="50dp"
+        android:gravity="center"
+        android:textSize="96px"
+        android:textColor="@color/my_text_color"
+        android:paddingBottom="50dp"
+        android:textStyle="bold" />
+    <TextView
+        android:text="@string/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="18dp"
+        android:textColor="@color/my_text_color"
+        android:background="#66ffffff"
+        android:gravity="center"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="24dp"
+        android:paddingTop="24dp"
+        android:layout_marginBottom="50dp" />
+    <Button
+        android:id="@+id/GettingStartedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_started"
+        android:background="@color/my_primary"
+        android:textColor="@color/my_white" />
 </LinearLayout>

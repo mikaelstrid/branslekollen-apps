@@ -10,7 +10,7 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Tankningar")]
+    [Activity(Label = "Tankningar", NoHistory = true)]
     public class RefuelingsActivity : Activity
     {
         private RefuelingsViewModel _viewModel;

@@ -12,7 +12,7 @@ using Branslekollen.Droid.Extensions;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Tankning", MainLauncher = true)]
+    [Activity(Label = "Tankning", MainLauncher = true, NoHistory = true)]
     public class RefuelingActivity : Activity
     {
         private RefuelingViewModel _viewModel;
@@ -29,11 +29,18 @@ namespace Branslekollen.Droid
                     new NamedParameter("refuelingId", Intent.GetStringExtra(Constants.RefuelingIdName) ?? ""));
             }
 
-            SetContentView(Resource.Layout.Refueling);
-            InitializeBottomNavigation();
-            InitializeTopToolbar();
-            InitializeFormFields();
-            UpdateTotalPrice();
+            if (_viewModel.FreshApplicationStart)
+            {
+                StartActivity(new Intent(this, typeof(SplashActivity)));
+            }
+            else
+            {
+                SetContentView(Resource.Layout.Refueling);
+                InitializeBottomNavigation();
+                InitializeTopToolbar();
+                InitializeFormFields();
+                UpdateTotalPrice();
+            }
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
