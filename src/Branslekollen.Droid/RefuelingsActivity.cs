@@ -16,12 +16,13 @@ namespace Branslekollen.Droid
         private RefuelingsViewModel _viewModel;
 
         // === LIFECYCLE METHODS ===
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             _viewModel = App.Container.Resolve<RefuelingsViewModel>(
                 new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
+            await _viewModel.Initialize();
 
             SetContentView(Resource.Layout.Refuelings);
 

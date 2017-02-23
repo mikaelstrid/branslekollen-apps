@@ -104,6 +104,7 @@
     <Compile Include="BottomNavigationFragment.cs" />
     <Compile Include="CreateVehicleActivity.cs" />
     <Compile Include="Extensions\EditTextExtensions.cs" />
+    <Compile Include="ProfileActivity.cs" />
     <Compile Include="StatisticsActivity.cs" />
     <Compile Include="RefuelingsActivity.cs" />
     <Compile Include="NoConnectionActivity.cs" />
@@ -134,6 +135,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Statistics.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Profile.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

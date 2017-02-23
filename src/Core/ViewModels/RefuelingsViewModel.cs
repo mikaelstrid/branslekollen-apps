@@ -11,7 +11,12 @@ namespace Branslekollen.Core.ViewModels
             : base(applicationState, vehicleService, savedState)
         {
         }
-        
+
+        public new async Task Initialize()
+        {
+            await base.Initialize();
+        }
+
         public async Task<List<Refueling>> GetRefuelings()
         {
             var vehicle = await VehicleService.GetById(ApplicationState.ActiveVehicleId);

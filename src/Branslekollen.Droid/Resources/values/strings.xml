@@ -18,6 +18,7 @@
   <string name="add">Lägg till</string>
   <string name="save">Spara</string>
   <string name="delete">Ta bort</string>
+  <string name="delete_all_vehicles">Ta bort alla fordon</string>
   <string name="date">Datum</string>
   <string name="price">Pris</string>
   <string name="volume">Volym</string>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Branslekollen.Core.Services;
 using Serilog;
 
@@ -32,6 +33,11 @@ namespace Branslekollen.Core.ViewModels
             {
                 RefuelingId = refuelingId;
             }
+        }
+        
+        public new async Task Initialize()
+        {
+            await base.Initialize();
 
             if (string.IsNullOrWhiteSpace(RefuelingId))
             {
@@ -39,10 +45,9 @@ namespace Branslekollen.Core.ViewModels
             }
             else
             {
-                var refueling = VehicleService.GetById(ActiveVehicleId)
-                    .Result
+                var refueling = (await VehicleService.GetById(ActiveVehicleId))
                     .Refuelings
-                    .Single(r => r.Id == refuelingId);
+                    .Single(r => r.Id == RefuelingId);
 
                 Date = refueling.RefuelingDate.ToString("d");
                 Price = refueling.PricePerLiter.ToString(CultureInfo.InvariantCulture);
@@ -59,20 +64,24 @@ namespace Branslekollen.Core.ViewModels
             Log.Verbose("RefuelingViewModel.OnSaveInstanceState: Saved refueling id '{RefuelingId}' to saved state", RefuelingId);
         }
 
-        public void HandleSave(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public async void HandleSave(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
+            CheckIfInitialized();
+
             if (string.IsNullOrWhiteSpace(RefuelingId))
-                VehicleService.AddRefueling(ActiveVehicleId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                await VehicleService.AddRefueling(ActiveVehicleId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
             else
-                VehicleService.UpdateRefueling(ActiveVehicleId, RefuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                await VehicleService.UpdateRefueling(ActiveVehicleId, RefuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
         }
 
-        public void HandleDelete()
+        public async void HandleDelete()
         {
+            CheckIfInitialized();
+
             if (string.IsNullOrWhiteSpace(RefuelingId))
                 return;
             else
-                VehicleService.DeleteRefueling(ActiveVehicleId, RefuelingId);
+                await VehicleService.DeleteRefueling(ActiveVehicleId, RefuelingId);
         }
     }
 }

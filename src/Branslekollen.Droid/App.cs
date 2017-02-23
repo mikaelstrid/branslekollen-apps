@@ -7,6 +7,7 @@ using Branslekollen.Core.Domain.Business;
 using Branslekollen.Core.Persistence;
 using Branslekollen.Core.Services;
 using Branslekollen.Core.ViewModels;
+using Branslekollen.Droid.Persistence;
 using Serilog;
 
 namespace Branslekollen.Droid
@@ -30,8 +31,8 @@ namespace Branslekollen.Droid
             builder.RegisterType<Configuration>().As<IConfiguration>();
             builder.RegisterType<ApplicationState>().As<IApplicationState>().InstancePerLifetimeScope();
 #if DEBUG
-            builder.RegisterType<DummyLocalStorage>().As<ILocalStorage>().InstancePerLifetimeScope();
-            builder.RegisterType<DummyVehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
+            builder.RegisterType<LocalStorage>().As<ILocalStorage>().InstancePerLifetimeScope();
+            builder.RegisterType<LocalVehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
 #else
             builder.RegisterType<LocalStorage>().As<ILocalStorage>();
             builder.RegisterType<VehicleService>().As<IVehicleService>().InstancePerLifetimeScope();
@@ -44,6 +45,8 @@ namespace Branslekollen.Droid
                 .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"))
                 .WithParameter(new TypedParameter(typeof(string), "refuelingId"));
             builder.RegisterType<StatisticsViewModel>()
+                .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"));
+            builder.RegisterType<ProfileViewModel>()
                 .WithParameter(new TypedParameter(typeof(ISavedState), "savedState"));
 
             App.Container = builder.Build();

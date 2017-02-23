@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Branslekollen.Core.ViewModels;
+﻿using System.Threading.Tasks;
 
 namespace Branslekollen.Core.Persistence
 {
     public interface ILocalStorage
     {
-        //Task<List<string>> GetVehicleIds();
-        //void SaveVehicleDescriporsIds(List<VehicleDescriptor> vehicleIds);
-        //Task<List<VehicleDescriptor>> GetVehicleDescriptors();
-        //Task AddVehicleDescriptor(VehicleDescriptor vehicleDescriptor);
+        Task WriteJson(string key, string contents);
+        Task<string> ReadJson(string key);
     }
 }
 

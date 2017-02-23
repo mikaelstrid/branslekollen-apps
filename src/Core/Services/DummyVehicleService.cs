@@ -65,39 +65,48 @@ namespace Branslekollen.Core.Services
             return Task.FromResult(_vehicles.FirstOrDefault(v => v.Id == vehicleId));
         }
 
-        public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+        public Task DeleteAll()
         {
-            var vehicle = _vehicles.Single(v => v.Id == vehicleid);
+            _vehicles.Clear();
+            return Task.CompletedTask;
+        }
+
+        public Task AddRefueling(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+        {
+            var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             vehicle.Refuelings.Add(new Refueling
             {
                 Id = Guid.NewGuid().ToString(),
                 CreationTimeUtc = DateTime.UtcNow,
-                RefuelingDate = date,
+                RefuelingDate = refuelDate,
                 PricePerLiter = pricePerLiter,
                 NumberOfLiters = numberOfLiters,
                 OdometerInKm = odometerInKm,
                 FullTank = fullTank
             });
             vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
+            return Task.CompletedTask;
         }
 
-        public void UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public Task UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             var refueling = vehicle.Refuelings.Single(r => r.Id == refuelingId);
             refueling.RefuelingDate = refuelDate;
             refueling.PricePerLiter = pricePerLiter;
-            refueling.NumberOfLiters = volumeInLiters;
+            refueling.NumberOfLiters = numberOfLiters;
             refueling.OdometerInKm = odometerInKm;
             refueling.FullTank = fullTank;
             vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
+            return Task.CompletedTask;
         }
 
-        public void DeleteRefueling(string vehicleId, string refuelingId)
+        public Task DeleteRefueling(string vehicleId, string refuelingId)
         {
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             vehicle.Refuelings.RemoveAll(r => r.Id == refuelingId);
             vehicle.Refuelings.Sort((r1, r2) => r1.RefuelingDate.CompareTo(r2.RefuelingDate));
+            return Task.CompletedTask;
         }
 
         public Task<Vehicle> GetLastUsed()

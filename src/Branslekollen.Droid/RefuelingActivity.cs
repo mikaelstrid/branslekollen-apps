@@ -18,7 +18,7 @@ namespace Branslekollen.Droid
         private RefuelingViewModel _viewModel;
 
         // === LIFECYCLE METHODS ===
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -28,6 +28,7 @@ namespace Branslekollen.Droid
                     new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)),
                     new NamedParameter("refuelingId", Intent.GetStringExtra(Constants.RefuelingIdName) ?? ""));
             }
+            await _viewModel.Initialize();
 
             if (_viewModel.FreshApplicationStart)
             {

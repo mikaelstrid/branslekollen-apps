@@ -14,9 +14,11 @@ namespace Branslekollen.Core.Services
         Task<List<Vehicle>> GetAll();
         Task<Vehicle> Create(string name = "", FuelType fuelType = FuelType.Unknown);
         Task<Vehicle> GetById(string vehicleId);
-        void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
-        void UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank);
-        void DeleteRefueling(string vehicleId, string refuelingId);
+        Task DeleteAll();
+
+        Task AddRefueling(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
+        Task UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
+        Task DeleteRefueling(string vehicleId, string refuelingId);
         Task<Vehicle> GetLastUsed();
     }
 
@@ -139,7 +141,7 @@ namespace Branslekollen.Core.Services
     //        return (await GetAll()).FirstOrDefault(v => v.Id == vehicleId);
     //    }
 
-    //    public void AddRefueling(string vehicleid, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+    //    public void AddRefueling(string vehicleId, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
     //    {
     //        throw new NotImplementedException();
     //    }
