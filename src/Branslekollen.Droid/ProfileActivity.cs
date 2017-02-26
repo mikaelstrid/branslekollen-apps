@@ -41,7 +41,7 @@ namespace Branslekollen.Droid
         {
             var bottomNavigationFragment =
                 FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.BottomNavigationFragment);
-            bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
+            bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemProfile);
         }
 
         private void InitializeTopToolbar()
