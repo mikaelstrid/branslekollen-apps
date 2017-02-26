@@ -17,9 +17,11 @@ namespace Branslekollen.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            _viewModel = App.Container.Resolve<StatisticsViewModel>(
-                new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
-            await _viewModel.Initialize();
+            using (var scope = App.Container.BeginLifetimeScope())
+            {
+                _viewModel = scope.Resolve<StatisticsViewModel>(new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
+            }
+            await _viewModel.InitializeAsync();
 
             SetContentView(Resource.Layout.Statistics);
 
@@ -48,13 +50,13 @@ namespace Branslekollen.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            UpdateData();
+            UpdateDataAsync();
         }
 
-        private async void UpdateData()
+        private async void UpdateDataAsync()
         {
-            Log.Verbose("StatisticsActivity.UpdateData: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
-            var averageConsumptionAsLiterPerKm = await _viewModel.GetAverageConsumptionAsLiterPerKm();
+            Log.Verbose("StatisticsActivity.UpdateDataAsync: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
+            var averageConsumptionAsLiterPerKm = await _viewModel.GetAverageConsumptionAsLiterPerKmAsync();
             var averageConsumptionTextView = FindViewById<TextView>(Resource.Id.StatisticsAverageConsumptionTextView);
             if (averageConsumptionAsLiterPerKm.HasValue)
             {

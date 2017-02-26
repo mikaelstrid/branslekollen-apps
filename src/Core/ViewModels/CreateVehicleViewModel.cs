@@ -18,7 +18,7 @@
 //        public async Task<Vehicle> CreateVehicle(string name, string fuelType)
 //        {
 //            var parsedFuelType = (FuelType) Enum.Parse(typeof(FuelType), fuelType, true);
-//            var vehicle = await _vehicleService.Create(name, parsedFuelType);
+//            var vehicle = await _vehicleService.CreateAsync(name, parsedFuelType);
 //            return vehicle;
 //        }
 //    }

@@ -12,14 +12,14 @@ namespace Branslekollen.Core.ViewModels
         {
         }
 
-        public new async Task Initialize()
+        public new async Task InitializeAsync()
         {
-            await base.Initialize();
+            await base.InitializeAsync();
         }
 
-        public async Task<List<Refueling>> GetRefuelings()
+        public async Task<List<Refueling>> GetRefuelingsAsync()
         {
-            var vehicle = await VehicleService.GetById(ApplicationState.ActiveVehicleId);
+            var vehicle = await VehicleService.GetByIdAsync(ApplicationState.ActiveVehicleId);
             return vehicle != null ? vehicle.Refuelings : new List<Refueling>();
         }
     }

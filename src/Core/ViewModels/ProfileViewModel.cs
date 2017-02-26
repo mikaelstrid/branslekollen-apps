@@ -10,14 +10,14 @@ namespace Branslekollen.Core.ViewModels
         {
         }
 
-        public new async Task Initialize()
+        public new async Task InitializeAsync()
         {
-            await base.Initialize();
+            await base.InitializeAsync();
         }
 
-        public async void DeleteAllVehicles()
+        public async Task DeleteAllVehiclesAsync()
         {
-            await VehicleService.DeleteAll();
+            await VehicleService.DeleteAllAsync();
             ApplicationState.ActiveVehicleId = "";
         }
     }

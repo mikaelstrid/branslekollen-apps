@@ -16,14 +16,16 @@ namespace Branslekollen.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            _viewModel = App.Container.Resolve<ProfileViewModel>(
-                new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
-            await _viewModel.Initialize();
+            using (var scope = App.Container.BeginLifetimeScope())
+            {
+                _viewModel = scope.Resolve<ProfileViewModel>(new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
+            }
+            await _viewModel.InitializeAsync();
 
             SetContentView(Resource.Layout.Profile);
 
             var deleteAllVehiclesButton = FindViewById<Button>(Resource.Id.DeleteAllVehiclesButton);
-            deleteAllVehiclesButton.Click += (sender, e) => _viewModel.DeleteAllVehicles();
+            deleteAllVehiclesButton.Click += async (sender, e) => await _viewModel.DeleteAllVehiclesAsync();
 
             InitializeBottomNavigation();
             InitializeTopToolbar();

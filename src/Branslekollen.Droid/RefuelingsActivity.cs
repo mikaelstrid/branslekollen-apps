@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -20,9 +21,11 @@ namespace Branslekollen.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            _viewModel = App.Container.Resolve<RefuelingsViewModel>(
-                new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
-            await _viewModel.Initialize();
+            using (var scope = App.Container.BeginLifetimeScope())
+            {
+                _viewModel = scope.Resolve<RefuelingsViewModel>(new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
+            }
+            await _viewModel.InitializeAsync();
 
             SetContentView(Resource.Layout.Refuelings);
 
@@ -67,16 +70,16 @@ namespace Branslekollen.Droid
             StartActivity(intent);
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             base.OnResume();
-            UpdateData();
+            await UpdateDataAsync();
         }
 
-        private async void UpdateData()
+        private async Task UpdateDataAsync()
         {
-            Log.Verbose("RefuelingsActivity.UpdateData: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
-            var items = await _viewModel.GetRefuelings();
+            Log.Verbose("RefuelingsActivity.UpdateDataAsync: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
+            var items = await _viewModel.GetRefuelingsAsync();
             var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
             refuelingsListView.Adapter = new RefuelingsAdapter(this, items.ToArray());
         }
@@ -92,17 +95,15 @@ namespace Branslekollen.Droid
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuItemAdd)
+            switch (item.ItemId)
             {
-                OnTopMenuAdd();
+                case Resource.Id.MenuItemAdd:
+                    var intent = new Intent(this, typeof(RefuelingActivity));
+                    StartActivity(intent);
+                    return true;
+                default:
+                    return base.OnOptionsItemSelected(item);
             }
-            return base.OnOptionsItemSelected(item);
-        }
-
-        private void OnTopMenuAdd()
-        {
-            var intent = new Intent(this, typeof(RefuelingActivity));
-            StartActivity(intent);
         }
     }
 }

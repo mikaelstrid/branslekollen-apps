@@ -35,9 +35,9 @@ namespace Branslekollen.Core.ViewModels
             }
         }
         
-        public new async Task Initialize()
+        public new async Task InitializeAsync()
         {
-            await base.Initialize();
+            await base.InitializeAsync();
 
             if (string.IsNullOrWhiteSpace(RefuelingId))
             {
@@ -45,7 +45,7 @@ namespace Branslekollen.Core.ViewModels
             }
             else
             {
-                var refueling = (await VehicleService.GetById(ActiveVehicleId))
+                var refueling = (await VehicleService.GetByIdAsync(ActiveVehicleId))
                     .Refuelings
                     .Single(r => r.Id == RefuelingId);
 
@@ -64,24 +64,24 @@ namespace Branslekollen.Core.ViewModels
             Log.Verbose("RefuelingViewModel.OnSaveInstanceState: Saved refueling id '{RefuelingId}' to saved state", RefuelingId);
         }
 
-        public async void HandleSave(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
+        public async Task HandleSaveAsync(DateTime refuelDate, double pricePerLiter, double volumeInLiters, int odometerInKm, bool fullTank)
         {
             CheckIfInitialized();
 
             if (string.IsNullOrWhiteSpace(RefuelingId))
-                await VehicleService.AddRefueling(ActiveVehicleId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                await VehicleService.AddRefuelingAsync(ActiveVehicleId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
             else
-                await VehicleService.UpdateRefueling(ActiveVehicleId, RefuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
+                await VehicleService.UpdateRefuelingAsync(ActiveVehicleId, RefuelingId, refuelDate, pricePerLiter, volumeInLiters, odometerInKm, fullTank);
         }
 
-        public async void HandleDelete()
+        public async Task HandleDeleteAsync()
         {
             CheckIfInitialized();
 
             if (string.IsNullOrWhiteSpace(RefuelingId))
                 return;
             else
-                await VehicleService.DeleteRefueling(ActiveVehicleId, RefuelingId);
+                await VehicleService.DeleteRefuelingAsync(ActiveVehicleId, RefuelingId);
         }
     }
 }

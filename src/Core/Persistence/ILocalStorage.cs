@@ -4,8 +4,8 @@ namespace Branslekollen.Core.Persistence
 {
     public interface ILocalStorage
     {
-        Task WriteJson(string key, string contents);
-        Task<string> ReadJson(string key);
+        Task WriteAsync(string key, string contents);
+        Task<string> ReadAsync(string key);
     }
 }
 

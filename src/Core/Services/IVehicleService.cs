@@ -11,15 +11,15 @@ namespace Branslekollen.Core.Services
 {
     public interface IVehicleService
     {
-        Task<List<Vehicle>> GetAll();
-        Task<Vehicle> Create(string name = "", FuelType fuelType = FuelType.Unknown);
-        Task<Vehicle> GetById(string vehicleId);
-        Task DeleteAll();
+        Task<List<Vehicle>> GetAllAsync();
+        Task<Vehicle> CreateAsync(string name = "", FuelType fuelType = FuelType.Unknown);
+        Task<Vehicle> GetByIdAsync(string vehicleId);
+        Task DeleteAllAsync();
 
-        Task AddRefueling(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
-        Task UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
-        Task DeleteRefueling(string vehicleId, string refuelingId);
-        Task<Vehicle> GetLastUsed();
+        Task AddRefuelingAsync(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
+        Task UpdateRefuelingAsync(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank);
+        Task DeleteRefuelingAsync(string vehicleId, string refuelingId);
+        Task<Vehicle> GetLastUsedAsync();
     }
 
     //public class VehicleService : IVehicleService
@@ -38,13 +38,13 @@ namespace Branslekollen.Core.Services
     //        _cachedVehicles = new List<Vehicle>();
     //    }
 
-    //    public async Task<List<Vehicle>> GetAll()
+    //    public async Task<List<Vehicle>> GetAllAsync()
     //    {
     //        try
     //        {
     //            if (_cachedVehicles.Any())
     //            {
-    //                Log.Verbose("VehicleService.GetAll: Found {VehiclesCount} local vehicles in memory",
+    //                Log.Verbose("VehicleService.GetAllAsync: Found {VehiclesCount} local vehicles in memory",
     //                    _cachedVehicles.Count);
     //                return _cachedVehicles;
     //            }
@@ -54,7 +54,7 @@ namespace Branslekollen.Core.Services
     //                if (localVehicleIds.Any())
     //                {
     //                    var url = $"{_configuration.ApiBaseUrl}{VEHICLES_ENDPOINT}/ids";
-    //                    Log.Verbose("VehicleService.GetAll: Making GET request to {Url} with ids {LocalVehicleIds}...",
+    //                    Log.Verbose("VehicleService.GetAllAsync: Making GET request to {Url} with ids {LocalVehicleIds}...",
     //                        url, localVehicleIds);
 
     //                    var receivedVehicles = await url
@@ -62,7 +62,7 @@ namespace Branslekollen.Core.Services
     //                        .WithTimeout(5)
     //                        .GetJsonAsync<List<VehicleApiModel>>();
 
-    //                    Log.Verbose("VehicleService.GetAll: ...received {@Vehicles}", receivedVehicles);
+    //                    Log.Verbose("VehicleService.GetAllAsync: ...received {@Vehicles}", receivedVehicles);
 
     //                    _localStorage.SaveVehicleIds(receivedVehicles.Select(v => v.Id).ToList());
     //                    _cachedVehicles = receivedVehicles.Select(v => v.ToDomainModel()).ToList();
@@ -70,14 +70,14 @@ namespace Branslekollen.Core.Services
     //                }
     //                else
     //                {
-    //                    Log.Verbose("VehicleService.GetAll: No local vehicle ids, return empty list");
+    //                    Log.Verbose("VehicleService.GetAllAsync: No local vehicle ids, return empty list");
     //                    return new List<Vehicle>();
     //                }
     //            }
     //        }
     //        catch (FlurlHttpTimeoutException e1)
     //        {
-    //            Log.Warning("VehicleService.Create: Timeout when calling API");
+    //            Log.Warning("VehicleService.CreateAsync: Timeout when calling API");
     //            throw new IOException("Timeout when calling API", e1);
     //        }
     //        catch (FlurlHttpException e2)
@@ -88,19 +88,19 @@ namespace Branslekollen.Core.Services
     //            else
     //                errorMessage = "Totally failed before getting a response! " + e2.Message;
 
-    //            Log.Warning("VehicleService.Create: " + errorMessage);
+    //            Log.Warning("VehicleService.CreateAsync: " + errorMessage);
     //            throw new IOException("Error when calling API", e2);
     //        }
     //    }
 
-    //    public async Task<Vehicle> Create(string name, string fuelType)
+    //    public async Task<Vehicle> CreateAsync(string name, string fuelType)
     //    {
     //        try
     //        {
     //            throw new NotImplementedException();
     //            //var url = $"{_configuration.ApiBaseUrl}{VEHICLES_ENDPOINT}";
 
-    //            //Log.Verbose("VehicleService.Create: Making POST request to {Url} with {@Parameters}", url, new { Name = name, FuelType = fuelType });
+    //            //Log.Verbose("VehicleService.CreateAsync: Making POST request to {Url} with {@Parameters}", url, new { Name = name, FuelType = fuelType });
 
     //            //var apiModel = new VehicleApiModel { Name = name, Fuel = fuelType };
 
@@ -109,18 +109,18 @@ namespace Branslekollen.Core.Services
     //            //    .PostJsonAsync(apiModel)
     //            //    .ReceiveJson<VehicleApiModel>();
 
-    //            //Log.Verbose("VehicleService.Create: Request sent successfully, received {@CreateVehicle}", createdVehicle);
+    //            //Log.Verbose("VehicleService.CreateAsync: Request sent successfully, received {@CreateVehicle}", createdVehicle);
 
     //            //var localVehicleIds = await _localStorage.GetVehicleIds();
     //            //localVehicleIds.Add(createdVehicle.Id);
     //            //_localStorage.SaveVehicleIds(localVehicleIds);
-    //            //Log.Verbose("VehicleService.Create: Vehicle ids {@VehicleIds} saved to local storage", localVehicleIds);
+    //            //Log.Verbose("VehicleService.CreateAsync: Vehicle ids {@VehicleIds} saved to local storage", localVehicleIds);
 
     //            //return createdVehicle;
     //        }
     //        catch (FlurlHttpTimeoutException e1)
     //        {
-    //            Log.Warning("VehicleService.Create: Timeout when calling API");
+    //            Log.Warning("VehicleService.CreateAsync: Timeout when calling API");
     //            throw new IOException("Timeout when calling API", e1);
     //        }
     //        catch (FlurlHttpException e2)
@@ -131,17 +131,17 @@ namespace Branslekollen.Core.Services
     //            else
     //                errorMessage = "Totally failed before getting a response! " + e2.Message;
 
-    //            Log.Warning("VehicleService.Create: " + errorMessage);
+    //            Log.Warning("VehicleService.CreateAsync: " + errorMessage);
     //            throw new IOException("Error when calling API", e2);
     //        }
     //    }
 
-    //    public async Task<Vehicle> GetById(string vehicleId)
+    //    public async Task<Vehicle> GetByIdAsync(string vehicleId)
     //    {
-    //        return (await GetAll()).FirstOrDefault(v => v.Id == vehicleId);
+    //        return (await GetAllAsync()).FirstOrDefault(v => v.Id == vehicleId);
     //    }
 
-    //    public void AddRefueling(string vehicleId, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+    //    public void AddRefuelingAsync(string vehicleId, DateTime date, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
     //    {
     //        throw new NotImplementedException();
     //    }

@@ -20,16 +20,16 @@ namespace Branslekollen.Core.ViewModels
             _consumptionCalculator = consumptionCalculator;
         }
 
-        public new async Task Initialize()
+        public new async Task InitializeAsync()
         {
-            await base.Initialize();
+            await base.InitializeAsync();
         }
 
-        public async Task<double?> GetAverageConsumptionAsLiterPerKm()
+        public async Task<double?> GetAverageConsumptionAsLiterPerKmAsync()
         {
-            var vehicle = await VehicleService.GetById(ActiveVehicleId);
+            var vehicle = await VehicleService.GetByIdAsync(ActiveVehicleId);
             var averageConsumption = _consumptionCalculator.CalculateAverageConsumptionAsLiterPerKm(vehicle, DateTime.Parse("1900-01-01"), DateTime.Parse("2100-01-01"));
-            Log.Verbose("StatisticsViewModel.GetAverageConsumptionAsLiterPerKm: Average consumption = {AverageConsumption}", averageConsumption);
+            Log.Verbose("StatisticsViewModel.GetAverageConsumptionAsLiterPerKmAsync: Average consumption = {AverageConsumption}", averageConsumption);
             return averageConsumption;
         }
     }

@@ -27,7 +27,7 @@ namespace Branslekollen.Core.ViewModels
             Log.Verbose("ViewModelBase.Ctor: Application state restored");
         }
 
-        protected async Task Initialize()
+        protected async Task InitializeAsync()
         {
             IsInitialized = true;
 
@@ -36,10 +36,10 @@ namespace Branslekollen.Core.ViewModels
 
             // Fresh start of the application, get the last used vehicle (or create a new one)
             Log.Verbose("ViewModelBase.Ctor: No active vehicle id, getting last used vehicle or creating a new.");
-            var vehicle = await VehicleService.GetLastUsed();
+            var vehicle = await VehicleService.GetLastUsedAsync();
             if (vehicle == null)
             {
-                vehicle = await VehicleService.Create();
+                vehicle = await VehicleService.CreateAsync();
                 FreshApplicationStart = true;
             }
 

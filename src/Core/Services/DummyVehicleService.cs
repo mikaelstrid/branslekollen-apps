@@ -45,33 +45,33 @@ namespace Branslekollen.Core.Services
                 });
         }
 
-        public Task<List<Vehicle>> GetAll()
+        public Task<List<Vehicle>> GetAllAsync()
         {
-            Log.Verbose("DummyVehicleService.GetAll...");
+            Log.Verbose("DummyVehicleService.GetAllAsync...");
             Task.Delay(1000);
             return Task.FromResult(_vehicles);
         }
 
-        public Task<Vehicle> Create(string name = "", FuelType fuelType = FuelType.Unknown)
+        public Task<Vehicle> CreateAsync(string name = "", FuelType fuelType = FuelType.Unknown)
         {
-            Log.Verbose("DummyVehicleService.Create...");
+            Log.Verbose("DummyVehicleService.CreateAsync...");
             var vehicle = new Vehicle(Guid.NewGuid().ToString(), name, fuelType);
             _vehicles.Add(vehicle);
             return Task.FromResult(vehicle);
         }
 
-        public Task<Vehicle> GetById(string vehicleId)
+        public Task<Vehicle> GetByIdAsync(string vehicleId)
         {
             return Task.FromResult(_vehicles.FirstOrDefault(v => v.Id == vehicleId));
         }
 
-        public Task DeleteAll()
+        public Task DeleteAllAsync()
         {
             _vehicles.Clear();
             return Task.CompletedTask;
         }
 
-        public Task AddRefueling(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+        public Task AddRefuelingAsync(string vehicleId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             vehicle.Refuelings.Add(new Refueling
@@ -88,7 +88,7 @@ namespace Branslekollen.Core.Services
             return Task.CompletedTask;
         }
 
-        public Task UpdateRefueling(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
+        public Task UpdateRefuelingAsync(string vehicleId, string refuelingId, DateTime refuelDate, double pricePerLiter, double numberOfLiters, int odometerInKm, bool fullTank)
         {
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             var refueling = vehicle.Refuelings.Single(r => r.Id == refuelingId);
@@ -101,7 +101,7 @@ namespace Branslekollen.Core.Services
             return Task.CompletedTask;
         }
 
-        public Task DeleteRefueling(string vehicleId, string refuelingId)
+        public Task DeleteRefuelingAsync(string vehicleId, string refuelingId)
         {
             var vehicle = _vehicles.Single(v => v.Id == vehicleId);
             vehicle.Refuelings.RemoveAll(r => r.Id == refuelingId);
@@ -109,16 +109,16 @@ namespace Branslekollen.Core.Services
             return Task.CompletedTask;
         }
 
-        public Task<Vehicle> GetLastUsed()
+        public Task<Vehicle> GetLastUsedAsync()
         {
             if (_vehicles.Any())
             {
-                Log.Verbose("DummyVehicleService.GetLastUsed: Using first vehicle with id {VehicleId}", _vehicles.First().Id);
+                Log.Verbose("DummyVehicleService.GetLastUsedAsync: Using first vehicle with id {VehicleId}", _vehicles.First().Id);
                 return Task.FromResult(_vehicles.First());
             }
             else
             {
-                Log.Verbose("DummyVehicleService.GetLastUsed: No vehicles found, return null");
+                Log.Verbose("DummyVehicleService.GetLastUsedAsync: No vehicles found, return null");
                 return Task.FromResult<Vehicle>(null);
             }
         }

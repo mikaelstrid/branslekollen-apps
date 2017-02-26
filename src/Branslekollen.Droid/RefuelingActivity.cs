@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -24,11 +25,11 @@ namespace Branslekollen.Droid
 
             using (var scope = App.Container.BeginLifetimeScope())
             {
-                _viewModel = App.Container.Resolve<RefuelingViewModel>(
+                _viewModel = scope.Resolve<RefuelingViewModel>(
                     new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)),
                     new NamedParameter("refuelingId", Intent.GetStringExtra(Constants.RefuelingIdName) ?? ""));
             }
-            await _viewModel.Initialize();
+            await _viewModel.InitializeAsync();
 
             if (_viewModel.FreshApplicationStart)
             {
@@ -99,78 +100,78 @@ namespace Branslekollen.Droid
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
+            switch (item.ItemId)
             {
-                GoToRefuelings();
-            }
-            if (item.ItemId == Resource.Id.MenuItemSave)
-            {
-                if (OnMenuSave())
+                case Android.Resource.Id.Home:
                     GoToRefuelings();
+                    return true;
+                case Resource.Id.MenuItemSave:
+                    OnMenuSave();
+                    return true;
+                case Resource.Id.MenuItemDelete:
+                    var alertBuilder = new AlertDialog.Builder(this);
+                    alertBuilder.SetTitle("Ta bort tankning?");
+                    alertBuilder.SetMessage("Är du säker på att du vill ta bort tankningen?");
+                    alertBuilder.SetPositiveButton("Ta bort", async (senderAlert, args) =>
+                    {
+                        await _viewModel.HandleDeleteAsync();
+                        GoToRefuelings();
+                    });
+                    alertBuilder.SetNegativeButton("Avbryt", (senderAlert, args) => { });
+                    var dialog = alertBuilder.Create();
+                    dialog.Show();
+                    return true;
+                default:
+                    return base.OnOptionsItemSelected(item);
             }
-            if (item.ItemId == Resource.Id.MenuItemDelete)
-            {
-                var alertBuilder = new AlertDialog.Builder(this);
-                alertBuilder.SetTitle("Ta bort tankning?");
-                alertBuilder.SetMessage("Är du säker på att du vill ta bort tankningen?");
-                alertBuilder.SetPositiveButton("Ta bort", (senderAlert, args) => 
-                { 
-                    _viewModel.HandleDelete();
-                    GoToRefuelings();
-                });
-                alertBuilder.SetNegativeButton("Avbryt", (senderAlert, args) => { });
-                var dialog = alertBuilder.Create();
-                dialog.Show();
-            }
-            return base.OnOptionsItemSelected(item);
         }
 
-        private bool OnMenuSave()
+        private void OnMenuSave()
         {
             var dateEditText = FindViewById<EditText>(Resource.Id.RefuelingDateEditText);
             if (!IsDateValid(false))
             {
                 dateEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_date));
-                return false;
             }
 
             var pricePerLiterEditText = FindViewById<EditText>(Resource.Id.RefuelingPriceEditText);
             if (!IsPricePerLiterValid(false))
             {
                 pricePerLiterEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_price));
-                return false;
             }
 
             var volumeInLitersEditText = FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText);
             if (!IsVolumeInLitersValid(false))
             {
                 volumeInLitersEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_volume));
-                return false;
             }
 
             var odometerInKmEditText = FindViewById<EditText>(Resource.Id.RefuelingOdometerEditText);
             if (!IsOdometerInKmValid(false))
             {
                 odometerInKmEditText.ShowError(Application.Context.Resources.GetString(Resource.String.validation_error_odometer));
-                return false;
             }
 
             var fullTank = FindViewById<Switch>(Resource.Id.RefuelingFullTankSwitch).Checked;
 
             try
             {
-                _viewModel.HandleSave(
-                    GetDate(),
-                    GetPricePerLiter(),
-                    GetVolumeInLiters(),
-                    GetOdometerInKm(),
-                    fullTank);
-                return true;
+                // http://stackoverflow.com/questions/14485115/synchronously-waiting-for-an-async-operation-and-why-does-wait-freeze-the-pro
+                Task.Run(async () =>
+                    {
+                        await _viewModel.HandleSaveAsync(
+                            GetDate(),
+                            GetPricePerLiter(),
+                            GetVolumeInLiters(),
+                            GetOdometerInKm(),
+                            fullTank);
+                    })
+                    .Wait();
+                GoToRefuelings();
             }
             catch (Exception)
             {
                 Toast.MakeText(this, Application.Context.Resources.GetString(Resource.String.error_adding_refueling), ToastLength.Long).Show();
-                return false;
             }
         }
 

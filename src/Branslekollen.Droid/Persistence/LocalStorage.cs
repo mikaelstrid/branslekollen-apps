@@ -9,11 +9,11 @@ namespace Branslekollen.Droid.Persistence
 {
     public class LocalStorage : ILocalStorage
     {
-        public async Task WriteJson(string key, string contents)
+        public async Task WriteAsync(string key, string contents)
         {
             try
             {
-                Log.Verbose("LocalStorage.WriteJson: Writing key {@Key} to local storage", key);
+                Log.Verbose("LocalStorage.WriteAsync: Writing key {@Key} to local storage", key);
                 var rootFolder = FileSystem.Current.LocalStorage;
                 var file = await rootFolder.CreateFileAsync($"{key}.json", CreationCollisionOption.ReplaceExisting);
                 await file.WriteAllTextAsync(contents);
@@ -26,11 +26,11 @@ namespace Branslekollen.Droid.Persistence
             }
         }
 
-        public async Task<string> ReadJson(string key)
+        public async Task<string> ReadAsync(string key)
         {
             try
             {
-                Log.Verbose("LocalStorage.ReadJson: Reading key {@Key} from local storage", key);
+                Log.Verbose("LocalStorage.ReadAsync: Reading key {@Key} from local storage", key);
                 var rootFolder = FileSystem.Current.LocalStorage;
                 var fileName = $"{key}.json";
                 if (await rootFolder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
