@@ -6,7 +6,7 @@ using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Profil", NoHistory = true)]
+    [Activity(NoHistory = true)]
     public class ProfileActivity : Activity
     {
         private ProfileViewModel _viewModel;
@@ -48,6 +48,7 @@ namespace Branslekollen.Droid
         {
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
+            ActionBar.Title = Resources.GetString(Resource.String.profile);
         }
     }
 }

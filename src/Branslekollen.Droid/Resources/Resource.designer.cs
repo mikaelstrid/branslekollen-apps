@@ -294,101 +294,104 @@ namespace Branslekollen.Droid
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040011
-			public const int add = 2130968593;
+			// aapt resource value: 0x7f040012
+			public const int add = 2130968594;
 			
 			// aapt resource value: 0x7f040002
 			public const int app_name = 2130968578;
 			
-			// aapt resource value: 0x7f04000b
-			public const int create_vehicle = 2130968587;
+			// aapt resource value: 0x7f04000c
+			public const int create_vehicle = 2130968588;
 			
 			// aapt resource value: 0x7f040003
 			public const int dashboard = 2130968579;
 			
-			// aapt resource value: 0x7f040015
-			public const int date = 2130968597;
-			
-			// aapt resource value: 0x7f040013
-			public const int delete = 2130968595;
+			// aapt resource value: 0x7f040016
+			public const int date = 2130968598;
 			
 			// aapt resource value: 0x7f040014
-			public const int delete_all_vehicles = 2130968596;
+			public const int delete = 2130968596;
 			
-			// aapt resource value: 0x7f04001a
-			public const int did_you_refill_completely = 2130968602;
+			// aapt resource value: 0x7f040015
+			public const int delete_all_vehicles = 2130968597;
 			
-			// aapt resource value: 0x7f040020
-			public const int error_adding_refueling = 2130968608;
-			
-			// aapt resource value: 0x7f04000e
-			public const int fuel_type = 2130968590;
-			
-			// aapt resource value: 0x7f040010
-			public const int fuel_type_diesel = 2130968592;
-			
-			// aapt resource value: 0x7f04000f
-			public const int fuel_type_petrol = 2130968591;
-			
-			// aapt resource value: 0x7f04000a
-			public const int get_started = 2130968586;
-			
-			// aapt resource value: 0x7f040008
-			public const int getting_your_vehicles = 2130968584;
-			
-			// aapt resource value: 0x7f040006
-			public const int history = 2130968582;
+			// aapt resource value: 0x7f04001b
+			public const int did_you_refill_completely = 2130968603;
 			
 			// aapt resource value: 0x7f040021
-			public const int not_enough_refuelings_to_calculate_average = 2130968609;
+			public const int error_adding_refueling = 2130968609;
 			
-			// aapt resource value: 0x7f040019
-			public const int odometer = 2130968601;
+			// aapt resource value: 0x7f04000f
+			public const int fuel_type = 2130968591;
 			
-			// aapt resource value: 0x7f040016
-			public const int price = 2130968598;
+			// aapt resource value: 0x7f040011
+			public const int fuel_type_diesel = 2130968593;
+			
+			// aapt resource value: 0x7f040010
+			public const int fuel_type_petrol = 2130968592;
+			
+			// aapt resource value: 0x7f04000b
+			public const int get_started = 2130968587;
+			
+			// aapt resource value: 0x7f040009
+			public const int getting_your_vehicles = 2130968585;
 			
 			// aapt resource value: 0x7f040007
-			public const int profile = 2130968583;
+			public const int history = 2130968583;
+			
+			// aapt resource value: 0x7f040022
+			public const int not_enough_refuelings_to_calculate_average = 2130968610;
+			
+			// aapt resource value: 0x7f04001a
+			public const int odometer = 2130968602;
+			
+			// aapt resource value: 0x7f040017
+			public const int price = 2130968599;
+			
+			// aapt resource value: 0x7f040008
+			public const int profile = 2130968584;
+			
+			// aapt resource value: 0x7f040006
+			public const int refueling = 2130968582;
 			
 			// aapt resource value: 0x7f040005
 			public const int refuelings = 2130968581;
 			
-			// aapt resource value: 0x7f040012
-			public const int save = 2130968594;
+			// aapt resource value: 0x7f040013
+			public const int save = 2130968595;
 			
 			// aapt resource value: 0x7f040004
 			public const int statistics = 2130968580;
 			
-			// aapt resource value: 0x7f040018
-			public const int total_price = 2130968600;
-			
-			// aapt resource value: 0x7f04001c
-			public const int validation_error_date = 2130968604;
-			
-			// aapt resource value: 0x7f04001f
-			public const int validation_error_odometer = 2130968607;
+			// aapt resource value: 0x7f040019
+			public const int total_price = 2130968601;
 			
 			// aapt resource value: 0x7f04001d
-			public const int validation_error_price = 2130968605;
+			public const int validation_error_date = 2130968605;
 			
-			// aapt resource value: 0x7f04001b
-			public const int validation_error_vehicle_name = 2130968603;
+			// aapt resource value: 0x7f040020
+			public const int validation_error_odometer = 2130968608;
 			
 			// aapt resource value: 0x7f04001e
-			public const int validation_error_volume = 2130968606;
+			public const int validation_error_price = 2130968606;
 			
-			// aapt resource value: 0x7f04000c
-			public const int vehicle_name = 2130968588;
+			// aapt resource value: 0x7f04001c
+			public const int validation_error_vehicle_name = 2130968604;
+			
+			// aapt resource value: 0x7f04001f
+			public const int validation_error_volume = 2130968607;
 			
 			// aapt resource value: 0x7f04000d
-			public const int vehicle_name_hint = 2130968589;
+			public const int vehicle_name = 2130968589;
 			
-			// aapt resource value: 0x7f040017
-			public const int volume = 2130968599;
+			// aapt resource value: 0x7f04000e
+			public const int vehicle_name_hint = 2130968590;
 			
-			// aapt resource value: 0x7f040009
-			public const int welcome = 2130968585;
+			// aapt resource value: 0x7f040018
+			public const int volume = 2130968600;
+			
+			// aapt resource value: 0x7f04000a
+			public const int welcome = 2130968586;
 			
 			static String()
 			{

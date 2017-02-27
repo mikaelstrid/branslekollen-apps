@@ -11,7 +11,7 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Tankningar", NoHistory = true)]
+    [Activity(NoHistory = true)]
     public class RefuelingsActivity : Activity
     {
         private RefuelingsViewModel _viewModel;
@@ -51,6 +51,7 @@ namespace Branslekollen.Droid
         {
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
+            ActionBar.Title = Resources.GetString(Resource.String.refuelings);
         }
 
         private void InitializeList()

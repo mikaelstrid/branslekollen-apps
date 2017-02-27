@@ -7,7 +7,7 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Statistik", NoHistory = true)]
+    [Activity(NoHistory = true)]
     public class StatisticsActivity : Activity
     {
         private StatisticsViewModel _viewModel;
@@ -45,6 +45,7 @@ namespace Branslekollen.Droid
         {
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
+            ActionBar.Title = Resources.GetString(Resource.String.statistics);
         }
 
         protected override void OnResume()

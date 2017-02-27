@@ -13,7 +13,7 @@ using Branslekollen.Droid.Extensions;
 
 namespace Branslekollen.Droid
 {
-    [Activity(Label = "Tankning", MainLauncher = true, NoHistory = true)]
+    [Activity(MainLauncher = true, NoHistory = true)]
     public class RefuelingActivity : Activity
     {
         private RefuelingViewModel _viewModel;
@@ -62,6 +62,7 @@ namespace Branslekollen.Droid
         {
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
+            ActionBar.Title = Resources.GetString(Resource.String.refueling);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
         }
