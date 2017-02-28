@@ -95,7 +95,7 @@ namespace Branslekollen.Droid
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.TopMenuSave, menu);
-            menu.FindItem(Resource.Id.MenuItemDelete).SetVisible(_viewModel.RefuelingId != null);
+            menu.FindItem(Resource.Id.MenuItemDelete).SetVisible(!string.IsNullOrWhiteSpace(_viewModel.RefuelingId));
             return base.OnCreateOptionsMenu(menu);
         }
 
