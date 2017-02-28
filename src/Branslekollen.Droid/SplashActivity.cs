@@ -18,6 +18,7 @@ namespace Branslekollen.Droid
             {
                 var intent = new Intent(this, typeof(RefuelingActivity));
                 StartActivity(intent);
+                Finish();
             };
         }
     }

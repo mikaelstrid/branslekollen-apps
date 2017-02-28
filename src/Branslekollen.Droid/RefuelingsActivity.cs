@@ -11,7 +11,7 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(NoHistory = true)]
+    [Activity]
     public class RefuelingsActivity : Activity
     {
         private RefuelingsViewModel _viewModel;

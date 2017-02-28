@@ -1,3 +1,4 @@
+using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -15,11 +16,11 @@ namespace Branslekollen.Droid
         {
             var view = inflater.Inflate(Resource.Layout.BottomNavigation, container, false);
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemStatistics).Click +=
-                (sender, args) => StartActivity(new Intent(Context, typeof(StatisticsActivity)));
+                (sender, args) => GoToActivity(typeof(StatisticsActivity));
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemRefuelings).Click +=
-                (sender, args) => StartActivity(new Intent(Context, typeof(RefuelingsActivity)));
+                (sender, args) => GoToActivity(typeof(RefuelingsActivity));
             view.FindViewById<LinearLayout>(Resource.Id.BottomNavigationMenuItemProfile).Click +=
-                (sender, args) => StartActivity(new Intent(Context, typeof(ProfileActivity)));
+                (sender, args) => GoToActivity(typeof(ProfileActivity));
             return view;
         }
 
@@ -30,6 +31,12 @@ namespace Branslekollen.Droid
             activeItem.Alpha = 1;
             var textView = activeItem.GetChildAt(1) as TextView;
             textView?.SetTextSize(ComplexUnitType.Sp, 14);
+        }
+
+        private void GoToActivity(Type activityType)
+        {
+            StartActivity(new Intent(Context, activityType));
+            ((Activity) Context).Finish();
         }
     }
 }
