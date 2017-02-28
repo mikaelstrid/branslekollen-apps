@@ -18,8 +18,7 @@
             android:gravity="center"
             android:textSize="56dp"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="0,56 l/mil" />
+            android:paddingRight="16dp" />
         <fragment
             class="pixel.branslekollen.droid.BottomNavigationFragment"
             android:id="@+id/BottomNavigationFragment"
