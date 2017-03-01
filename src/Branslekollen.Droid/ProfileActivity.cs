@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Autofac;
@@ -49,6 +50,12 @@ namespace Branslekollen.Droid
             var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             SetActionBar(toolbar);
             ActionBar.Title = Resources.GetString(Resource.String.profile);
+        }
+
+        public override void OnBackPressed()
+        {
+            StartActivity(new Intent(this, typeof(RefuelingsActivity)));
+            Finish();
         }
     }
 }

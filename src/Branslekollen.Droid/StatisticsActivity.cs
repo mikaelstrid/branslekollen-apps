@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Autofac;
@@ -69,6 +70,12 @@ namespace Branslekollen.Droid
                 averageConsumptionTextView.TextSize = 20;
                 averageConsumptionTextView.Text = GetString(Resource.String.not_enough_refuelings_to_calculate_average);
             }
+        }
+
+        public override void OnBackPressed()
+        {
+            StartActivity(new Intent(this, typeof(RefuelingsActivity)));
+            Finish();
         }
     }
 }
