@@ -95,10 +95,5 @@
                     android:layout_marginBottom="24dp" />
             </LinearLayout>
         </ScrollView>
-        <fragment
-            class="pixel.branslekollen.droid.BottomNavigationFragment"
-            android:id="@+id/RefuelingBottomNavigationFragment"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
     </LinearLayout>
 </RelativeLayout>

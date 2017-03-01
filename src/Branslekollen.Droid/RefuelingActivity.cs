@@ -38,7 +38,6 @@ namespace Branslekollen.Droid
             else
             {
                 SetContentView(Resource.Layout.Refueling);
-                InitializeBottomNavigation();
                 InitializeTopToolbar();
                 InitializeFormFields();
                 UpdateTotalPrice();
@@ -49,13 +48,6 @@ namespace Branslekollen.Droid
         {
             _viewModel.OnSaveInstanceState(new AndroidSavedState(outState));
             base.OnSaveInstanceState(outState);
-        }
-
-        private void InitializeBottomNavigation()
-        {
-            var bottomNavigationFragment =
-                FragmentManager.FindFragmentById<BottomNavigationFragment>(Resource.Id.RefuelingBottomNavigationFragment);
-            bottomNavigationFragment.SetActiveItem(Resource.Id.BottomNavigationMenuItemRefuelings);
         }
 
         private void InitializeTopToolbar()
