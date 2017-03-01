@@ -50,9 +50,9 @@ namespace Branslekollen.Core.ViewModels
                     .Single(r => r.Id == RefuelingId);
 
                 Date = refueling.RefuelingDate.ToString("d");
-                Price = refueling.PricePerLiter.ToString(CultureInfo.InvariantCulture);
-                Volume = refueling.NumberOfLiters.ToString(CultureInfo.InvariantCulture);
-                Odometer = refueling.OdometerInKm.ToString(CultureInfo.InvariantCulture);
+                Price = refueling.PricePerLiter.ToString();
+                Volume = refueling.NumberOfLiters.ToString();
+                Odometer = refueling.OdometerInKm.ToString();
                 FullTank = refueling.FullTank;
             }
         }

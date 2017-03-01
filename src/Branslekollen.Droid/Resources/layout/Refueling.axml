@@ -2,100 +2,103 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <include
-      android:id="@+id/Toolbar"
-      layout="@layout/Toolbar" />
-  <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:layout_below="@+id/Toolbar">
-    <ScrollView
-      android:layout_width="fill_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1">
-      <LinearLayout
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:orientation="vertical"
-          android:paddingLeft="16dp"
-          android:paddingRight="16dp">
-        <TextView
-            android:text="@string/date"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <EditText
-            android:id="@+id/RefuelingDateEditText"
+    <include
+        android:id="@+id/Toolbar"
+        layout="@layout/Toolbar" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Toolbar">
+        <ScrollView
             android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <TextView
+                    android:text="@string/date"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <EditText
+                    android:id="@+id/RefuelingDateEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+                <TextView
+                    android:text="@string/price"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <EditText
+                    android:id="@+id/RefuelingPriceEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:digits="0123456789," />
+                <TextView
+                    android:text="@string/volume"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <EditText
+                    android:id="@+id/RefuelingVolumeEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:digits="0123456789," />
+                <TextView
+                    android:text="@string/total_price"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <EditText
+                    android:id="@+id/RefuelingTotalPriceEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:digits="0123456789,"
+                    android:enabled="false" />
+                <TextView
+                    android:text="@string/odometer"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <EditText
+                    android:id="@+id/RefuelingOdometerEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+                <TextView
+                    android:text="@string/did_you_refill_completely"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp" />
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/RefuelingFullTankSwitch"
+                    android:checked="true"
+                    android:enabled="false"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="24dp" />
+            </LinearLayout>
+        </ScrollView>
+        <fragment
+            class="pixel.branslekollen.droid.BottomNavigationFragment"
+            android:id="@+id/RefuelingBottomNavigationFragment"
             android:layout_height="wrap_content"
-            android:inputType="date" />
-        <TextView
-            android:text="@string/price"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <EditText
-            android:id="@+id/RefuelingPriceEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-        <TextView
-            android:text="@string/volume"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <EditText
-            android:id="@+id/RefuelingVolumeEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-        <TextView
-            android:text="@string/total_price"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <EditText
-            android:id="@+id/RefuelingTotalPriceEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:enabled="false" />
-        <TextView
-            android:text="@string/odometer"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <EditText
-            android:id="@+id/RefuelingOdometerEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-        <TextView
-            android:text="@string/did_you_refill_completely"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp" />
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/RefuelingFullTankSwitch"
-            android:checked="true"
-            android:enabled="false"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="24dp" />
-      </LinearLayout>
-    </ScrollView>
-    <fragment
-        class="pixel.branslekollen.droid.BottomNavigationFragment"
-        android:id="@+id/RefuelingBottomNavigationFragment"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
-  </LinearLayout>
+            android:layout_width="match_parent" />
+    </LinearLayout>
 </RelativeLayout>
