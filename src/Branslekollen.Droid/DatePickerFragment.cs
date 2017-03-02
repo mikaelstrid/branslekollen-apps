@@ -21,7 +21,7 @@ namespace Branslekollen.Droid
         public override Dialog OnCreateDialog(Bundle savedInstanceState)
         {
             var now = DateTime.Now;
-            var dialog = new DatePickerDialog(Activity, this, now.Year, now.Month, now.Day);
+            var dialog = new DatePickerDialog(Activity, this, now.Year, now.Month - 1, now.Day);
             return dialog;
         }
 

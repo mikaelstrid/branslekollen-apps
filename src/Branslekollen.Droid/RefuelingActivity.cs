@@ -70,7 +70,6 @@ namespace Branslekollen.Droid
 
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).Text = _viewModel.Price;
             FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).TextChanged += PricePerLiter_OnTextChanged;
-            FindViewById<EditText>(Resource.Id.RefuelingPriceEditText).RequestFocus();
 
             FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).Text = _viewModel.Volume;
             FindViewById<EditText>(Resource.Id.RefuelingVolumeEditText).TextChanged += VolumeInLiters_OnTextChanged;
