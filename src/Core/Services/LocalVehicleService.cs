@@ -68,6 +68,7 @@ namespace Branslekollen.Core.Services
                 FullTank = fullTank,
                 MissedRefuelings = false
             });
+            matchingVehicle.Refuelings.Sort((first, second) => first.RefuelingDate.CompareTo(second.RefuelingDate));
             await _localStorage.WriteAsync(STORAGE_KEY, JsonConvert.SerializeObject(existingVehicles));
         }
 
@@ -95,6 +96,8 @@ namespace Branslekollen.Core.Services
             matchingRefueling.OdometerInKm = odometerInKm;
             matchingRefueling.FullTank = fullTank;
             matchingRefueling.MissedRefuelings = false;
+
+            matchingVehicle.Refuelings.Sort((first, second) => first.RefuelingDate.CompareTo(second.RefuelingDate));
 
             await _localStorage.WriteAsync(STORAGE_KEY, JsonConvert.SerializeObject(existingVehicles));
         }
