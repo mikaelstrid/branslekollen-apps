@@ -36,7 +36,9 @@ namespace Branslekollen.Droid.Persistence
                 if (await rootFolder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
                 {
                     var file = await rootFolder.GetFileAsync(fileName);
-                    return await file.ReadAllTextAsync();
+                    var contents = await file.ReadAllTextAsync();
+                    Log.Verbose("LocalStorage.ReadAsync: Read contentsy {@Contents} from local storage", contents);
+                    return contents;
                 }
 
                 return null;

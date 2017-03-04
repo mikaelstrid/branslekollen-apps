@@ -7,7 +7,7 @@ using Branslekollen.Core.ViewModels;
 
 namespace Branslekollen.Droid
 {
-    [Activity(NoHistory = true)]
+    [Activity]
     public class ProfileActivity : Activity
     {
         private ProfileViewModel _viewModel;

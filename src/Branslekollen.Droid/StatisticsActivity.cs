@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -8,13 +9,15 @@ using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity(NoHistory = true)]
+    [Activity]
     public class StatisticsActivity : Activity
     {
         private StatisticsViewModel _viewModel;
 
+        private TextView _averageConsumptionTextView;
+
         // === LIFECYCLE METHODS ===
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -22,9 +25,10 @@ namespace Branslekollen.Droid
             {
                 _viewModel = scope.Resolve<StatisticsViewModel>(new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
             }
-            await _viewModel.InitializeAsync();
+            Task.Run(async () => { await _viewModel.InitializeAsync(); }).Wait();
 
             SetContentView(Resource.Layout.Statistics);
+            _averageConsumptionTextView = FindViewById<TextView>(Resource.Id.StatisticsAverageConsumptionTextView);
 
             InitializeBottomNavigation();
             InitializeTopToolbar();
@@ -49,27 +53,27 @@ namespace Branslekollen.Droid
             ActionBar.Title = Resources.GetString(Resource.String.statistics);
         }
 
-        protected override void OnResume()
+        protected override void OnStart()
         {
-            base.OnResume();
-            UpdateDataAsync();
+            base.OnStart();
+            Task.Run(async () => { await UpdateDataAsync(); }).Wait();
         }
 
-        private async void UpdateDataAsync()
+        private async Task UpdateDataAsync()
         {
             Log.Verbose("StatisticsActivity.UpdateDataAsync: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
             var averageConsumptionAsLiterPerKm = await _viewModel.GetAverageConsumptionAsLiterPerKmAsync();
-            var averageConsumptionTextView = FindViewById<TextView>(Resource.Id.StatisticsAverageConsumptionTextView);
-            if (averageConsumptionAsLiterPerKm.HasValue)
+
+            var textSize = averageConsumptionAsLiterPerKm.HasValue ? 56 : 20;
+            var text = averageConsumptionAsLiterPerKm.HasValue 
+                ? $"{averageConsumptionAsLiterPerKm * 10:N2} l/mil" 
+                : GetString(Resource.String.not_enough_refuelings_to_calculate_average);
+
+            RunOnUiThread(() =>
             {
-                averageConsumptionTextView.TextSize = 56;
-                averageConsumptionTextView.Text = $"{averageConsumptionAsLiterPerKm*10:N2} l/mil";
-            }
-            else
-            {
-                averageConsumptionTextView.TextSize = 20;
-                averageConsumptionTextView.Text = GetString(Resource.String.not_enough_refuelings_to_calculate_average);
-            }
+                _averageConsumptionTextView.TextSize = textSize;
+                _averageConsumptionTextView.Text = text;
+            });
         }
 
         public override void OnBackPressed()

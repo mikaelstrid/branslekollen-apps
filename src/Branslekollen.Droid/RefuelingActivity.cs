@@ -13,13 +13,13 @@ using Branslekollen.Droid.Extensions;
 
 namespace Branslekollen.Droid
 {
-    [Activity(MainLauncher = true, NoHistory = true)]
+    [Activity]
     public class RefuelingActivity : Activity
     {
         private RefuelingViewModel _viewModel;
 
         // === LIFECYCLE METHODS ===
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -29,19 +29,12 @@ namespace Branslekollen.Droid
                     new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)),
                     new NamedParameter("refuelingId", Intent.GetStringExtra(Constants.RefuelingIdName) ?? ""));
             }
-            await _viewModel.InitializeAsync();
+            Task.Run(async () => { await _viewModel.InitializeAsync(); }).Wait();
 
-            if (_viewModel.FreshApplicationStart)
-            {
-                StartActivity(new Intent(this, typeof(SplashActivity)));
-            }
-            else
-            {
-                SetContentView(Resource.Layout.Refueling);
-                InitializeTopToolbar();
-                InitializeFormFields();
-                UpdateTotalPrice();
-            }
+            SetContentView(Resource.Layout.Refueling);
+            InitializeTopToolbar();
+            InitializeFormFields();
+            UpdateTotalPrice();
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -173,6 +166,7 @@ namespace Branslekollen.Droid
             StartActivity(intent);
             Finish();
         }
+
 
 
         // === EVENT HANDLERS ===

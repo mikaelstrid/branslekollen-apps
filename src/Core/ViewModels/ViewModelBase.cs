@@ -35,15 +35,17 @@ namespace Branslekollen.Core.ViewModels
             if (!string.IsNullOrWhiteSpace(ApplicationState.ActiveVehicleId)) return;
 
             // Fresh start of the application, get the last used vehicle (or create a new one)
-            Log.Verbose("ViewModelBase.Ctor: No active vehicle id, getting last used vehicle or creating a new.");
+            Log.Verbose("ViewModelBase.InitializeAsync: No active vehicle id, getting last used vehicle or creating a new");
             var vehicle = await VehicleService.GetLastUsedAsync();
             if (vehicle == null)
             {
+                Log.Verbose("ViewModelBase.InitializeAsync: No vehicles received from VehicleService, create a new one and set FreshApplicationStart = true");
                 vehicle = await VehicleService.CreateAsync();
                 FreshApplicationStart = true;
             }
 
             ApplicationState.ActiveVehicleId = vehicle.Id;
+            Log.Verbose("ViewModelBase.InitializeAsync: Initialization complete, vehicle id set to {Vehicle}", vehicle.Id);
         }
 
         public virtual void OnSaveInstanceState(ISavedState savedState)

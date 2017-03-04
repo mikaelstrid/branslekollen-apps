@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Android.App;
 using Android.Views;
 using Android.Widget;
@@ -7,10 +8,10 @@ namespace Branslekollen.Droid
 {
     public class RefuelingsAdapter : BaseAdapter<Refueling>
     {
-        private readonly Refueling[] _items;
+        private readonly List<Refueling> _items;
         private readonly Activity _context;
 
-        public RefuelingsAdapter(Activity context, Refueling[] items)
+        public RefuelingsAdapter(Activity context, List<Refueling> items)
         {
             _context = context;
             _items = items;
@@ -23,7 +24,7 @@ namespace Branslekollen.Droid
 
         public override Refueling this[int position] => _items[position];
 
-        public override int Count => _items.Length;
+        public override int Count => _items.Count;
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {

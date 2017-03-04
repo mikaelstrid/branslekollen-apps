@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -6,32 +7,45 @@ using Android.Views;
 using Android.Widget;
 using Autofac;
 using Branslekollen.Core;
+using Branslekollen.Core.Domain.Models;
 using Branslekollen.Core.ViewModels;
 using Serilog;
 
 namespace Branslekollen.Droid
 {
-    [Activity]
+    [Activity(MainLauncher = true)]
     public class RefuelingsActivity : Activity
     {
         private RefuelingsViewModel _viewModel;
+        private readonly List<Refueling> _listItems = new List<Refueling>();
+        private RefuelingsAdapter _listAdapter;
 
         // === LIFECYCLE METHODS ===
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
+            Log.Verbose("RefuelingsActivity:OnCreate");
             base.OnCreate(savedInstanceState);
 
             using (var scope = App.Container.BeginLifetimeScope())
             {
                 _viewModel = scope.Resolve<RefuelingsViewModel>(new NamedParameter("savedState", new AndroidSavedState(savedInstanceState)));
             }
-            await _viewModel.InitializeAsync();
+            Task.Run(async () => { await _viewModel.InitializeAsync(); }).Wait();
 
-            SetContentView(Resource.Layout.Refuelings);
-
-            InitializeBottomNavigation();
-            InitializeTopToolbar();
-            InitializeList();
+            if (_viewModel.FreshApplicationStart)
+            {
+                Log.Verbose("RefuelingsActivity:OnCreate: Fresh application start, go to splash");
+                StartActivity(new Intent(this, typeof(SplashActivity)));
+                Finish();
+            }
+            else
+            {
+                Log.Verbose("RefuelingsActivity:OnCreate: Application started before, continue with refuelings view");
+                SetContentView(Resource.Layout.Refuelings);
+                InitializeBottomNavigation();
+                InitializeTopToolbar();
+                InitializeList();
+            }
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -58,6 +72,8 @@ namespace Branslekollen.Droid
         {
             var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
             refuelingsListView.ItemClick += OnListItemClick;
+            _listAdapter = new RefuelingsAdapter(this, _listItems);
+            refuelingsListView.Adapter = _listAdapter;
         }
 
         private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -70,21 +86,26 @@ namespace Branslekollen.Droid
             intent.PutExtra(Constants.RefuelingIdName, adapter[e.Position].Id);
             StartActivity(intent);
         }
+        
 
-        protected override async void OnResume()
+        protected override void OnStart()
         {
-            base.OnResume();
-            await UpdateDataAsync();
+            Log.Verbose("RefuelingsActivity:OnStart");
+            base.OnStart();
+            Task.Run(async () => { await UpdateDataAsync(); }).Wait();
         }
 
         private async Task UpdateDataAsync()
         {
             Log.Verbose("RefuelingsActivity.UpdateDataAsync: Updating data with vehicle id {VehicleId}", _viewModel.ActiveVehicleId);
             var items = await _viewModel.GetRefuelingsAsync();
-            var refuelingsListView = FindViewById<ListView>(Resource.Id.RefuelingsList);
-            refuelingsListView.Adapter = new RefuelingsAdapter(this, items.ToArray());
+            _listItems.Clear();
+            _listItems.AddRange(items);
+            RunOnUiThread(() =>
+            {
+                _listAdapter.NotifyDataSetChanged();
+            });
         }
-
 
 
         // === MENU METHODS ===
