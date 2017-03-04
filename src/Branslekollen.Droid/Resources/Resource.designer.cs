@@ -30,6 +30,31 @@ namespace Branslekollen.Droid
 			global::PCLStorage.Resource.String.Hello = global::Branslekollen.Droid.Resource.String.Hello;
 		}
 		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int fade_in = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int fade_out = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int slide_down = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int slide_up = 2130968579;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -46,23 +71,23 @@ namespace Branslekollen.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int my_accent = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int my_accent = 2131099652;
 			
-			// aapt resource value: 0x7f050002
-			public const int my_primary = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int my_primary = 2131099650;
 			
-			// aapt resource value: 0x7f050003
-			public const int my_primary_dark = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int my_primary_dark = 2131099651;
 			
-			// aapt resource value: 0x7f050001
-			public const int my_text_color = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int my_text_color = 2131099649;
 			
-			// aapt resource value: 0x7f050005
-			public const int my_validation_error = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int my_validation_error = 2131099653;
 			
-			// aapt resource value: 0x7f050000
-			public const int my_white = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int my_white = 2131099648;
 			
 			static Color()
 			{
@@ -123,95 +148,95 @@ namespace Branslekollen.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08000c
-			public const int BottomNavigationFragment = 2131230732;
+			// aapt resource value: 0x7f09000c
+			public const int BottomNavigationFragment = 2131296268;
 			
-			// aapt resource value: 0x7f080003
-			public const int BottomNavigationMenuItemProfile = 2131230723;
+			// aapt resource value: 0x7f090003
+			public const int BottomNavigationMenuItemProfile = 2131296259;
 			
-			// aapt resource value: 0x7f080002
-			public const int BottomNavigationMenuItemRefuelings = 2131230722;
+			// aapt resource value: 0x7f090002
+			public const int BottomNavigationMenuItemRefuelings = 2131296258;
 			
-			// aapt resource value: 0x7f080001
-			public const int BottomNavigationMenuItemStatistics = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int BottomNavigationMenuItemStatistics = 2131296257;
 			
-			// aapt resource value: 0x7f080013
-			public const int DateTextView = 2131230739;
+			// aapt resource value: 0x7f090013
+			public const int DateTextView = 2131296275;
 			
-			// aapt resource value: 0x7f08000b
-			public const int DeleteAllVehiclesButton = 2131230731;
+			// aapt resource value: 0x7f09000b
+			public const int DeleteAllVehiclesButton = 2131296267;
 			
-			// aapt resource value: 0x7f08000a
-			public const int FuelTypeDieselRadioButton = 2131230730;
+			// aapt resource value: 0x7f09000a
+			public const int FuelTypeDieselRadioButton = 2131296266;
 			
-			// aapt resource value: 0x7f080009
-			public const int FuelTypePetrolRadioButton = 2131230729;
+			// aapt resource value: 0x7f090009
+			public const int FuelTypePetrolRadioButton = 2131296265;
 			
-			// aapt resource value: 0x7f080008
-			public const int FuelTypeRadioGroup = 2131230728;
+			// aapt resource value: 0x7f090008
+			public const int FuelTypeRadioGroup = 2131296264;
 			
-			// aapt resource value: 0x7f080019
-			public const int GettingStartedButton = 2131230745;
+			// aapt resource value: 0x7f090019
+			public const int GettingStartedButton = 2131296281;
 			
-			// aapt resource value: 0x7f08001b
-			public const int MenuItemAdd = 2131230747;
+			// aapt resource value: 0x7f09001b
+			public const int MenuItemAdd = 2131296283;
 			
-			// aapt resource value: 0x7f08001c
-			public const int MenuItemDelete = 2131230748;
+			// aapt resource value: 0x7f09001c
+			public const int MenuItemDelete = 2131296284;
 			
-			// aapt resource value: 0x7f08001d
-			public const int MenuItemSave = 2131230749;
+			// aapt resource value: 0x7f09001d
+			public const int MenuItemSave = 2131296285;
 			
-			// aapt resource value: 0x7f08000d
-			public const int RefuelingDateEditText = 2131230733;
+			// aapt resource value: 0x7f09000d
+			public const int RefuelingDateEditText = 2131296269;
 			
-			// aapt resource value: 0x7f080012
-			public const int RefuelingFullTankSwitch = 2131230738;
+			// aapt resource value: 0x7f090012
+			public const int RefuelingFullTankSwitch = 2131296274;
 			
-			// aapt resource value: 0x7f080011
-			public const int RefuelingOdometerEditText = 2131230737;
+			// aapt resource value: 0x7f090011
+			public const int RefuelingOdometerEditText = 2131296273;
 			
-			// aapt resource value: 0x7f08000e
-			public const int RefuelingPriceEditText = 2131230734;
+			// aapt resource value: 0x7f09000e
+			public const int RefuelingPriceEditText = 2131296270;
 			
-			// aapt resource value: 0x7f080010
-			public const int RefuelingTotalPriceEditText = 2131230736;
+			// aapt resource value: 0x7f090010
+			public const int RefuelingTotalPriceEditText = 2131296272;
 			
-			// aapt resource value: 0x7f08000f
-			public const int RefuelingVolumeEditText = 2131230735;
+			// aapt resource value: 0x7f09000f
+			public const int RefuelingVolumeEditText = 2131296271;
 			
-			// aapt resource value: 0x7f080016
-			public const int RefuelingsList = 2131230742;
+			// aapt resource value: 0x7f090016
+			public const int RefuelingsList = 2131296278;
 			
-			// aapt resource value: 0x7f08001a
-			public const int StatisticsAverageConsumptionTextView = 2131230746;
+			// aapt resource value: 0x7f09001a
+			public const int StatisticsAverageConsumptionTextView = 2131296282;
 			
-			// aapt resource value: 0x7f080004
-			public const int Toolbar = 2131230724;
+			// aapt resource value: 0x7f090004
+			public const int Toolbar = 2131296260;
 			
-			// aapt resource value: 0x7f080015
-			public const int TotalPriceTextView = 2131230741;
+			// aapt resource value: 0x7f090015
+			public const int TotalPriceTextView = 2131296277;
 			
-			// aapt resource value: 0x7f080006
-			public const int VehicleNameEditText = 2131230726;
+			// aapt resource value: 0x7f090006
+			public const int VehicleNameEditText = 2131296262;
 			
-			// aapt resource value: 0x7f080014
-			public const int VolumeTextView = 2131230740;
+			// aapt resource value: 0x7f090014
+			public const int VolumeTextView = 2131296276;
 			
-			// aapt resource value: 0x7f080000
-			public const int bottom_navigation = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int bottom_navigation = 2131296256;
 			
-			// aapt resource value: 0x7f080007
-			public const int fuelTypeLabel = 2131230727;
+			// aapt resource value: 0x7f090007
+			public const int fuelTypeLabel = 2131296263;
 			
-			// aapt resource value: 0x7f080017
-			public const int textView1 = 2131230743;
+			// aapt resource value: 0x7f090017
+			public const int textView1 = 2131296279;
 			
-			// aapt resource value: 0x7f080018
-			public const int textView2 = 2131230744;
+			// aapt resource value: 0x7f090018
+			public const int textView2 = 2131296280;
 			
-			// aapt resource value: 0x7f080005
-			public const int vehicleNameLabel = 2131230725;
+			// aapt resource value: 0x7f090005
+			public const int vehicleNameLabel = 2131296261;
 			
 			static Id()
 			{
@@ -266,11 +291,11 @@ namespace Branslekollen.Droid
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int TopMenuAdd = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int TopMenuAdd = 2131230720;
 			
-			// aapt resource value: 0x7f070001
-			public const int TopMenuSave = 2131165185;
+			// aapt resource value: 0x7f080001
+			public const int TopMenuSave = 2131230721;
 			
 			static Menu()
 			{
@@ -285,110 +310,110 @@ namespace Branslekollen.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
-			// aapt resource value: 0x7f040012
-			public const int add = 2130968594;
+			// aapt resource value: 0x7f050012
+			public const int add = 2131034130;
 			
-			// aapt resource value: 0x7f040002
-			public const int app_name = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int app_name = 2131034114;
 			
-			// aapt resource value: 0x7f04000c
-			public const int create_vehicle = 2130968588;
+			// aapt resource value: 0x7f05000c
+			public const int create_vehicle = 2131034124;
 			
-			// aapt resource value: 0x7f040003
-			public const int dashboard = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int dashboard = 2131034115;
 			
-			// aapt resource value: 0x7f040016
-			public const int date = 2130968598;
+			// aapt resource value: 0x7f050016
+			public const int date = 2131034134;
 			
-			// aapt resource value: 0x7f040014
-			public const int delete = 2130968596;
+			// aapt resource value: 0x7f050014
+			public const int delete = 2131034132;
 			
-			// aapt resource value: 0x7f040015
-			public const int delete_all_vehicles = 2130968597;
+			// aapt resource value: 0x7f050015
+			public const int delete_all_vehicles = 2131034133;
 			
-			// aapt resource value: 0x7f04001b
-			public const int did_you_refill_completely = 2130968603;
+			// aapt resource value: 0x7f05001b
+			public const int did_you_refill_completely = 2131034139;
 			
-			// aapt resource value: 0x7f040021
-			public const int error_adding_refueling = 2130968609;
+			// aapt resource value: 0x7f050021
+			public const int error_adding_refueling = 2131034145;
 			
-			// aapt resource value: 0x7f04000f
-			public const int fuel_type = 2130968591;
+			// aapt resource value: 0x7f05000f
+			public const int fuel_type = 2131034127;
 			
-			// aapt resource value: 0x7f040011
-			public const int fuel_type_diesel = 2130968593;
+			// aapt resource value: 0x7f050011
+			public const int fuel_type_diesel = 2131034129;
 			
-			// aapt resource value: 0x7f040010
-			public const int fuel_type_petrol = 2130968592;
+			// aapt resource value: 0x7f050010
+			public const int fuel_type_petrol = 2131034128;
 			
-			// aapt resource value: 0x7f04000b
-			public const int get_started = 2130968587;
+			// aapt resource value: 0x7f05000b
+			public const int get_started = 2131034123;
 			
-			// aapt resource value: 0x7f040009
-			public const int getting_your_vehicles = 2130968585;
+			// aapt resource value: 0x7f050009
+			public const int getting_your_vehicles = 2131034121;
 			
-			// aapt resource value: 0x7f040007
-			public const int history = 2130968583;
+			// aapt resource value: 0x7f050007
+			public const int history = 2131034119;
 			
-			// aapt resource value: 0x7f040022
-			public const int not_enough_refuelings_to_calculate_average = 2130968610;
+			// aapt resource value: 0x7f050022
+			public const int not_enough_refuelings_to_calculate_average = 2131034146;
 			
-			// aapt resource value: 0x7f04001a
-			public const int odometer = 2130968602;
+			// aapt resource value: 0x7f05001a
+			public const int odometer = 2131034138;
 			
-			// aapt resource value: 0x7f040017
-			public const int price = 2130968599;
+			// aapt resource value: 0x7f050017
+			public const int price = 2131034135;
 			
-			// aapt resource value: 0x7f040008
-			public const int profile = 2130968584;
+			// aapt resource value: 0x7f050008
+			public const int profile = 2131034120;
 			
-			// aapt resource value: 0x7f040006
-			public const int refueling = 2130968582;
+			// aapt resource value: 0x7f050006
+			public const int refueling = 2131034118;
 			
-			// aapt resource value: 0x7f040005
-			public const int refuelings = 2130968581;
+			// aapt resource value: 0x7f050005
+			public const int refuelings = 2131034117;
 			
-			// aapt resource value: 0x7f040013
-			public const int save = 2130968595;
+			// aapt resource value: 0x7f050013
+			public const int save = 2131034131;
 			
-			// aapt resource value: 0x7f040004
-			public const int statistics = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int statistics = 2131034116;
 			
-			// aapt resource value: 0x7f040019
-			public const int total_price = 2130968601;
+			// aapt resource value: 0x7f050019
+			public const int total_price = 2131034137;
 			
-			// aapt resource value: 0x7f04001d
-			public const int validation_error_date = 2130968605;
+			// aapt resource value: 0x7f05001d
+			public const int validation_error_date = 2131034141;
 			
-			// aapt resource value: 0x7f040020
-			public const int validation_error_odometer = 2130968608;
+			// aapt resource value: 0x7f050020
+			public const int validation_error_odometer = 2131034144;
 			
-			// aapt resource value: 0x7f04001e
-			public const int validation_error_price = 2130968606;
+			// aapt resource value: 0x7f05001e
+			public const int validation_error_price = 2131034142;
 			
-			// aapt resource value: 0x7f04001c
-			public const int validation_error_vehicle_name = 2130968604;
+			// aapt resource value: 0x7f05001c
+			public const int validation_error_vehicle_name = 2131034140;
 			
-			// aapt resource value: 0x7f04001f
-			public const int validation_error_volume = 2130968607;
+			// aapt resource value: 0x7f05001f
+			public const int validation_error_volume = 2131034143;
 			
-			// aapt resource value: 0x7f04000d
-			public const int vehicle_name = 2130968589;
+			// aapt resource value: 0x7f05000d
+			public const int vehicle_name = 2131034125;
 			
-			// aapt resource value: 0x7f04000e
-			public const int vehicle_name_hint = 2130968590;
+			// aapt resource value: 0x7f05000e
+			public const int vehicle_name_hint = 2131034126;
 			
-			// aapt resource value: 0x7f040018
-			public const int volume = 2130968600;
+			// aapt resource value: 0x7f050018
+			public const int volume = 2131034136;
 			
-			// aapt resource value: 0x7f04000a
-			public const int welcome = 2130968586;
+			// aapt resource value: 0x7f05000a
+			public const int welcome = 2131034122;
 			
 			static String()
 			{
@@ -403,8 +428,8 @@ namespace Branslekollen.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int BranslekollenTheme = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int BranslekollenTheme = 2131165184;
 			
 			static Style()
 			{

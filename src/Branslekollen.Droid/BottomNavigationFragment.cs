@@ -37,6 +37,7 @@ namespace Branslekollen.Droid
         {
             StartActivity(new Intent(Context, activityType));
             ((Activity) Context).Finish();
+            ((Activity)Context).OverridePendingTransition(Resource.Animation.fade_in, Resource.Animation.fade_out);
         }
     }
 }

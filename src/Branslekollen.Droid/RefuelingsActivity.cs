@@ -85,8 +85,9 @@ namespace Branslekollen.Droid
             var intent = new Intent(this, typeof(RefuelingActivity));
             intent.PutExtra(Constants.RefuelingIdName, adapter[e.Position].Id);
             StartActivity(intent);
+            OverridePendingTransition(Resource.Animation.slide_up, Resource.Animation.fade_out);
         }
-        
+
 
         protected override void OnStart()
         {
@@ -122,6 +123,7 @@ namespace Branslekollen.Droid
                 case Resource.Id.MenuItemAdd:
                     var intent = new Intent(this, typeof(RefuelingActivity));
                     StartActivity(intent);
+                    OverridePendingTransition(Resource.Animation.slide_up, Resource.Animation.fade_out);
                     return true;
                 default:
                     return base.OnOptionsItemSelected(item);

@@ -165,6 +165,7 @@ namespace Branslekollen.Droid
             var intent = new Intent(this, typeof(RefuelingsActivity));
             StartActivity(intent);
             Finish();
+            OverridePendingTransition(Resource.Animation.fade_in, Resource.Animation.slide_down);
         }
 
 
